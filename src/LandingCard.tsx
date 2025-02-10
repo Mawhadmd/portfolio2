@@ -5,7 +5,7 @@ import Intro from "./intro";
 import TopButtons from "./TopButtons";
 const MainCard = () => {
   return (
-    <main className="flex flex-col my-20 w-lg px-3 mx-auto">
+  <>
       <div className="aspect-square h-20">
         <img
           src={pfp}
@@ -20,7 +20,7 @@ const MainCard = () => {
         </div>
         <Introduction />
       </div>
-    </main>
+  </>
   );
 };
 
