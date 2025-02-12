@@ -1,14 +1,22 @@
-import { Suspense } from "react";
-import MainCard from "./LandingCard";
-import SpotifyWidget from "./SpotifyWidget";
+
+import MainCard from "./components/LandingCard";
+import ProjectsCard from "./components/ProjectsCard";
+import Skills from "./components/Skills";
+import SpotifyWidget from "./components/SpotifyWidget";
 
 const App = () => {
   return (
-    <main className="flex flex-col my-20 w-lg px-3 mx-auto">
-      <MainCard/>
+    <main className="space-y-10 flex flex-col my-20 w-lg px-3 sm:my-50 sm:pb-12 mx-auto">
+     <div>
+     <MainCard/>
 
-        <SpotifyWidget />
+<SpotifyWidget />
+     </div>
+        <div >
 
+<Skills/>
+        </div>
+        <ProjectsCard/>
       
   </main>
   );

@@ -1,5 +1,4 @@
-import pfp from "./assets/MyPicture.jpg";
-
+import pfp from "../assets/MyPicture.jpg";
 import Introduction from "./introduction";
 import Intro from "./intro";
 import TopButtons from "./TopButtons";

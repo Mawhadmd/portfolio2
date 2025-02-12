@@ -1,8 +1,8 @@
-import React from 'react';
+
 
 const Button = ({children}: any) => {
     return (
-        <button className="size-9 content-center border rounded-md border-gray-600">
+        <button className="size-9 content-center border rounded-md border-gray-800">
             {children}
         </button>
     );

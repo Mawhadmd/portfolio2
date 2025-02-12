@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import spotify from "../public/spotify.png";
+import spotify from "../assets/spotify.png";
+
 type SongData = {
   artist: string;
   song: string;
@@ -96,7 +97,7 @@ const SpotifyWidget = () => {
                 />
               </p>
             ) : (
-              <p>
+                <p>
                 Was listening to{" "}
                 <a
                   target="_blank"
@@ -119,15 +120,18 @@ const SpotifyWidget = () => {
                   src={spotify}
                   alt="Spotify"
                 />{" "}
-                {(
-                  (-new Date(songData.played_at).getTime() +
-                    new Date().getTime()) /
-                  1000 /
-                  60 /
-                  60
-                ).toFixed(0)}{" "}
-                Hours Ago
-              </p>
+                {(() => {
+                  const playedAt = new Date(songData.played_at).getTime();
+                  const now = new Date().getTime();
+                  const diff = now - playedAt;
+
+                  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+                  return `${days > 0 ? `${days} day(s) ` : ""}${hours > 0 ? `${hours} hour(s) ` : ""}${minutes} minute(s) ago`;
+                })()}
+                </p>
             )}
           </div>
         </div>

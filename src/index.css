@@ -16,3 +16,8 @@ box-sizing: border-box;
   --Primary: rgb(0,0,0) ;
   --Secondery: rgb(0,0,0) ;
 }
+
+h1 {
+  font-size: 1rem; /* equivalent to text-2xl */
+  font-weight: 500;  /* equivalent to font-medium */
+}
