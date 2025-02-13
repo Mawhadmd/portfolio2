@@ -2,7 +2,7 @@ import { PROJECTS } from "../../lib/constants";
 
 const ProjectsCard = () => {
   return (
-    <div className="space-y-4">
+    <div >
       <h1>My recent projects</h1>
       <div className="grid grid-cols-1  gap-4">
         {PROJECTS.map((project, index) => (

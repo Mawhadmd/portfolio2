@@ -1,16 +1,36 @@
 import { useEffect, useState } from "react";
 import spotify from "../assets/spotify.png";
+import Pulsingdot from "./pulsingdot";
 
 type SongData = {
   artist: string;
   song: string;
   played_at: string;
-  CurrentlyPlaying: number;
+  CurrentlyPlaying: 'Yes' | 'No';
   artist_link: string;
   song_link: string;
 };
 const SpotifyWidget = () => {
   const [songData, SetSongData] = useState<SongData>();
+
+  function GetTimeDifference(time: string) {
+      const playedAt = new Date(time).getTime();
+      const now = new Date().getTime();
+      const diff = now - playedAt;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor(
+        (diff % (1000 * 60 * 60)) / (1000 * 60)
+      );
+
+      return `${days > 0 ? `${days} day(s) ` : ""}${
+        hours > 0 ? `${hours} hour(s) ` : ""
+      }${minutes} minute(s) ago`;
+    
+  }
 
   useEffect(() => {
     fetch("http://localhost:3000/GetSong", {
@@ -26,9 +46,9 @@ const SpotifyWidget = () => {
       .then((data) => {
         console.log(data);
         if (data.status == "Recently Played Song")
-          SetSongData({ ...data.data, CurrentlyPlaying: 0 });
+          SetSongData({ ...data.data, CurrentlyPlaying: 'No' });
         if (data.status == "Currently Playing")
-          SetSongData({ ...data.data, CurrentlyPlaying: 1 });
+          SetSongData({ ...data.data, CurrentlyPlaying: 'Yes' });
       })
       .catch((error) => {
         console.warn("Error:", error);
@@ -38,39 +58,22 @@ const SpotifyWidget = () => {
           artist_link: "",
           song_link: "",
           played_at: "",
-          CurrentlyPlaying: 0,
+          CurrentlyPlaying: 'No',
         });
       });
   }, []);
+
   return (
-    <div className="mt-6 bg-gray-400/30 p-5 pl-2 rounded-md">
+    <div className="mt-6 pl-4 flex bg-gray-400/20 box-border h-15 items-center gap-3 w-full py-5 rounded-md">
       {songData ? (
-        <div className="flex">
-          <div className="w-10 content-center">
-            <div
-              className={`relative size-3 rounded-full mx-auto ${
-                songData.song === "Error"
-                  ? "bg-red-300"
-                  : songData.CurrentlyPlaying
-                  ? "bg-green-300"
-                  : "bg-yellow-300"
-              }`}
-            >
-              <div
-                className={`absolute animate-ping -z-10 inset-0 size-3 rounded-full mx-auto ${
-                  songData.song === "Error"
-                    ? "bg-red-600"
-                    : songData.CurrentlyPlaying
-                    ? "bg-green-600"
-                    : "bg-yellow-600"
-                }`}
-              ></div>
-            </div>
+        < >
+          <div className=" content-center">
+            <Pulsingdot song={songData.song} CurrentlyPlaying={songData.CurrentlyPlaying}/>
           </div>
           <div className="text-xs">
             {songData.song == "Error" ? (
               <p>Error Occured</p>
-            ) : songData.CurrentlyPlaying ? (
+            ) : songData.CurrentlyPlaying == "Yes" ? (
               <p>
                 Currently Listening to{" "}
                 <a
@@ -91,13 +94,13 @@ const SpotifyWidget = () => {
                 </a>{" "}
                 on{" "}
                 <img
-                  className="size-6  ml-1 inline"
+                  className="size-5  ml-1 inline"
                   src={spotify}
                   alt="Spotify"
                 />
               </p>
             ) : (
-                <p>
+              <p>
                 Was listening to{" "}
                 <a
                   target="_blank"
@@ -120,28 +123,17 @@ const SpotifyWidget = () => {
                   src={spotify}
                   alt="Spotify"
                 />{" "}
-                {(() => {
-                  const playedAt = new Date(songData.played_at).getTime();
-                  const now = new Date().getTime();
-                  const diff = now - playedAt;
-
-                  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-                  return `${days > 0 ? `${days} day(s) ` : ""}${hours > 0 ? `${hours} hour(s) ` : ""}${minutes} minute(s) ago`;
-                })()}
-                </p>
+                {GetTimeDifference(songData.played_at)}
+              </p>
             )}
           </div>
-        </div>
+        </>
       ) : (
-        <div className="flex items-center gap-2">
+        < >
           <div>
-            {" "}
             <svg
               aria-hidden="true"
-              className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+              className="size-5 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
               viewBox="0 0 100 101"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -156,8 +148,8 @@ const SpotifyWidget = () => {
               />
             </svg>
           </div>
-          <span>Loading</span>
-        </div>
+          <small>Loading</small>
+        </>
       )}
     </div>
   );

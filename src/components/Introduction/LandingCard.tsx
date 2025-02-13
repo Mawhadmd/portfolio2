@@ -1,6 +1,6 @@
-import pfp from "../assets/MyPicture.jpg";
-import Introduction from "./introduction";
-import Intro from "./intro";
+import pfp from "../../assets/MyPicture.jpg";
+import AboutMe from "./AboutMe";
+import Title from "./Title";
 import TopButtons from "./TopButtons";
 const MainCard = () => {
   return (
@@ -14,10 +14,10 @@ const MainCard = () => {
       </div>
       <div className="mt-6 space-y-4">
         <div>
-          <Intro />
+          <Title />
           <TopButtons />
         </div>
-        <Introduction />
+        <AboutMe />
       </div>
   </>
   );
