@@ -2,7 +2,7 @@
 
 const Introduction = () => {
     return (
-        <div className="text-sm  text-gray-300/60 font-medium">
+        <div className="text-sm  text-Muted font-medium">
         <p>
         Computer Science student at Lebanese International University, passionate about
          full-stack development, automation, and web scraping. I work with technologies

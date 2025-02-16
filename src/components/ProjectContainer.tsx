@@ -1,5 +1,4 @@
-// MOTION PRIMITIVES
-
+// MOTION PRIMITIVES or Aceternity
 import {
   MorphingDialogClose,
   MorphingDialogContent,
@@ -12,14 +11,14 @@ import Markdown from "react-markdown"; // Adjust the import path as necessary
 import { ProjectType } from "./ProjectsCard";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import Techbadge from "./techbadge";
-import ContainerLink from "./ui/ContainerLink";
+import ContainerButton from "./ui/ContainerButton";
 const ProjectContainer = ({ project }: { project: ProjectType }) => {
   return (
     <MorphingDialogContent
       style={{
         borderRadius: "12px",
       }}
-      className="relative h-auto w-[500px] border border-gray-600  bg-black"
+      className="relative h-auto w-[500px] border border-border text-Text  bg-Primary"
     >
       <ScrollArea className="h-[90vh]" type="scroll">
         {" "}
@@ -32,10 +31,10 @@ const ProjectContainer = ({ project }: { project: ProjectType }) => {
             />
           </div>
           <div>
-            <time className="text-gray-400 text-xs text-muted-foreground">
+            <time className="text-Muted text-xs text-muted-foreground">
               {project.dates}
             </time>
-            <MorphingDialogTitle className="font-semibold leading-none text-base">
+            <MorphingDialogTitle className="font-semibold leading-none text-Text">
               {project.title}
             </MorphingDialogTitle>
             <MorphingDialogSubtitle className="font-light">
@@ -51,19 +50,18 @@ const ProjectContainer = ({ project }: { project: ProjectType }) => {
           </div>
           <MorphingDialogDescription>
             <hr className="my-2 text-gray-700" />
-            <Markdown className="prose  max-w-full whitespace-pre-wrap font-sans text-sm text-white/60 dark:prose-invert prose-headings:mt-4 prose-headings:mb-2 prose-p:my-2 prose-ul:my-2">
+            <Markdown className="prose  max-w-full whitespace-pre-wrap font-sans text-sm text-Muted dark:prose-invert prose-headings:mt-4 prose-headings:mb-2 prose-p:my-2 prose-ul:my-2">
               {project.description}
             </Markdown>
-            <hr className="my-2 text-gray-700"  />
+            <hr className="my-2 text-gray-700" />
           </MorphingDialogDescription>
           {project.links && project.links.length > 0 && (
             <div className=" flex gap-2 justify-center items-center">
               {project.links?.map((link, idx) => (
-                <ContainerLink 
-                variant= {link.type === "Source" ? "Source" : "Web"}
-                link={link.href}
-                key={idx} 
-                
+                <ContainerButton
+                  variant={link.type === "Source" ? "Source" : "Web"}
+                  link={link.href}
+                  key={idx}
                 >
                   <div className="flex items-center gap-1">
                     <span>{link.icon}</span>
@@ -75,7 +73,7 @@ const ProjectContainer = ({ project }: { project: ProjectType }) => {
                       {link.type}
                     </div>
                   </div>
-                </ContainerLink>
+                </ContainerButton>
               ))}
             </div>
           )}

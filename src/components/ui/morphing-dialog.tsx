@@ -17,7 +17,7 @@ import {
 import { createPortal } from 'react-dom';
 import { XIcon } from 'lucide-react';
 import { RefObject } from 'react';
-import { cn } from "../../lib/cn"
+import { cn } from "../../lib/utils"
 function useClickOutside<T extends HTMLElement>(
   ref: RefObject<T>,
   handler: (event: MouseEvent | TouchEvent) => void

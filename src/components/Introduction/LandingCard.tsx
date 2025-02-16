@@ -5,11 +5,11 @@ import TopButtons from "./TopButtons";
 const MainCard = () => {
   return (
   <>
-      <div className="aspect-square h-20">
+      <div  className="aspect-square h-20">
         <img
           src={pfp}
           alt=""
-          className="size-20 border-gray-600 rounded-full aspect-square"
+          className="size-20 border-border rounded-full aspect-square"
         />
       </div>
       <div className="mt-6 space-y-4">
