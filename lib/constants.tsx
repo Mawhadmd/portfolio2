@@ -76,7 +76,7 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
         icon: <Github />,
       },
     ],
-    image: "/images/talkspace.png",
+    image: "",
   },
   {
     title: "Web Scraper Bot",
@@ -89,11 +89,11 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
     links: [
       {
         type: "Source",
-        href: "#",
+        href: "https://github.com/Mawhadmd/Amazon-Scrapper-Selenium",
         icon: <Github />,
       },
     ],
-    image: "/images/web-scraper.png",
+    image: "../src/assets/projects/Webscraping.png",
   },
   {
     title: "Portfolio Website",

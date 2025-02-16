@@ -1,41 +1,51 @@
 import { PROJECTS } from "../../lib/constants";
+import {
+  MorphingDialog,
+  MorphingDialogTrigger,
+  MorphingDialogContainer,
+} from "./ui/morphing-dialog";
+import ProjectTile from "./ProjectTile";
+import ProjectContainer from "./ProjectContainer";
+
+export type ProjectType = {
+  title: string;
+  href: string;
+  dates: string;
+  active: boolean;
+  description: string;
+  technologies: string[];
+  links: {
+    type: string;
+    href: string;
+    icon: JSX.Element;
+  }[];
+  image: string;
+};
 
 const ProjectsCard = () => {
   return (
-    <div >
+    <>
       <h1>My recent projects</h1>
-      <div className="grid grid-cols-1  gap-4">
+      <div className="grid grid-cols-1 gap-4">
         {PROJECTS.map((project, index) => (
-          <div
+          <MorphingDialog
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              damping: 20,
+            }}
             key={index}
-            className="relative cursor-pointer border border-gray-800 p-4  flex gap-2 rounded-md "
           >
-            <div className="w-1/3">
-              <img
-                src={project.image}
-                className="h-12 sm:h-20 object-cover object-top rounded-sm"
-                alt=""
-              />
-            </div>
-            <div className="w-2/3">
-              <p className="text-xs">{project.dates}</p>
-              <h2 className=" font-semibold">{project.title}</h2>
-              <p className="text-xs">Tech Stack:</p>
-              <div className="flex flex-wrap gap-1 mt-1">
-                {project.technologies.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="border border-gray-800 text-[10px] px-2  rounded-md"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+            <MorphingDialogTrigger className="flex flex-col gap-1">
+              <ProjectTile project={project} />
+            </MorphingDialogTrigger>
+            <MorphingDialogContainer >
+              <ProjectContainer project={project} />
+            </MorphingDialogContainer>
+          </MorphingDialog>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
