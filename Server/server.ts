@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -13,7 +13,7 @@ dotenv.config();
 dotenv.config({ path: `.env.local`, override: true });
 app.use(cors({ origin: FRONTEND_URI })); // Restrict CORS to frontend only
 
-app.get("/GetSong", async (req: Request, res: Response): Promise<any> => {
+app.get("/GetSong", async (res: Response): Promise<any> => {
   //this will get any song that is playing, or the last song that was played
   console.log(
     accessToken === "" || Date.now() - TimeOfToken > AccessTokenExpiry
