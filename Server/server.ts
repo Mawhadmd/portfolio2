@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 const PORT = process.env.PORT || 3000;
-const FRONTEND_URI = "http://localhost:5173";
+const FRONTEND_URI = ["http://localhost:5173", "https://lively-squirrel-071e9b.netlify.app/"];
 const app = express();
 let accessToken = "";
 let AccessTokenExpiry = 0;

@@ -1,5 +1,8 @@
 import { User, Building2, Laptop, Globe, Github } from "lucide-react";
-
+import ChattyImage from "../assets/Chatty.png";
+import TalkSpaceImage from "../assets/TalkSpace.png";
+import WebScrapingImage from "../assets/Webscraping.png";
+import PortfolioImage from "../assets/Portfolio.png";
 export const DOCK_DATA = [
   { Icon: User, tooltip: "About me", link: "#about-me" },
   { Icon: Building2, tooltip: "Work Experience", link: "#work" },
@@ -57,7 +60,7 @@ A real-time chat application built with React and Node.js, featuring authenticat
         icon: <Globe />,
       },
     ],
-    image: "../src/assets/Chatty.png",
+    image: {ChattyImage},
   },
   {
     title: "TalkSpace",
@@ -80,7 +83,7 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
         icon: <Github />,
       },
     ],
-    image: "../src/assets/TalkSpace.png",
+    image: {TalkSpaceImage},
   },
   {
     title: "Web Scraper Bot",
@@ -97,7 +100,7 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
         icon: <Github />,
       },
     ],
-    image: "../src/assets/Webscraping.png",
+    image: {WebScrapingImage},
   },
   {
     title: "Portfolio Website",
@@ -125,6 +128,6 @@ A personal portfolio website to showcase my projects, skills, and experience.
         icon: <Github />,
       },
     ],
-    image: "../src/assets/Portfolio.png",
+    image: {PortfolioImage},
   },
 ];
