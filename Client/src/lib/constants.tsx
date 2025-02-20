@@ -60,7 +60,7 @@ A real-time chat application built with React and Node.js, featuring authenticat
         icon: <Globe />,
       },
     ],
-    image: {ChattyImage},
+    image: ChattyImage,
   },
   {
     title: "TalkSpace",
@@ -83,7 +83,7 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
         icon: <Github />,
       },
     ],
-    image: {TalkSpaceImage},
+    image: TalkSpaceImage,
   },
   {
     title: "Web Scraper Bot",
@@ -100,7 +100,7 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
         icon: <Github />,
       },
     ],
-    image: {WebScrapingImage},
+    image: WebScrapingImage,
   },
   {
     title: "Portfolio Website",
@@ -128,6 +128,6 @@ A personal portfolio website to showcase my projects, skills, and experience.
         icon: <Github />,
       },
     ],
-    image: {PortfolioImage},
+    image: PortfolioImage,
   },
 ];
