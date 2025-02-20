@@ -1,8 +1,7 @@
-import { Request, Response } from "express";
 
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
 const PORT = process.env.PORT || 3000;
 const FRONTEND_URI = "http://localhost:5173";
@@ -15,7 +14,7 @@ dotenv.config();
 dotenv.config({ path: `.env.local`, override: true });
 app.use(cors({ origin: FRONTEND_URI })); // Restrict CORS to frontend only
 
-app.get("/GetSong", async (req:Request, res:Response) => {
+app.get("/GetSong", async (req,res) => {
   //this will get any song that is playing, or the last song that was played
   console.log(accessToken === "" || Date.now() - TimeOfToken > AccessTokenExpiry)
   if (accessToken === "" || Date.now() - TimeOfToken > AccessTokenExpiry) {
