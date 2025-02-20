@@ -28,7 +28,7 @@ const SpotifyWidget = ({ ThemeColor}: { ThemeColor: 'light' | 'dark'}) => {
     }${minutes} minute(s) ago`;
   }
   function fetchsongdata(){
-    fetch("http://localhost:3000/GetSong", {
+    fetch("https://portfolio2-rjdb.onrender.com/GetSong", {
       method: "GET",
     })
       .then((response) => {
