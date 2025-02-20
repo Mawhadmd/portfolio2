@@ -1,5 +1,4 @@
-
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -14,11 +13,13 @@ dotenv.config();
 dotenv.config({ path: `.env.local`, override: true });
 app.use(cors({ origin: FRONTEND_URI })); // Restrict CORS to frontend only
 
-app.get("/GetSong", async (req,res) => {
+app.get("/GetSong", async (req: Request, res: Response): Promise<any> => {
   //this will get any song that is playing, or the last song that was played
-  console.log(accessToken === "" || Date.now() - TimeOfToken > AccessTokenExpiry)
+  console.log(
+    accessToken === "" || Date.now() - TimeOfToken > AccessTokenExpiry
+  );
   if (accessToken === "" || Date.now() - TimeOfToken > AccessTokenExpiry) {
-    try { 
+    try {
       let accessTokenResponse = await (
         await fetch("https://accounts.spotify.com/api/token", {
           method: "POST",
@@ -47,12 +48,10 @@ app.get("/GetSong", async (req,res) => {
   }
 
   if (!accessToken)
-    return res
-      .status(500)
-      .send({
-        error: "Failed to get access token",
-        reason: "Access token is undefined",
-      });
+    return res.status(500).send({
+      error: "Failed to get access token",
+      reason: "Access token is undefined",
+    });
   try {
     var currently_playing_song = await fetch(
       "https://api.spotify.com/v1/me/player/currently-playing",
