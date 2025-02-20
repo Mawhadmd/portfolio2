@@ -20,9 +20,9 @@ const SocialButtons = () => {
   ];
   return (
     <div className="flex gap-2 mt-1 h-10 font-medium justify-start  items-center">
-      {iconmaps.map((icon, index) =>
+      {iconmaps.map((icon) =>
         icon.alt != "Resume" ? (
-          <a href={icon.link} target="_blank" rel="noreferrer" key={index}>
+          <a href={icon.link} target="_blank" rel="noreferrer" key={icon.alt}>
             <button
               onMouseEnter={() => setHover(icon.alt)}
               onMouseLeave={() => setHover("")}
@@ -45,9 +45,9 @@ const SocialButtons = () => {
             </button>
           </a>
         ) : (
-          <a href="https://docs.google.com/document/d/1P97pfa8Cv2oR2PBpD1QVbEBvM-B2_DTPOjAHs96Fryg/edit?usp=sharing" target="_blank">
+          <a key={icon.alt} href="https://docs.google.com/document/d/1P97pfa8Cv2oR2PBpD1QVbEBvM-B2_DTPOjAHs96Fryg/edit?usp=sharing" target="_blank">
             <button
-            key={index}
+            key={icon.alt}
             className="w-fit flex  gap-2 items-center h-10  py-1 px-4 bg-border hover:bg-Text/60 hover:text-Primary transition-all cursor-pointer  rounded-md shadow-md"
           >
             <IconFile /> Resume

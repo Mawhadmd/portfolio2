@@ -16,7 +16,7 @@ import {
 } from "framer-motion";
 
 import { useRef, useState } from "react";
- type items = { title: string; icon: React.ReactNode; href: string, onClick?: ()=>void }[]
+ type items = { title: string; icon: React.ReactNode; href: string, onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>)=>void }[]
 export const FloatingDock = ({
   items,
   desktopClassName,
@@ -102,12 +102,12 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden md:flex h-12 gap-4 items-end  rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-1",
+        "mx-auto hidden md:flex h-12 gap-4 items-end  rounded-2xl bg-gray-300 dark:bg-neutral-900 px-4 pb-1",
         className
       )}
     >
       {items.map((item) => (
-        <IconContainer  mouseX={mouseX} key={item.title} {...item} />
+        <IconContainer  mouseX={mouseX} key={item.href} {...item} />
       ))}
     </motion.div>
   );
@@ -124,7 +124,7 @@ function IconContainer({
   title: string;
   icon: React.ReactNode;
   href: string;
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }) {
   let ref = useRef<HTMLDivElement>(null);
  

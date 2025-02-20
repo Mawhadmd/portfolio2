@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import { FloatingDock as FloatingDockUI } from "./ui/floating-dock";
+import { useEffect } from "react";
+import { FloatingDock as FloatingDockUI } from "./ui/floating-dock-Aceternity";
 import { IconHome, IconFileCv, IconSun, IconMoon } from "@tabler/icons-react";
 
-export function FloatingDock() {
-  const [ThemeColor, setThemeColor] = useState<"light" | "dark">(
-    "light"
-  );
-  function toggleLightMode() {
+export function FloatingDock({setThemeColor,ThemeColor}: { 
+  setThemeColor: React.Dispatch<React.SetStateAction<"dark" | "light">>;
+  ThemeColor: string;}) {
+  function toggleLightMode(e: React.MouseEvent<HTMLAnchorElement>) {
+    e.preventDefault()
     if (ThemeColor === "dark") {
       setThemeColor("light");
     } else {
@@ -14,33 +14,37 @@ export function FloatingDock() {
     }
   }
   useEffect(() => {
+    localStorage.setItem('theme',ThemeColor)
     document.documentElement.setAttribute("data-theme", ThemeColor);
-
   }, [ThemeColor]);
   const links = [
     {
       title: "Home",
       icon: (
-        <IconHome className=" h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconHome className=" h-full w-full text-neutral-600 dark:text-neutral-300" />
       ),
       href: "#top",
     },
     {
       title: "Resume",
       icon: (
-        <IconFileCv className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconFileCv className="h-full w-full text-neutral-600 dark:text-neutral-300" />
       ),
       href: "https://docs.google.com/document/d/1P97pfa8Cv2oR2PBpD1QVbEBvM-B2_DTPOjAHs96Fryg/edit?usp=sharing",
     },
     {
-      title: "Mode",
+      title:  ThemeColor == "dark" ? (
+        'Light Mode'
+      ) : (
+        "Dark Mode"
+      ),
       icon:
         ThemeColor == "dark" ? (
-          <IconMoon className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+          <IconMoon className="h-full w-full text-neutral-600 dark:text-neutral-300" />
         ) : (
-          <IconSun className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+          <IconSun className="h-full w-full text-neutral-600 dark:text-neutral-300" />
         ),
-      href: "javascript:void(0);",
+      href: "#",
       onClick: toggleLightMode,
     },
   ];

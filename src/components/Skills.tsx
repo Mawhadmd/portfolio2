@@ -5,10 +5,10 @@ const Skills = () => {
 
       <h1 >Skills</h1>
       <div className="w-[90%] mt-4 flex flex-wrap gap-2 justify-center">
-        {SKILLS.map((skill, index) => (
+        {SKILLS.map((skill) => (
           <div
             className="text-Text  border rounded-md p-1 text-[10px]  border-gray-800 inline"
-            key={index}
+            key={skill}
           >
             {skill}
           </div>

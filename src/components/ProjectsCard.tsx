@@ -27,14 +27,14 @@ const ProjectsCard = () => {
     <>
       <h1>My recent projects</h1>
       <div className="grid grid-cols-1 gap-4">
-        {PROJECTS.map((project, index) => (
+        {PROJECTS.map((project) => (
           <MorphingDialog
             transition={{
               type: "spring",
               stiffness: 200,
               damping: 20,
             }}
-            key={index}
+            key={project.title}
           >
             <MorphingDialogTrigger className="flex flex-col gap-1">
               <ProjectTile project={project} />

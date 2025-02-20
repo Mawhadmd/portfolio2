@@ -9,7 +9,7 @@ import {
 } from "./ui/morphing-dialog";
 import Markdown from "react-markdown"; // Adjust the import path as necessary
 import { ProjectType } from "./ProjectsCard";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+
 import Techbadge from "./techbadge";
 import ContainerButton from "./ui/ContainerButton";
 const ProjectContainer = ({ project }: { project: ProjectType }) => {
@@ -20,7 +20,7 @@ const ProjectContainer = ({ project }: { project: ProjectType }) => {
       }}
       className="relative h-auto w-[500px] border border-border text-Text  bg-Primary"
     >
-      <ScrollArea className="h-[90vh]" type="scroll">
+      <div className="overflow-y-auto h-[90vh]">
         {" "}
         <div className="relative p-6 space-y-4">
           <div className="flex justify-center pt-10 pb-6">
@@ -78,7 +78,7 @@ const ProjectContainer = ({ project }: { project: ProjectType }) => {
             </div>
           )}
         </div>
-      </ScrollArea>
+      </div>
       <MorphingDialogClose className="text-zinc-500" />
     </MorphingDialogContent>
   );

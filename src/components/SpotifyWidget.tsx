@@ -3,36 +3,31 @@ import spotify from "../assets/spotify.png";
 import Pulsingdot from "./pulsingdot";
 
 type SongData = {
+ 
   artist: string;
   song: string;
   played_at: string;
-  CurrentlyPlaying: 'Yes' | 'No';
+  CurrentlyPlaying: "Yes" | "No";
   artist_link: string;
   song_link: string;
 };
-const SpotifyWidget = () => {
+const SpotifyWidget = ({ ThemeColor}: { ThemeColor: 'light' | 'dark'}) => {
   const [songData, SetSongData] = useState<SongData>();
 
   function GetTimeDifference(time: string) {
-      const playedAt = new Date(time).getTime();
-      const now = new Date().getTime();
-      const diff = now - playedAt;
+    const playedAt = new Date(time).getTime();
+    const now = new Date().getTime();
+    const diff = now - playedAt;
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor(
-        (diff % (1000 * 60 * 60)) / (1000 * 60)
-      );
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
-      return `${days > 0 ? `${days} day(s) ` : ""}${
-        hours > 0 ? `${hours} hour(s) ` : ""
-      }${minutes} minute(s) ago`;
-    
+    return `${days > 0 ? `${days} day(s) ` : ""}${
+      hours > 0 ? `${hours} hour(s) ` : ""
+    }${minutes} minute(s) ago`;
   }
-
-  useEffect(() => {
+  function fetchsongdata(){
     fetch("http://localhost:3000/GetSong", {
       method: "GET",
     })
@@ -44,11 +39,11 @@ const SpotifyWidget = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+        
         if (data.status == "Recently Played Song")
-          SetSongData({ ...data.data, CurrentlyPlaying: 'No' });
+          SetSongData({ ...data.data, CurrentlyPlaying: "No" });
         if (data.status == "Currently Playing")
-          SetSongData({ ...data.data, CurrentlyPlaying: 'Yes' });
+          SetSongData({ ...data.data, CurrentlyPlaying: "Yes" });
       })
       .catch((error) => {
         console.warn("Error:", error);
@@ -58,17 +53,30 @@ const SpotifyWidget = () => {
           artist_link: "",
           song_link: "",
           played_at: "",
-          CurrentlyPlaying: 'No',
+          CurrentlyPlaying: "No",
         });
       });
+  }
+  useEffect(() => {
+    fetchsongdata()
+    let interval = setInterval(() => {
+      fetchsongdata()
+    }, 1000 * 60 * 6);
+    return () => {
+      clearInterval(interval)
+    }
   }, []);
 
   return (
     <div className="mt-6 pl-4 flex bg-gray-400/20 box-border h-15 items-center gap-3 w-full py-5 rounded-md">
       {songData ? (
-        < >
+        <>
           <div className=" content-center">
-            <Pulsingdot song={songData.song} CurrentlyPlaying={songData.CurrentlyPlaying}/>
+            <Pulsingdot
+            ThemeColor={ThemeColor}
+              song={songData.song}
+              CurrentlyPlaying={songData.CurrentlyPlaying}
+            />
           </div>
           <div className="text-xs">
             {songData.song == "Error" ? (
@@ -129,7 +137,7 @@ const SpotifyWidget = () => {
           </div>
         </>
       ) : (
-        < >
+        <>
           <div>
             <svg
               aria-hidden="true"

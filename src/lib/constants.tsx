@@ -34,7 +34,7 @@ export const SKILLS = [
 export const PROJECTS = [
   {
     title: "Chat App",
-    href: "#",
+    href: "https://chatty001a.netlify.app/",
     dates: "2024 - Present",
     active: true,
     description: `
@@ -49,14 +49,18 @@ A real-time chat application built with React and Node.js, featuring authenticat
     links: [
       {
         type: "Source",
-        href: "#",
+        href: "https://github.com/Mawhadmd/Chat-App-React",
         icon: <Github />,
+      },  {
+        type: "Website",
+        href: "https://chatty001a.netlify.app/#",
+        icon: <Globe />,
       },
     ],
-    image: "/images/chat-app.png",
+    image: "../src/assets/Chatty.png",
   },
   {
-    title: "Zoom Clone (TalkSpace)",
+    title: "TalkSpace",
     href: "#",
     dates: "2024 - Present",
     active: true,
@@ -72,11 +76,11 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
     links: [
       {
         type: "Source",
-        href: "#",
+        href: "https://github.com/Mawhadmd/Talk-Space",
         icon: <Github />,
       },
     ],
-    image: "",
+    image: "../src/assets/TalkSpace.png",
   },
   {
     title: "Web Scraper Bot",
@@ -93,7 +97,7 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
         icon: <Github />,
       },
     ],
-    image: "../src/assets/projects/Webscraping.png",
+    image: "../src/assets/Webscraping.png",
   },
   {
     title: "Portfolio Website",
@@ -117,10 +121,10 @@ A personal portfolio website to showcase my projects, skills, and experience.
       },
       {
         type: "Source",
-        href: "#",
+        href: "https://github.com/Mawhadmd/portfolio2",
         icon: <Github />,
       },
     ],
-    image: "/images/portfolio.png",
+    image: "../src/assets/Portfolio.png",
   },
 ];
