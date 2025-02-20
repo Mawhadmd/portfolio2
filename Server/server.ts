@@ -2,7 +2,8 @@ import express, { Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
-const PORT = process.env.PORT || 3000;
+
+const PORT = 10000;
 const app = express();
 let accessToken = "";
 let AccessTokenExpiry = 0;
@@ -11,8 +12,7 @@ let TimeOfToken = 0;
 dotenv.config();
 dotenv.config({ path: `.env.local`, override: true });
 
-const FRONTEND_URIs = ["http://localhost:5173", "https://lively-squirrel-071e9b.netlify.app"];
-app.use(cors({ origin: FRONTEND_URIs })); // Restrict CORS to frontend only
+app.use(cors({ origin: ["http://localhost:5173", "https://lively-squirrel-071e9b.netlify.app"] })); // Restrict CORS to frontend only
 
 app.get("/GetSong", async (res: Response): Promise<any> => {
   //this will get any song that is playing, or the last song that was played
