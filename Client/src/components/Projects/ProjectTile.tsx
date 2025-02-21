@@ -1,6 +1,6 @@
 
-import Techbadge from './techbadge';
-import { MorphingDialogImage, MorphingDialogSubtitle, MorphingDialogTitle } from './ui/morphing-dialog';
+import Techbadge from '../ui/Skillsbadge';
+import { MorphingDialogImage, MorphingDialogSubtitle, MorphingDialogTitle } from '../ui/morphing-dialog';
 
 const ProjectTile = ({project}: any) => {
 

@@ -6,12 +6,12 @@ import {
   MorphingDialogImage,
   MorphingDialogSubtitle,
   MorphingDialogTitle,
-} from "./ui/morphing-dialog";
+} from "../ui/morphing-dialog";
 import Markdown from "react-markdown"; // Adjust the import path as necessary
 import { ProjectType } from "./ProjectsCard";
 
-import Techbadge from "./techbadge";
-import ContainerButton from "./ui/ContainerButton";
+import Techbadge from "../ui/Skillsbadge";
+import ContainerButton from "./ProjectContainerButton";
 const ProjectContainer = ({ project }: { project: ProjectType }) => {
   return (
     <MorphingDialogContent

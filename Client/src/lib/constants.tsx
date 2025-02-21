@@ -1,14 +1,25 @@
-import { User, Building2, Laptop, Globe, Github } from "lucide-react";
+import {  Globe, Github } from "lucide-react";
 import ChattyImage from "../assets/Chatty.png";
 import TalkSpaceImage from "../assets/TalkSpace.png";
 import WebScrapingImage from "../assets/Webscraping.png";
+import { IconBrandGithub, IconBrandX, IconFile } from "@tabler/icons-react";
+import { Linkedin } from "lucide-react";
 import PortfolioImage from "../assets/Portfolio.png";
-export const DOCK_DATA = [
-  { Icon: User, tooltip: "About me", link: "#about-me" },
-  { Icon: Building2, tooltip: "Work Experience", link: "#work" },
-  { Icon: Laptop, tooltip: "Projects", link: "#projects" },
-];
 
+export const ICONMAPS = [
+  { src: IconFile, alt: "Resume" },
+  {
+    src: IconBrandGithub,
+    alt: "Github",
+    link: "https://github.com/Mawhadmd",
+  },
+  {
+    src: Linkedin,
+    alt: "LinkedIn",
+    link: "https://www.linkedin.com/in/mhmdawad/",
+  },
+  { src: IconBrandX, alt: "Twitter", link: "https://x.com/Mawhadmd" },
+];
 export const SKILLS = [
   "JavaScript",
   "React",

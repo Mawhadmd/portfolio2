@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import spotify from "../assets/spotify.png";
-import Pulsingdot from "./pulsingdot";
+import Pulsingdot from "./ui/Pulsingdot";
 
 type SongData = {
  

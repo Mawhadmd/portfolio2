@@ -1,17 +1,20 @@
 import { SKILLS } from "../lib/constants";
+import Blurfade from "./ui/Blurfade";
+import Skillsbadge from "./ui/Skillsbadge";
 const Skills = () => {
   return (
     <>
 
       <h1 >Skills</h1>
       <div className="w-[90%] mt-4 flex flex-wrap gap-2 justify-center">
-        {SKILLS.map((skill) => (
-          <div
-            className="text-Text  border rounded-md p-1 text-[10px]  border-gray-800 inline"
+        {SKILLS.map((skill, i) => (
+         <Blurfade delay={i * 0.03}>
+           <Skillsbadge
             key={skill}
           >
             {skill}
-          </div>
+          </Skillsbadge>
+         </Blurfade>
         ))}
       </div>
     </>

@@ -1,10 +1,12 @@
-import MainCard from "./components/Introduction/LandingCard";
-import ProjectsCard from "./components/ProjectsCard";
+import MainCard from "./components/Landing/LandingCard";
+import ProjectsCard from "./components/Projects/ProjectsCard";
 import Skills from "./components/Skills";
 import SpotifyWidget from "./components/SpotifyWidget";
 import { FloatingDock } from "./components/FloatingDock";
 import WorkExperienceCard from "./components/WorkExperienceCard";
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
+import Blurfade from "./components/ui/Blurfade";
 
 const App = () => {
   const [ThemeColor, setThemeColor] = useState<"light" | "dark">(
@@ -29,20 +31,34 @@ const App = () => {
     }
   }, []);
   return (
-    <>
+   
+      <>
       <main className="  text-Text space-y-10 flex flex-col my-20 w-lg px-3 sm:my-50 sm:pb-12 mx-auto">
-        <div>
+      <Blurfade >
+
           <MainCard />
+          <Blurfade delay={0.6}>
+            
           <SpotifyWidget ThemeColor={ThemeColor} />
-        </div>
+          </Blurfade>
+       
+        </Blurfade>
+        <Blurfade >
         <div className=" h-full w-full">
           <Skills />
         </div>
+        </Blurfade>
+        <Blurfade >
         <ProjectsCard />
+        </Blurfade>
+        <Blurfade >
         <WorkExperienceCard />
+        </Blurfade>
+  
       </main>
-
+      <motion.div className="flex items-center justify-center fixed bottom-3 w-full" transition={{delay:1, duration:1, type:'spring', damping: 10}} initial = {{opacity:0, y:-100}} animate={{opacity:1, y:0}} >
       <FloatingDock ThemeColor={ThemeColor} setThemeColor={setThemeColor} />
+      </motion.div>
     </>
   );
 };

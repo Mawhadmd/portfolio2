@@ -1,27 +1,17 @@
-import { IconBrandGithub, IconBrandX, IconFile } from "@tabler/icons-react";
-import { Linkedin } from "lucide-react";
+
 import { useState } from "react";
+import { ICONMAPS } from "../../lib/constants";
+import Blurfade from "../ui/Blurfade";
+import { IconFile } from "@tabler/icons-react";
 
 const SocialButtons = () => {
   const [hover, setHover] = useState("");
-  let iconmaps = [
-    { src: IconFile, alt: "Resume" },
-    {
-      src: IconBrandGithub,
-      alt: "Github",
-      link: "https://github.com/Mawhadmd",
-    },
-    {
-      src: Linkedin,
-      alt: "LinkedIn",
-      link: "https://www.linkedin.com/in/mhmdawad/",
-    },
-    { src: IconBrandX, alt: "Twitter", link: "https://x.com/Mawhadmd" },
-  ];
+  
   return (
     <div className="flex gap-2 mt-1 h-10 font-medium justify-start  items-center">
-      {iconmaps.map((icon) =>
-        icon.alt != "Resume" ? (
+      {ICONMAPS.map((icon,index) =>
+          <Blurfade  delay={index * 0.2 + 0.8} oppositeDirection={true} >
+        {    icon.alt != "Resume" ? (
           <a href={icon.link} target="_blank" rel="noreferrer" key={icon.alt}>
             <button
               onMouseEnter={() => setHover(icon.alt)}
@@ -53,7 +43,8 @@ const SocialButtons = () => {
             <IconFile /> Resume
           </button>
           </a>
-        )
+        )}
+        </Blurfade >
       )}
     </div>
   );

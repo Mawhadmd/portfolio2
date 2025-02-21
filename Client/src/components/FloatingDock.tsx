@@ -17,7 +17,7 @@ export function FloatingDock({setThemeColor,ThemeColor}: {
     localStorage.setItem('theme',ThemeColor)
     document.documentElement.setAttribute("data-theme", ThemeColor);
   }, [ThemeColor]);
-  const links = [
+  const DOCK_DATA = [
     {
       title: "Home",
       icon: (
@@ -49,8 +49,8 @@ export function FloatingDock({setThemeColor,ThemeColor}: {
     },
   ];
   return (
-    <div className="flex items-center justify-center fixed bottom-3 w-full">
-      <FloatingDockUI mobileClassName="hidden" items={links} />
-    </div>
+    < >
+      <FloatingDockUI mobileClassName="hidden" items={DOCK_DATA} />
+    </>
   );
 }
