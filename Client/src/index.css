@@ -63,3 +63,21 @@ h1 {
   margin-bottom: 1rem;
   font-weight: 600; /* equivalent to font-medium */
 }
+
+#Github_Button{
+background-color: #22222270;
+color: white;
+&:hover{
+  background-color: #222222;
+  color: white;
+}
+}
+
+#Website_Button{
+color: black;
+background-color: white;
+&:hover{
+  background-color: gray;
+  color: white;
+}
+}

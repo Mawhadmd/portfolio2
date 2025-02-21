@@ -6,7 +6,7 @@ const Skills = () => {
     <>
 
       <h1 >Skills</h1>
-      <div className="w-[90%] mt-4 flex flex-wrap gap-2 justify-center">
+      <div className="w-[90%] mx-auto mt-4 flex  flex-wrap gap-1 justify-center">
         {SKILLS.map((skill, i) => (
          <Blurfade delay={i * 0.03}>
            <Skillsbadge
