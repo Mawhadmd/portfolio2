@@ -11,7 +11,7 @@ const ProjectTile = ({project}: any) => {
         <div className="w-1/3">
         <MorphingDialogImage
           src={project.image}
-          className="h-full  object-cover object-top rounded-sm"
+          className="h-full   object-contain sm:object-cover sm:object-top rounded-sm"
           alt=""
         />
         </div>

@@ -3,7 +3,6 @@ import spotify from "../assets/spotify.png";
 import Pulsingdot from "./ui/Pulsingdot";
 
 type SongData = {
- 
   artist: string;
   song: string;
   played_at: string;
@@ -11,7 +10,7 @@ type SongData = {
   artist_link: string;
   song_link: string;
 };
-const SpotifyWidget = ({ ThemeColor}: { ThemeColor: 'light' | 'dark'}) => {
+const SpotifyWidget = ({ ThemeColor }: { ThemeColor: "light" | "dark" }) => {
   const [songData, SetSongData] = useState<SongData>();
 
   function GetTimeDifference(time: string) {
@@ -21,13 +20,13 @@ const SpotifyWidget = ({ ThemeColor}: { ThemeColor: 'light' | 'dark'}) => {
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
 
     return `${days > 0 ? `${days} day(s) ` : ""}${
-      hours > 0 ? `${hours} hour(s) ` : ""
-    }${minutes} minute(s) ago`;
+      hours > 0 ? `${hours} hour(s) ago ` : ""
+    }`
   }
-  function fetchsongdata(){
+  function fetchsongdata() {
     fetch("https://portfolio2-rjdb.onrender.com/GetSong", {
       method: "GET",
     })
@@ -39,7 +38,6 @@ const SpotifyWidget = ({ ThemeColor}: { ThemeColor: 'light' | 'dark'}) => {
         return response.json();
       })
       .then((data) => {
-        
         if (data.status == "Recently Played Song")
           SetSongData({ ...data.data, CurrentlyPlaying: "No" });
         if (data.status == "Currently Playing")
@@ -58,22 +56,22 @@ const SpotifyWidget = ({ ThemeColor}: { ThemeColor: 'light' | 'dark'}) => {
       });
   }
   useEffect(() => {
-    fetchsongdata()
+    fetchsongdata();
     let interval = setInterval(() => {
-      fetchsongdata()
+      fetchsongdata();
     }, 1000 * 60 * 6);
     return () => {
-      clearInterval(interval)
-    }
+      clearInterval(interval);
+    };
   }, []);
 
   return (
-    <div className="mt-6 pl-4 flex bg-gray-400/20 box-border h-15 items-center gap-3 w-full py-5 rounded-md">
+    <div className="mt-6 pl-4 pr-1 sm:pr-0 flex bg-gray-400/20 box-border h-15 items-center gap-3 w-full py-5 rounded-md">
       {songData ? (
         <>
           <div className=" content-center">
             <Pulsingdot
-            ThemeColor={ThemeColor}
+              ThemeColor={ThemeColor}
               song={songData.song}
               CurrentlyPlaying={songData.CurrentlyPlaying}
             />
@@ -126,6 +124,7 @@ const SpotifyWidget = ({ ThemeColor}: { ThemeColor: 'light' | 'dark'}) => {
                   {" "}
                   {songData.artist}
                 </a>
+                {" on"}
                 <img
                   className="size-6 ml-1 inline"
                   src={spotify}
