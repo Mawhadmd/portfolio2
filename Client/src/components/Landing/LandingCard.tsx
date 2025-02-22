@@ -10,7 +10,7 @@ const MainCard = () => {
         <img
           src={pfp}
           alt=""
-          className="size-20 border-border rounded-full aspect-square"
+          className="blur-sm size-20 border-border rounded-full aspect-square"
         />
       </div>
       <div className="mt-6 space-y-4">
