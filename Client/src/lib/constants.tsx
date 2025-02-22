@@ -49,7 +49,7 @@ export const PROJECTS = [
   {
     title: "Chat App",
     href: "https://chatty001a.netlify.app/",
-    dates: "2024 - Present",
+    dates: "Aug 2024 - Present",
     active: true,
     description: `
 A real-time chat application built with React and Node.js, featuring authentication, secure messaging, and a responsive UI.
@@ -59,7 +59,7 @@ A real-time chat application built with React and Node.js, featuring authenticat
 • **User Authentication**: Secure login and registration system with JWT-based authentication.
 • **Modern UI**: Built with **Tailwind CSS**, ensuring a clean and intuitive experience.
     `,
-    technologies: ["React", "Node.js", "Express.js", "MongoDB", "Socket.io", "Tailwind CSS"],
+    technologies: ["React.js", "Node.js", "Express.js", "PostgreSQL", "Socket.io", "Tailwind CSS", "Supabase"],
     links: [
       {
         type: "Source",
@@ -76,7 +76,7 @@ A real-time chat application built with React and Node.js, featuring authenticat
   {
     title: "TalkSpace",
     href: "#",
-    dates: "2024 - Present",
+    dates: "Jan 2025 - Present",
     active: true,
     description: `
 A video conferencing app inspired by Zoom, enabling real-time audio, video, and chat functionality.
@@ -86,7 +86,7 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
 • **Screen Sharing**: Allows users to share their screens during meetings.
 • **Chat & Messaging**: Built-in real-time messaging for enhanced communication.
     `,
-    technologies: ["React", "Node.js", "Express.js", "WebRTC", "Socket.io", "Tailwind CSS"],
+    technologies: ["React.js", "Node.js", "Express.js", "WebRTC", "Socket.io", "Tailwind CSS"],
     links: [
       {
         type: "Source",
@@ -103,7 +103,7 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
     active: true,
     description:
       "An automation bot built with Python that scrapes data from various websites, processes information, and stores it in a database for analysis.",
-    technologies: ["Python", "Selenium", "BeautifulSoup", "Requests", "MongoDB"],
+    technologies: ["Python", "Selenium", "BeautifulSoup", "Requests"],
     links: [
       {
         type: "Source",
@@ -116,7 +116,7 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
   {
     title: "Portfolio Website",
     href: "#",
-    dates: "2024 - Present",
+    dates: "Jan 2025 - Present",
     active: true,
     description: `
 A personal portfolio website to showcase my projects, skills, and experience.
@@ -124,13 +124,13 @@ A personal portfolio website to showcase my projects, skills, and experience.
 ### Key Features
 • **Dark & Light Mode**: Fully responsive design with theme toggling.
 • **Smooth Animations**: Utilized **Framer Motion** for seamless user experience.
-• **Optimized Performance**: Built with **Next.js** for fast loading and SEO optimization.
+• **Custom Design**: Designed with **Aceternity UI** and **Motion Premitives** for a unique look.
     `,
-    technologies: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    technologies: ["React.js", "Tailwind CSS", "Framer Motion", "Aceternity UI", "Motion Premitives" ],
     links: [
       {
         type: "Website",
-        href: "#",
+        href: "https://lively-squirrel-071e9b.netlify.app/",
         icon: <Globe />,
       },
       {
