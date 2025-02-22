@@ -3,7 +3,6 @@ import ProjectsCard from "./components/Projects/ProjectsCard";
 import Skills from "./components/Skills";
 import SpotifyWidget from "./components/SpotifyWidget";
 import { FloatingDock } from "./components/FloatingDock";
-import WorkExperienceCard from "./components/WorkExperienceCard";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import Blurfade from "./components/ui/Blurfade";
