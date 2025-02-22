@@ -54,9 +54,9 @@ const App = () => {
         <Blurfade>
           <ProjectsCard />
         </Blurfade>
-        <Blurfade>
+        {/* <Blurfade>
           <WorkExperienceCard />
-        </Blurfade>
+        </Blurfade> */}
       </main>
       <motion.div
         className="flex items-center justify-center fixed bottom-3 w-full"

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { FloatingDock as FloatingDockUI } from "./ui/floating-dock-Aceternity";
-import { IconHome, IconFileCv, IconSun, IconMoon } from "@tabler/icons-react";
+import { IconHome, IconFileCv, IconSun, IconMoon,IconDeviceLaptop } from "@tabler/icons-react";
 
 export function FloatingDock({setThemeColor,ThemeColor}: { 
   setThemeColor: React.Dispatch<React.SetStateAction<"dark" | "light">>;
@@ -31,6 +31,10 @@ export function FloatingDock({setThemeColor,ThemeColor}: {
         <IconFileCv className="h-full w-full text-neutral-600 dark:text-neutral-300" />
       ),
       href: "https://docs.google.com/document/d/1P97pfa8Cv2oR2PBpD1QVbEBvM-B2_DTPOjAHs96Fryg/edit?usp=sharing",
+    },   {
+      title: "Projects",
+      icon: <IconDeviceLaptop className="h-full w-full text-neutral-600 dark:text-neutral-300" />,
+      href: "#projects",
     },
     {
       title:  ThemeColor == "dark" ? (

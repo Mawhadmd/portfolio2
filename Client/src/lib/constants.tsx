@@ -97,7 +97,7 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
     image: TalkSpaceImage,
   },
   {
-    title: "Web Scraper Bot",
+    title: "Amazon Search Web Scraper",
     href: "#",
     dates: "2023",
     active: true,

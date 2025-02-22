@@ -3,9 +3,12 @@
 const WorkExperienceCard = () => {
     return (
         <div>
-            <h1>Work Experience</h1>
+            <div className="mb-4">
+            <h1 className="!mb-0">Work Experience</h1>
+            <small>Be My First Real Work Experience :)</small>   
+            </div>
             <ul>
-         <li>Be My First Work Experience :)</li>   
+         
         </ul>
         </div>
     );
