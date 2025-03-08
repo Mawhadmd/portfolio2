@@ -9,7 +9,7 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
   scroll-behavior: smooth;
   color-scheme: light dark;
   background-color: rgba(var(--Primary));
