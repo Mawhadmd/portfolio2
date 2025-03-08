@@ -12,10 +12,11 @@ const SocialButtons = () => {
       {ICONMAPS.map((icon,index) =>
           <Blurfade  key={index} delay={index * 0.2 + 0.8} oppositeDirection={true} >
         {    icon.alt != "Resume" ? (
-          <a href={icon.link} target="_blank" rel="noreferrer" key={icon.alt}>
+          <a href={icon.link} aria-label={icon.alt} target="_blank" rel="noreferrer" key={icon.alt}>
             <button
               onMouseEnter={() => setHover(icon.alt)}
               onMouseLeave={() => setHover("")}
+              aria-label={icon.alt + ' Profile link button'}
               className="p-2 aspect-square group hover:bg-Secondary cursor-pointer transition-all  border rounded-md  border-gray-800"
             >
               <icon.src

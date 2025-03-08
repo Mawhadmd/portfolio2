@@ -169,7 +169,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
  
   return (
-    <a href={href} target={href.startsWith('http')? "_blank":'_self'} onClick={onClick}>
+    <a aria-label={title} href={href} target={href.startsWith('http')? "_blank":'_self'} onClick={onClick}>
       <motion.div
         ref={ref}
         style={{ width, height }}

@@ -25,19 +25,19 @@ export function FloatingDock({ThemeColor, setThemeColor}: {ThemeColor:Themetype,
       ),
       href: "#top",
     },
-    {
-      title: "Resume",
-      icon: (
-        <IconFileCv className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-      ),
-      href: "https://docs.google.com/document/d/1P97pfa8Cv2oR2PBpD1QVbEBvM-B2_DTPOjAHs96Fryg/edit?usp=sharing",
-    },
+   
     {
       title: "Projects",
       icon: (
         <IconDeviceLaptop className="h-full w-full text-neutral-600 dark:text-neutral-300" />
       ),
       href: "#projects",
+    }, {
+      title: "Resume",
+      icon: (
+        <IconFileCv className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+      ),
+      href: "https://docs.google.com/document/d/1P97pfa8Cv2oR2PBpD1QVbEBvM-B2_DTPOjAHs96Fryg/edit?usp=sharing",
     },
     {
       title: ThemeColor == "dark" ? "Light Mode" : "Dark Mode",
