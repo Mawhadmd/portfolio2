@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^15.2.1",
     "@radix-ui/react-scroll-area": "^1.2.3",
     "@tabler/icons-react": "^3.30.0",
     "clsx": "^2.1.1",
