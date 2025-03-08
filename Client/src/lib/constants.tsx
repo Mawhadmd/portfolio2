@@ -130,7 +130,7 @@ A personal portfolio website to showcase my projects, skills, and experience.
     links: [
       {
         type: "Website",
-        href: "https://lively-squirrel-071e9b.netlify.app/",
+        href: "https://moawadportfolio.netlify.app/",
         icon: <Globe />,
       },
       {
