@@ -1,8 +1,9 @@
 
 import Techbadge from '../ui/Skillsbadge';
 import { MorphingDialogImage, MorphingDialogSubtitle, MorphingDialogTitle } from '../ui/morphing-dialog';
+import { ProjectType } from './ProjectsCard';
 
-const ProjectTile = ({project}: any) => {
+const ProjectTile = ({project}: {project: ProjectType}) => {
 
     return (
         <div

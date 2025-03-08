@@ -18,7 +18,7 @@ import { createPortal } from 'react-dom';
 import { XIcon } from 'lucide-react';
 import { RefObject } from 'react';
 import { cn } from "../../lib/utils"
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 function useClickOutside<T extends HTMLElement>(
   ref: RefObject<T>,
   handler: (event: MouseEvent | TouchEvent) => void
@@ -372,7 +372,7 @@ function MorphingDialogDescription({
 }
 
 export type MorphingDialogImageProps = {
-  src: string;
+  src: StaticImageData;
   alt: string;
   className?: string;
   style?: React.CSSProperties;

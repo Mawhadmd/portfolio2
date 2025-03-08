@@ -59,7 +59,7 @@ const SpotifyWidget = ({ ThemeColor }: { ThemeColor: Themetype }) => {
   }
   useEffect(() => {
     fetchsongdata();
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       fetchsongdata();
     }, 1000 * 60 * 6);
     return () => {

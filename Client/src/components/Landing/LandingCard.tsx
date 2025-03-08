@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+
 import pfp from "../../../public/MyPicture.jpg";
 import Blurfade from "../ui/Blurfade";
 import AboutMe from "./AboutMe";

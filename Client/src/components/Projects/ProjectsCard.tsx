@@ -7,6 +7,7 @@ import {
 import ProjectTile from "./ProjectTile";
 import ProjectContainer from "./ProjectContainer";
 import Blurfade from "../ui/Blurfade";
+import { StaticImageData } from "next/image";
 
 export type ProjectType = {
   title: string;
@@ -20,7 +21,7 @@ export type ProjectType = {
     href: string;
     icon: React.ReactNode;
   }[];
-  image: string;
+  image: StaticImageData;
 };
 
 const ProjectsCard = () => {

@@ -6,7 +6,6 @@ import {
   IconSun,
   IconMoon,
   IconDeviceLaptop,
-  IconUfo,
 } from "@tabler/icons-react";
 import { Themetype } from "@/App";
 

@@ -2,7 +2,7 @@ import { Themetype } from "@/App";
 
 
 const Pulsingdot = ({song, CurrentlyPlaying, ThemeColor}: {song:string; CurrentlyPlaying: `Yes` | "No",  ThemeColor: Themetype;}) => {
-    let colorIntensity = ThemeColor === 'dark'? 255: 255
+    const colorIntensity = ThemeColor === 'dark'? 255: 255
     return (
         <div
               className="relative size-2 rounded-full mx-auto"

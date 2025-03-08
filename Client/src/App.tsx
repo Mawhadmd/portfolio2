@@ -15,7 +15,7 @@ const App = () => {
   useEffect(() => {
    
     if (!localStorage.getItem("theme")) {
-      let pref =
+      const pref =
         window.matchMedia &&
         (window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
