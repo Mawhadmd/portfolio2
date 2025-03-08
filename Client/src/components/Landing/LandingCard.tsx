@@ -11,6 +11,7 @@ const MainCard = () => {
       <div  className="aspect-square h-20">
         <Image
           src={pfp}
+          priority
           alt=""
           className="size-20 border-border rounded-full aspect-square"
         />

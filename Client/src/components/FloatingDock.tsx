@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+"use client";
+import { SetStateAction, useEffect, useState } from "react";
 import { FloatingDock as FloatingDockUI } from "./ui/floating-dock-Aceternity";
 import {
   IconHome,
@@ -7,28 +8,16 @@ import {
   IconMoon,
   IconDeviceLaptop,
 } from "@tabler/icons-react";
+import ThemeControl from "@/lib/ThemeControl";
 import { Themetype } from "@/App";
 
-export function FloatingDock({
-  setThemeColor,
-  ThemeColor,
-}: {
-  setThemeColor: React.Dispatch<React.SetStateAction<Themetype>>;
-  ThemeColor: Themetype;
-}) {
+export function FloatingDock({ThemeColor, setThemeColor}: {ThemeColor:Themetype, setThemeColor: React.Dispatch<React.SetStateAction<Themetype>>}) {
+
   function toggleLightMode(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
-    if (ThemeColor === "dark") {
-      setThemeColor("light");
-    } else {
-      setThemeColor("dark");
-    }
+    setThemeColor(ThemeControl(true));
   }
-  useEffect(() => {
-    if (!ThemeColor) return
-    localStorage.setItem("theme", ThemeColor);
-    document.documentElement.setAttribute("data-theme", ThemeColor);
-  }, [ThemeColor]);
+
   const DOCK_DATA = [
     {
       title: "Home",

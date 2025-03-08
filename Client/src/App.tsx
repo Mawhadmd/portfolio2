@@ -1,5 +1,4 @@
 "use client";
-
 import MainCard from "./components/Landing/LandingCard";
 import ProjectsCard from "./components/Projects/ProjectsCard";
 import Skills from "./components/Skills";
@@ -9,32 +8,13 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import Blurfade from "./components/ui/Blurfade";
 import { DistortedGlass } from "./components/ui/Distorted_Glass";
-export type Themetype = "light" | "dark" | undefined;
+import ThemeControl from "./lib/ThemeControl";
+export type Themetype = "light" | "dark" | '';
 const App = () => {
-  const [ThemeColor, setThemeColor] = useState<Themetype>();
+  const [ThemeColor, setThemeColor] = useState<Themetype>('');
+  
   useEffect(() => {
-   
-    if (!localStorage.getItem("theme")) {
-      const pref =
-        window.matchMedia &&
-        (window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light");
-
-      if (pref) {
-        document.documentElement.setAttribute("data-theme", "dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        localStorage.setItem("theme", "light");
-        document.documentElement.setAttribute("data-theme", "light");
-      }
-    } else {
-      document.documentElement.setAttribute(
-        "data-theme",
-        localStorage.getItem("theme")!
-      );
-      setThemeColor(localStorage.getItem("theme") as "light" | "dark");
-    }
+    setThemeColor(ThemeControl())
   }, []);
 
   return (
