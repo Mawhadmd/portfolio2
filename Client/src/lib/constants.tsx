@@ -23,6 +23,7 @@ export const ICONMAPS = [
 export const SKILLS = [
   "JavaScript",
   "React",
+  "Next.js",
   "Node.js",
   "CSS",
   "HTML",
@@ -126,7 +127,7 @@ A personal portfolio website to showcase my projects, skills, and experience.
 • **Smooth Animations**: Utilized **Framer Motion** for seamless user experience.
 • **Custom Design**: Designed with **Aceternity UI** and **Motion Premitives** for a unique look.
     `,
-    technologies: ["React.js", "Tailwind CSS", "Framer Motion", "Aceternity UI", "Motion Premitives" ],
+    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Aceternity UI", "Motion Premitives" ],
     links: [
       {
         type: "Website",
