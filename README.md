@@ -9,4 +9,4 @@
 - Motion Premitives
 - Typescript
 - Spotify API
-- **[https://akarshan-new.vercel.app/](Inspired by Akarshan)**
+- **[Inspired by Akarshan](https://akarshan-new.vercel.app/)**
