@@ -1,4 +1,4 @@
-import { Themetype } from "@/App";
+import { Themetype } from "@/MainApp";
 
 
 const Pulsingdot = ({song, CurrentlyPlaying, ThemeColor}: {song:string; CurrentlyPlaying: `Yes` | "No",  ThemeColor: Themetype;}) => {

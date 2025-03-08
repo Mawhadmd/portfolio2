@@ -1,109 +1,86 @@
-import { useEffect, useState } from "react";
-import spotify from "../../public/spotify.png";
+// SpotifyWidget.tsx
+import { useState, useEffect } from "react";
+import SpotifyWidgetServer from "./SpotifyWidgetServer";
 import Pulsingdot from "./ui/Pulsingdot";
 import Image from "next/image";
-import { Themetype } from "@/App";
+import { Themetype } from "@/MainApp";
+import Spotifyimg from "../../public/spotify.png";
 
 type SongData = {
   artist: string;
   song: string;
-  played_at: string;
-  CurrentlyPlaying: "Yes" | "No";
   artist_link: string;
   song_link: string;
+  played_at: string;
+  CurrentlyPlaying: string;
 };
-const SpotifyWidget = ({ ThemeColor }: { ThemeColor: Themetype }) => {
-  const [songData, SetSongData] = useState<SongData>();
 
-  function GetTimeDifference(time: string) {
-    const playedAt = new Date(time).getTime();
-    const now = new Date().getTime();
-    const diff = now - playedAt;
+type Props = {
+  ThemeColor: Themetype;
+};
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+function GetTimeDifference(time: string) {
+  const playedAt = new Date(time).getTime();
+  const now = new Date().getTime();
+  const diff = now - playedAt;
 
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-    return `${days > 0 ? `${days} day(s) ` : ""}${
-      hours > 0 ? `${hours} hour(s) ago ` : ""
-    }`
-  }
-  function fetchsongdata() {
-    fetch("https://portfolio2-rjdb.onrender.com/GetSong", {
-      method: "GET",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok" + response.statusText);
-        }
+  return `${days > 0 ? `${days} day(s) ` : ""}${
+    hours > 0 ? `${hours} hour(s) ago ` : ""
+  }`;
+}
 
-        return response.json();
-      })
-      .then((data) => {
-        if (data.status == "Recently Played Song")
-          SetSongData({ ...data.data, CurrentlyPlaying: "No" });
-        if (data.status == "Currently Playing")
-          SetSongData({ ...data.data, CurrentlyPlaying: "Yes" });
-      })
-      .catch((error) => {
-        console.warn("Error:", error);
-        SetSongData({
-          artist: "",
-          song: "Error",
-          artist_link: "",
-          song_link: "",
-          played_at: "",
-          CurrentlyPlaying: "No",
-        });
-      });
-  }
+const SpotifyWidget = ({ ThemeColor }: Props) => {
+  const [data, setData] = useState<SongData>();
+  // Handling client-side update
+  const GetData = async () => {
+    const data = await SpotifyWidgetServer();
+    setData(data);
+  };
   useEffect(() => {
-    fetchsongdata();
-    const interval = setInterval(() => {
-      fetchsongdata();
-    }, 1000 * 60 * 6);
-    return () => {
-      clearInterval(interval);
-    };
+    GetData();
+    const interval = setInterval(GetData, 1000 * 60 * 6);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="mt-6 pl-4 pr-1 sm:pr-0 flex bg-gray-400/20 box-border h-15 items-center gap-3 w-full py-5 rounded-md">
-      {songData ? (
+      {data ? (
         <>
           <div className=" content-center">
             <Pulsingdot
               ThemeColor={ThemeColor}
-              song={songData.song}
-              CurrentlyPlaying={songData.CurrentlyPlaying}
+              song={data.song}
+              CurrentlyPlaying={data.CurrentlyPlaying as "Yes" | "No"}
             />
           </div>
           <div className="text-xs">
-            {songData.song == "Error" ? (
+            {data.song === "Error" ? (
               <p>Error Occured</p>
-            ) : songData.CurrentlyPlaying == "Yes" ? (
+            ) : data.CurrentlyPlaying === "Yes" ? (
               <p>
                 Currently Listening to{" "}
                 <a
                   className="font-bold hover:underline"
                   target="_blank"
-                  href={songData.song_link}
+                  href={data.song_link}
                 >
-                  {songData.song}
+                  {data.song}
                 </a>{" "}
                 By{" "}
                 <a
                   target="_blank"
                   className="font-bold hover:underline"
-                  href={songData.artist_link}
+                  href={data.artist_link}
                 >
-                  {" "}
-                  {songData.artist}
+                  {data.artist}
                 </a>{" "}
                 on{" "}
                 <Image
-                  className="size-5  ml-1 inline"
-                  src={spotify}
+                  className="size-5 ml-1 inline"
+                  src={Spotifyimg}
                   alt="Spotify"
                 />
               </p>
@@ -113,26 +90,25 @@ const SpotifyWidget = ({ ThemeColor }: { ThemeColor: Themetype }) => {
                 <a
                   target="_blank"
                   className="font-bold hover:underline"
-                  href={songData.song_link}
+                  href={data.song_link}
                 >
-                  {songData.song}
+                  {data.song}
                 </a>{" "}
                 By{" "}
                 <a
                   target="_blank"
                   className="font-bold hover:underline"
-                  href={songData.artist_link}
+                  href={data.artist_link}
                 >
-                  {" "}
-                  {songData.artist}
-                </a>
-                {" on"}
+                  {data.artist}
+                </a>{" "}
+                on{" "}
                 <Image
                   className="size-6 ml-1 inline"
-                  src={spotify}
+                  src="/spotify.png"
                   alt="Spotify"
                 />{" "}
-                {GetTimeDifference(songData.played_at)}
+                {GetTimeDifference(data.played_at)}
               </p>
             )}
           </div>

@@ -1,4 +1,5 @@
-export const DistortedGlass = () => {
+
+export const DistortedGlass = async () => {
     return (
       <>
         <div className="relative h-40 overflow-hidden rounded-b-2xl w-full xl:block">

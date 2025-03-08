@@ -1,5 +1,4 @@
 "use client";
-import { SetStateAction, useEffect, useState } from "react";
 import { FloatingDock as FloatingDockUI } from "./ui/floating-dock-Aceternity";
 import {
   IconHome,
@@ -9,7 +8,7 @@ import {
   IconDeviceLaptop,
 } from "@tabler/icons-react";
 import ThemeControl from "@/lib/ThemeControl";
-import { Themetype } from "@/App";
+import { Themetype } from "@/MainApp";
 
 export function FloatingDock({ThemeColor, setThemeColor}: {ThemeColor:Themetype, setThemeColor: React.Dispatch<React.SetStateAction<Themetype>>}) {
 
