@@ -2,17 +2,19 @@ import Blurfade from "../ui/Blurfade";
 import AboutMe from "./AboutMe";
 import Title from "./Title";
 import TopButtons from "./TopButtons";
+import pfp from '../../../public/AiMyPicture.webp'
+import Image from 'next/image'
 const MainCard = () => {
   return (
     <>
-      {/* <div  className="aspect-square h-20">
+      <div  className="aspect-square size-20 ">
         <Image
           src={pfp}
           priority
           alt=""
-          className="size-20 border-border rounded-full aspect-square"
+          className="size-20 border-border rounded-full object-top aspect-square"
         />
-      </div> */}
+      </div>
       <div className="mt-6 space-y-4">
         <div>
           <Blurfade onlyBlur={true} delay={0.1}>
