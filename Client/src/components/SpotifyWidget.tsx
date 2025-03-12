@@ -25,12 +25,14 @@ function GetTimeDifference(time: string) {
   const now = new Date().getTime();
   const diff = now - playedAt;
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const days = Math.round(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.round((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.round((diff % (1000 * 60 * 60)) / (1000 * 60));
 
-  return `${days > 0 ? `${days} day(s) ` : ""}${
-    hours > 0 ? `${hours} hour(s) ago ` : ""
-  }`;
+  return `
+  ${days > 0 ? `${days} day(s) ` : ""}
+  ${hours > 0 ? `${hours} hour(s) ` : ""}
+  ${minutes > 0 && days <= 0 ? `${minutes} minute(s) ` : ""} ago`;
 }
 
 const SpotifyWidget = ({ ThemeColor }: Props) => {
