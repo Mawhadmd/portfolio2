@@ -2,7 +2,7 @@ import Blurfade from "../ui/Blurfade";
 import AboutMe from "./AboutMe";
 import Title from "./Title";
 import TopButtons from "./TopButtons";
-import pfp from '../../../public/AiMyPicture.webp'
+import pfp from '../../../public/githubpfp.jpg'
 import Image from 'next/image'
 const MainCard = () => {
   return (
