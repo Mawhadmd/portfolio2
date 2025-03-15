@@ -60,7 +60,7 @@ A real-time chat application built with React and Node.js, featuring authenticat
 • **User Authentication**: Secure login and registration system with JWT-based authentication.
 • **Modern UI**: Built with **Tailwind CSS**, ensuring a clean and intuitive experience.
     `,
-    technologies: ["React.js", "Node.js",, "Next.js", "Express.js", "PostgreSQL", "Socket.io", "Tailwind CSS", "Supabase"],
+    technologies: ["React.js", "Node.js", "Next.js", "Express.js", "PostgreSQL", "Socket.io", "Tailwind CSS", "Supabase"],
     links: [
       {
         type: "Source",
