@@ -4,12 +4,12 @@ const Introduction = () => {
     return (
         <div className="text-sm  text-Muted font-medium">
         <p>
-       {" Computer Science student at Lebanese International University, passionate about full-stack development, automation, and web scraping. I work with technologies like React, Node.js, Express.js, Python, and databases like MySQL and MongoDB."}
+       {" Computer Science student at the Lebanese International University, specializing in full-stack development, automation, and web scraping. Skilled in React, Node.js, Express.js, Python, JavaScript, MySQL, MongoDB, and RESTful API development. Experienced in building web applications, integrating APIs, and managing databases."}
 
         </p>
         <br />
         <p>
-        {"Beyond coding, I enjoy swimming and problem-solving. I'm also exploring content creation, aiming to grow my YouTube channel and blog. Stay tuned for more updates on my journey!"}
+        {"Currently seeking opportunities to learn, grow, and contribute to challenging projects that will help expand my skills and knowledge in software development."}
 
         </p>
       </div>
