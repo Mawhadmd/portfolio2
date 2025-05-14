@@ -6,9 +6,13 @@ import {
   IconSun,
   IconMoon,
   IconDeviceLaptop,
+  IconMessage,
+  IconMessage2Filled,
+  IconNotebook,
 } from "@tabler/icons-react";
 import ThemeControl from "@/lib/ThemeControl";
 import { Themetype } from "@/MainApp";
+import { NotebookPen } from "lucide-react";
 
 export function FloatingDock({ThemeColor, setThemeColor}: {ThemeColor:Themetype, setThemeColor: React.Dispatch<React.SetStateAction<Themetype>>}) {
 
@@ -24,6 +28,13 @@ export function FloatingDock({ThemeColor, setThemeColor}: {ThemeColor:Themetype,
         <IconHome className=" h-full w-full text-neutral-600 dark:text-neutral-300" />
       ),
       href: "#top",
+    },
+    {
+      title: "Blog",
+      icon: (
+        <NotebookPen className=" h-full w-full text-neutral-600 dark:text-neutral-300" />
+      ),
+      href: "/blog",
     },
    
     {

@@ -12,7 +12,8 @@ let TimeOfToken = 0;
 dotenv.config();
 dotenv.config({ path: `.env.local`, override: true });
 
-app.use(cors({ origin: ["http://localhost:5173", "https://moawadportfolio.netlify.app"] })); // Restrict CORS to frontend only
+app.use(cors({ origin: ["http://localhost:5173", "https://moawadportfolio.netlify.app", "https://moawad.dev"
+] })); // Restrict CORS to frontend only
 
 app.get("/GetSong", async (req,res): Promise<any> => {
   //this will get any song that is playing, or the last song that was played
