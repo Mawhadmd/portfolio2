@@ -6,16 +6,18 @@ import {
   IconSun,
   IconMoon,
   IconDeviceLaptop,
-  IconMessage,
-  IconMessage2Filled,
-  IconNotebook,
 } from "@tabler/icons-react";
 import ThemeControl from "@/lib/ThemeControl";
 import { Themetype } from "@/MainApp";
 import { NotebookPen } from "lucide-react";
 
-export function FloatingDock({ThemeColor, setThemeColor}: {ThemeColor:Themetype, setThemeColor: React.Dispatch<React.SetStateAction<Themetype>>}) {
-
+export function FloatingDock({
+  ThemeColor,
+  setThemeColor,
+}: {
+  ThemeColor: Themetype;
+  setThemeColor: React.Dispatch<React.SetStateAction<Themetype>>;
+}) {
   function toggleLightMode(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
     setThemeColor(ThemeControl(true));
@@ -36,14 +38,15 @@ export function FloatingDock({ThemeColor, setThemeColor}: {ThemeColor:Themetype,
       ),
       href: "/blog",
     },
-   
+
     {
       title: "Projects",
       icon: (
         <IconDeviceLaptop className="h-full w-full text-neutral-600 dark:text-neutral-300" />
       ),
       href: "#projects",
-    }, {
+    },
+    {
       title: "Resume",
       icon: (
         <IconFileCv className="h-full w-full text-neutral-600 dark:text-neutral-300" />
