@@ -16,7 +16,7 @@ const ContactSection = () => {
           <span className="absolute inset-0 w-full h-full bg-gray-400/20 border-2 border-gray-400/30 group-hover:bg-gray-400/30"></span>
           <span className="relative flex items-center gap-2">
             <IconMail className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />
-            Let's Connect
+            Let&#39;s Connect
           </span>
         </motion.a>
       </div>
