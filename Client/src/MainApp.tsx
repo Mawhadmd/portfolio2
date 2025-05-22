@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import Blurfade from "./components/ui/Blurfade";
 import ThemeControl from "./lib/ThemeControl";
+import ContactSection from "./components/ContactSection";
 export type Themetype = "light" | "dark" | "";
 const App = () => {
   const [ThemeColor, setThemeColor] = useState<Themetype>("");
@@ -32,6 +33,9 @@ const App = () => {
         </Blurfade>
         <Blurfade>
           <ProjectsCard />
+        </Blurfade>
+        <Blurfade>
+          <ContactSection />
         </Blurfade>
         {/* <Blurfade>
           <WorkExperienceCard />
