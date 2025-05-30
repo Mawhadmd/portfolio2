@@ -10,7 +10,7 @@ const Page = async () => {
   return (
     <div className="min-h-screen bg-Primary">
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl flex-col flex min-h-screen mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex">
           <Link
             href="/"
@@ -40,7 +40,7 @@ const Page = async () => {
         </div>
 
         {/* Blog Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 shadow p-2 min-h-[100%] rounded-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 shadow p-2 flex-1 rounded-2xl">
           {posts.map((post: Post) => (
             <PostCard
               key={post.id}
