@@ -7,7 +7,8 @@ type SongData = { artist: string;
     played_at: string;
     CurrentlyPlaying: string;}
 const SpotifyWidgetServer = async (): Promise<SongData> => {
-  const res = await fetch("https://portfolio2-rjdb.onrender.com/GetSong");
+  const res = await fetch("/api/spotify", {
+    cache: "no-store"});
   const data = await res.json();
   
   if (data.status === "Recently Played Song") {
