@@ -19,7 +19,7 @@ const PostCard: React.FC<PostCardProps> = ({
   category,
 }) => {
   return (
-    <div className="bg-Secondary/5 backdrop-blur-lg rounded-xl overflow-hidden border border-border hover:border-border/50 transition-all duration-300 hover:transform hover:scale-[1.02]">
+    <div className="bg-Secondary/5 backdrop-blur-lg rounded-xl overflow-hidden border border-border hover:border-border/50 transition-all duration-300 hover:transform hover:scale-[1.02] ">
       <div className="relative h-48 w-full">
         <Image
           src={image.toString()}
