@@ -4,7 +4,7 @@ import ProjectsCard from "./components/Projects/ProjectsCard";
 import Skills from "./components/Skills";
 import SpotifyWidget from "@/portfolio/components/SpotifyWidget";
 import { FloatingDock } from "./components/FloatingDock";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import Blurfade from "./components/ui/Blurfade";
 import ContactSection from "./components/ContactSection";
