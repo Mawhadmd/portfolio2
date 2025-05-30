@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { ICONMAPS } from "../../lib/constants";
+import { ICONMAPS } from "@/lib/constants";
 import Blurfade from "../ui/Blurfade";
 import { IconFile } from "@tabler/icons-react";
 

@@ -1,35 +1,41 @@
-type Theme ='dark' | 'light' 
+type Theme = "dark" | "light";
+
 export function getPreferredTheme(): Theme {
-    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light"; // Default theme for server-side
 }
 
 function setTheme(theme: Theme): void {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
+  document.documentElement.setAttribute("data-theme", theme);
+  window.localStorage.setItem("theme", theme);
 }
 
-function getStoredTheme(): Theme  {
-    return localStorage.getItem("theme") as Theme;
+function getStoredTheme(): Theme {
+  const theme = window.localStorage.getItem("theme") as Theme;
+  if (theme === "dark" || theme === "light") return theme;
+
+  return getPreferredTheme();
 }
 
 function toggleTheme(currentTheme: Theme): Theme {
-    return currentTheme === "light" ? "dark" : "light";
+  return currentTheme === "light" ? "dark" : "light";
 }
 
-export default function ThemeControl(ToggleTheme?: boolean):Theme  {
-    let theme = getStoredTheme();
+export default function ThemeControl(ToggleTheme?: boolean): Theme {
+  let theme = getStoredTheme();
+  console.log("Current theme:", theme);
+  if (!theme) {
+    theme = getPreferredTheme();
+    setTheme(theme);
+  } else {
+    setTheme(theme);
+  }
 
-    if (!theme) {
-        theme = getPreferredTheme();
-        setTheme(theme);
-    } else {
-        setTheme(theme);
-    }
+  if (ToggleTheme) {
+    theme = toggleTheme(theme);
+    setTheme(theme);
+  }
 
-    if (ToggleTheme) {
-        theme = toggleTheme(theme);
-        setTheme(theme);
-    }
-
-    return theme;
+  return theme;
 }

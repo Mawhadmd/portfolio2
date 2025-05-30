@@ -2,20 +2,17 @@
 import MainCard from "./components/Landing/LandingCard";
 import ProjectsCard from "./components/Projects/ProjectsCard";
 import Skills from "./components/Skills";
-import SpotifyWidget from "./components/SpotifyWidget";
+import SpotifyWidget from "@/portfolio/components/SpotifyWidget";
 import { FloatingDock } from "./components/FloatingDock";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import Blurfade from "./components/ui/Blurfade";
-import ThemeControl from "./lib/ThemeControl";
 import ContactSection from "./components/ContactSection";
 export type Themetype = "light" | "dark" | "";
 const App = () => {
   const [ThemeColor, setThemeColor] = useState<Themetype>("");
 
-  useEffect(() => {
-    setThemeColor(ThemeControl());
-  }, []);
+
 
   return (
     <>

@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import SpotifyWidgetServer from "./SpotifyWidgetServer";
 import Pulsingdot from "./ui/Pulsingdot";
 import Image from "next/image";
-import { Themetype } from "@/MainApp";
-import Spotifyimg from "../../public/spotify.png";
-
+import { Themetype } from "@/portfolio/MainApp";
+import Spotifyimg from "@/spotify.png";
 
 type SongData = {
   artist: string;
@@ -43,11 +42,10 @@ const SpotifyWidget = ({ ThemeColor }: Props) => {
     setData(data);
   };
   useEffect(() => {
-    let interval: NodeJS.Timeout
+    let interval: NodeJS.Timeout;
     if (data?.CurrentlyPlaying == "Yes")
-      interval  = setInterval(GetData, 1000 * 60 );
-    else
-      interval  = setInterval(GetData, 5000 * 60 );
+      interval = setInterval(GetData, 1000 * 60);
+    else interval = setInterval(GetData, 5000 * 60);
     return () => clearInterval(interval);
   }, [data]);
   useEffect(() => {

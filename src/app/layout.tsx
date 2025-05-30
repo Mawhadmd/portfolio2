@@ -10,7 +10,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Mohammed Awad - Software Developer",
-  description: "Enthusiastic Software Engineer committed to continuous learning and skill enhancement for a thriving future career in Technology.",
+  description:
+    "Enthusiastic Software Engineer committed to continuous learning and skill enhancement for a thriving future career in Technology.",
 };
 
 export default function RootLayout({
@@ -19,7 +20,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme') ?? 
+          (window.matchMedia("(prefers-color-scheme: dark)").matches? "dark": "light");
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch(e) {}
+      })();
+    `,
+          }}
+        />
+      </head>
       <body className={`${inter.className} antialiased`}>{children}</body>
       <GoogleAnalytics gaId="G-E7N2FMT2W0" />
     </html>

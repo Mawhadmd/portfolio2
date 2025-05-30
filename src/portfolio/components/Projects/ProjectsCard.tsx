@@ -1,4 +1,4 @@
-import { PROJECTS } from "../../lib/constants";
+import { PROJECTS } from "../../../lib/constants";
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -30,12 +30,14 @@ const ProjectsCard = () => {
       <div className="mb-4">
         <h1 className="!mb-0">My recent projects</h1>
         <small>
-          Few of my favorites. <span className="underline font-bold">Click</span> on
-          a <span className="underline font-bold">tile</span> to <span className="font-medium">learn more</span>.
+          Few of my favorites.{" "}
+          <span className="underline font-bold">Click</span> on a{" "}
+          <span className="underline font-bold">tile</span> to{" "}
+          <span className="font-medium">learn more</span>.
         </small>
       </div>
 
-      <div  className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-4">
         {PROJECTS.map((project, i) => (
           <MorphingDialog
             transition={{

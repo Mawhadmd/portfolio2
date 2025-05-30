@@ -8,7 +8,7 @@ import {
   IconDeviceLaptop,
 } from "@tabler/icons-react";
 import ThemeControl from "@/lib/ThemeControl";
-import { Themetype } from "@/MainApp";
+import { Themetype } from "@/portfolio/MainApp";
 import { NotebookPen } from "lucide-react";
 
 export function FloatingDock({
