@@ -1,15 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 let accessToken = "";
 let accessTokenExpiry = 0;
 let timeOfToken = 0;
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   // Use process.env for secrets (make sure they're in .env.local at the root of your Next.js app)
   const CLIENT_ID = process.env.CLIENT_ID!;
   const CLIENT_SECRET = process.env.CLIENT_SECRET!;
   const REFRESH_TOKEN = process.env.REFRESH_TOKEN!;
-  
+
   if (!CLIENT_ID || !CLIENT_SECRET || !REFRESH_TOKEN) {
     return NextResponse.json(
       { error: "Missing Spotify credentials" },
