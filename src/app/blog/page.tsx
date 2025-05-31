@@ -116,7 +116,7 @@ async function blogDashboard() {
                 status={post.status}
                 updated_at={new Date(post.created_at.toString())}
                 category={post.category || "General"}
-                slug={""}              />
+                slug={post.slug}              />
             ))
           ) : (
             <h2 className="text-Text/50 text-3xl mx-auto">
