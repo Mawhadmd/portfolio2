@@ -1,7 +1,7 @@
 "use client";
 
 import { FiSun, FiMoon } from "react-icons/fi";
-import { useState,  } from "react";
+import { useEffect, useState,  } from "react";
 import ThemeControl from "@/lib/ThemeControl";
 
 export default function BlogLayout({
@@ -9,12 +9,13 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
+  const [theme, setTheme] = useState<"light" | "dark">();
+  useEffect(() => {
+    setTheme(ThemeControl())
+  }, []);
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
+    const newTheme = ThemeControl(true)
     setTheme(newTheme);
-    ThemeControl(true)
   };
 
   return (

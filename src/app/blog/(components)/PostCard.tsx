@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Post } from "@/models/posts.database";
 import { FiFileText } from "react-icons/fi";
 import Link from "next/link";
+import HtmlRenderer from "./HtmlRenderer";
 
 const PostCard: React.FC<Post> = ({
   title,
@@ -42,7 +43,7 @@ const PostCard: React.FC<Post> = ({
         <h2 className="text-xl font-semibold text-Text mb-2 line-clamp-2">
           {title}
         </h2></Link>
-        <p className="text-Muted mb-4 line-clamp-3" dangerouslySetInnerHTML={{ __html: content }}></p>
+        <HtmlRenderer classname={"text-Muted mb-4 line-clamp-3"} html={content}/>
 
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
