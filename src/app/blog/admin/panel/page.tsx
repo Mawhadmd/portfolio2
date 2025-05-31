@@ -55,7 +55,7 @@ export default async function AdminPanel() {
                     <form action={`/blog/${post.slug}`}>
                       <button
                         type="submit"
-                        className="p-2 text-Muted hover:text-Text transition-colors"
+                        className="p-2 cursor-pointer text-Muted hover:text-Text transition-colors"
                         title="View Post"
                       >
                         <FiEye className="h-4 w-4" />
@@ -64,7 +64,7 @@ export default async function AdminPanel() {
                     <form action={`/blog/admin/post/edit/${post.slug}`}>
                       <button
                         type="submit"
-                        className="p-2 text-Muted hover:text-Text transition-colors"
+                        className="p-2 cursor-pointer text-Muted hover:text-Text transition-colors"
                         title="Edit Post"
                       >
                         <FiEdit2 className="h-4 w-4" />
@@ -73,7 +73,7 @@ export default async function AdminPanel() {
                     <form action={`/api/posts/${post.id}`} method="DELETE">
                       <button
                         type="submit"
-                        className="p-2 text-Muted hover:text-red-500 transition-colors"
+                        className="p-2 cursor-pointer text-Muted hover:text-red-500 transition-colors"
                         title="Delete Post"
                       >
                         <FiTrash2 className="h-4 w-4" />
