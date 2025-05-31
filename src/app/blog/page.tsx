@@ -1,4 +1,6 @@
-import PostCard from "@/blog/components/PostCard";
+// Update the import path below to the correct relative path if PostCard exists elsewhere, for example:
+import PostCard from "./(components)/PostCard";
+// Or create the file at src/blog/components/PostCard.tsx if it does not exist.
 import {
   FiSearch,
   FiArrowLeft,
@@ -6,10 +8,14 @@ import {
   FiGithub,
   FiLinkedin,
   FiTwitter,
+  FiSettings,
+  FiLock,
 } from "react-icons/fi";
 import Link from "next/link";
 import { Post } from "@/models/posts.database";
 import { headers } from "next/headers";
+import { MdAdminPanelSettings } from "react-icons/md";
+
 async function blogDashboard() {
   const host = (await headers()).get("host");
   const res = await fetch(`http://${host}/api/posts`, { cache: "no-store" });
@@ -21,7 +27,7 @@ async function blogDashboard() {
         <div className="flex mb-12 items-center relative">
           <Link
             href="/"
-            className="absolute h-[70%] w-fit rounded-2xl text-Text flex items-center justify-start cursor-pointer hover:bg-Text/20 bg-Secondary p-2"
+            className="absolute top-0 h-[70%] w-fit rounded-2xl transition duration-500  text-Text flex items-center justify-start cursor-pointer hover:bg-Text/90 hover:text-Primary bg-Secondary p-2"
           >
             <FiArrowLeft className="mr-1" />
             Portfolio
@@ -32,15 +38,15 @@ async function blogDashboard() {
               Thoughts, tutorials, and insights about technology
             </p>
           </div>
-          <div className="absolute right-0 flex items-center gap-4">
-            <a
+          <div className="absolute top-0 right-0 flex items-center gap-4">
+            <Link
               href="mailto:contact@moawad.dev"
               className="text-Text/80 hover:text-Text/60 transition-colors"
               aria-label="Email"
             >
               <FiMail size={24} />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://github.com/Mawhadmd"
               target="_blank"
               rel="noopener noreferrer"
@@ -48,8 +54,8 @@ async function blogDashboard() {
               aria-label="GitHub"
             >
               <FiGithub size={24} />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://www.linkedin.com/in/mhmdawad/"
               target="_blank"
               rel="noopener noreferrer"
@@ -57,8 +63,8 @@ async function blogDashboard() {
               aria-label="LinkedIn"
             >
               <FiLinkedin size={24} />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://x.com/Mawhadmd"
               target="_blank"
               rel="noopener noreferrer"
@@ -66,7 +72,16 @@ async function blogDashboard() {
               aria-label="Twitter"
             >
               <FiTwitter size={24} />
-            </a>
+            </Link>
+            <Link
+              href="blog/admin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-Text/80 hover:text-Text/60 transition-colors"
+              aria-label="Admin"
+            >
+              <MdAdminPanelSettings size={24} />
+            </Link>
           </div>
         </div>
 

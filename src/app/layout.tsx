@@ -36,7 +36,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>{children} </body>
       <GoogleAnalytics gaId="G-E7N2FMT2W0" />
     </html>
   );
