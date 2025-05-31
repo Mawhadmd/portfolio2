@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FiLock } from "react-icons/fi";
+import { TokenExpireDays } from "@/lib/constants";
 
 export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -23,13 +24,15 @@ export default function AdminLogin() {
 
       if (response.ok) {
         const { token } = await response.json();
-        document.cookie = `admin_token=${token}; path=/; secure; samesite=strict; max-age=86400`;
+        document.cookie = `admin_token=${token}; path=/; secure; samesite=strict; max-age=${
+          86400 * TokenExpireDays
+        }`;
         router.push("/blog/admin/panel");
       } else {
         setError("Incorrect password. Try again.");
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
       setError("An error occurred. Please try again.");
     }
   };
@@ -74,7 +77,7 @@ export default function AdminLogin() {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-Text bg-Secondary/20 hover:bg-Secondary/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border transition-all duration-300"
+              className="cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-Text bg-Secondary/20 hover:bg-Secondary/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border transition-all duration-300"
             >
               Sign in
             </button>

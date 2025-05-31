@@ -6,6 +6,7 @@ import { IconBrandGithub, IconBrandX, IconFile } from "@tabler/icons-react";
 import { Linkedin } from "lucide-react";
 import PortfolioImage from "../../public/Portfolio.png";
 
+export const TokenExpireDays = 30;
 export const ICONMAPS = [
   { src: IconFile, alt: "Resume" },
   {

@@ -26,7 +26,7 @@ async function blogDashboard() {
         <div className="flex mb-12 items-center relative">
           <Link
             href="/"
-            className="absolute top-0 h-[70%] w-fit rounded-2xl transition duration-500  text-Text flex items-center justify-start cursor-pointer hover:bg-Text/90 hover:text-Primary bg-Secondary p-2"
+            className="absolute top-0 h-[50%] w-fit rounded-2xl transition duration-500  text-Text flex items-center justify-start cursor-pointer hover:bg-Text/90 hover:text-Primary bg-Secondary p-2 font-medium"
           >
             <FiArrowLeft className="mr-1" />
             Portfolio
@@ -110,11 +110,13 @@ async function blogDashboard() {
                 key={post.id}
                 title={post.title}
                 content={post.content}
-                author={"Mohammed Awad"}
-                date={Date.parse(post.created_at.toString()).toString()}
-                image={post.thumbnail}
-                category={post.catagory || "General"}
-              />
+                id={post.id}
+                created_at={post.created_at}
+                thumbnail={post.thumbnail}
+                status={post.status}
+                updated_at={new Date(post.created_at.toString())}
+                category={post.category || "General"}
+                slug={""}              />
             ))
           ) : (
             <h2 className="text-Text/50 text-3xl mx-auto">

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @theme {
   --color-Primary: rgba(var(--Primary));
   --color-Secondary: rgba(var(--Secondary));
@@ -57,12 +58,7 @@
   scrollbar-color: #4a4a4a transparent;
   scrollbar-width: thin;
 }
-h1 {
-  font-size: 1.2rem; /* equivalent to text-2xl */
 
-  margin-bottom: 1rem;
-  font-weight: 600; /* equivalent to font-medium */
-}
 
 #Github_Button{
 background-color: #22222270;

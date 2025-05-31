@@ -1,4 +1,5 @@
 import { JWTPayload, SignJWT, jwtVerify } from "jose";
+import { TokenExpireDays } from "./constants";
 
 const secret = new TextEncoder().encode(
   process.env.JWT_SECRET
@@ -8,7 +9,7 @@ export async function createToken(payload: JWTPayload | undefined) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime("24h")
+    .setExpirationTime(`${TokenExpireDays}d`)
     .sign(secret);
 }
 

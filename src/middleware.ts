@@ -1,25 +1,27 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextRequest } from "next/server";
 import { verifyToken } from "./lib/jwt";
 
 export async function middleware(request: NextRequest) {
-  
   if (request.nextUrl.pathname.startsWith("/blog/admin")) {
-    // Skip middleware for login page
+    const token = request.cookies.get("admin_token")?.value;
+    const isAuthenticated = token && (await verifyToken(token));
+
+    // If trying to access login page
     if (request.nextUrl.pathname === "/blog/admin/login") {
+      // Redirect to panel if already authenticated
+      if (isAuthenticated) {
+        return NextResponse.redirect(new URL("/blog/admin/panel", request.url));
+      }
       return NextResponse.next();
     }
 
-    const token = request.cookies.get("admin_token")?.value;
-
-    if (!token) {
+    // For all other admin routes
+    if (!isAuthenticated) {
       return NextResponse.redirect(new URL("/blog/admin/login", request.url));
     }
 
-    const payload = await verifyToken(token);
-    if (!payload) {
-      return NextResponse.redirect(new URL("/blog/admin/login", request.url));
-    }
+    return NextResponse.next();
   }
 
   return NextResponse.next();

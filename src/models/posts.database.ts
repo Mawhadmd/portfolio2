@@ -3,9 +3,11 @@ export interface Post {
     title: string;
     content: string;
     created_at: Date;
-    updatedAt?: Date;
-    catagory?: string;
+    updated_at?: Date;
+    slug: string;
+    category?: string;
     thumbnail: string;
+    status: "draft" | "published";
 }
 
 export const posts: Post[] = [];
