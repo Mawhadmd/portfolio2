@@ -1,5 +1,5 @@
-import { Post, posts } from "@/models/posts.database";
-import { FiLogOut, FiPlus, FiEdit2, FiTrash2, FiEye } from "react-icons/fi";
+import { Post,  } from "@/models/posts.database";
+import { FiEdit2, FiTrash2, FiEye } from "react-icons/fi";
 import { headers } from "next/headers";
 import AdminPanelButtons from "./AdminPanelButtons";
 
@@ -8,7 +8,7 @@ export default async function AdminPanel() {
   const host = headersList.get("host");
   const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
 
-  let data: Post[] = await (
+  const data: Post[] = await (
     await fetch(`${protocol}://${host}/api/posts`)
   ).json();
 

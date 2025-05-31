@@ -8,14 +8,11 @@ import { useState } from "react";
 import { FiSave, FiX } from "react-icons/fi";
 import EditorToolbar from "../../EditorToolbar";
 
-
-interface PostEditorProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function PostEditor({ params }: PostEditorProps) {
+export default function PostEditor({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("General");
   const [thumbnail, setThumbnail] = useState("");
@@ -56,7 +53,7 @@ export default function PostEditor({ params }: PostEditorProps) {
           content: editor.getHTML(),
           category,
           thumbnail,
-          slug: params.slug,
+          slug: (await params).slug,
         }),
       });
 

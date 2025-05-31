@@ -3,7 +3,7 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import TextAlign from "@tiptap/extension-text-align";
-import Image from "@tiptap/extension-image";
+import TiptapImage from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import Underline from "@tiptap/extension-underline";
 import TextColor from "@tiptap/extension-color";
@@ -13,10 +13,10 @@ import TaskItem from "@tiptap/extension-task-item";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import { createLowlight, all } from "lowlight";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import { FiSave, FiX, FiImage } from "react-icons/fi";
+import { useState } from "react";
+import { FiSave, FiX } from "react-icons/fi";
 import EditorToolbar from "../EditorToolbar";
-
+import Image from "next/image";
 export default function DraftEditor() {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("General");
@@ -36,7 +36,7 @@ export default function DraftEditor() {
         alignments: ["left", "center", "right", "justify"],
         defaultAlignment: "left",
       }),
-      Image.configure({
+      TiptapImage.configure({
         HTMLAttributes: {
           class: "rounded-lg max-w-full",
         },
@@ -84,12 +84,12 @@ export default function DraftEditor() {
   });
 
   const handleSave = async () => {
-    if (!editor || !title) 
-        {alert('Title and content required')
-        return;}
+    if (!editor || !title) {
+      alert("Title and content required");
+      return;
+    }
 
     try {
-       
       const response = await fetch("/api/posts", {
         method: "POST",
         headers: {
@@ -180,7 +180,7 @@ export default function DraftEditor() {
             </div>
             {thumbnail && (
               <div className="mt-2">
-                <img
+                <Image
                   src={thumbnail}
                   alt="Thumbnail preview"
                   className="h-20 w-20 object-cover rounded-lg"

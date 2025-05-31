@@ -7,7 +7,7 @@ const PostCard: React.FC<Post> = ({
   title,
   content,
   thumbnail,
-  created_at,
+
   updated_at,
   category,
 }) => {

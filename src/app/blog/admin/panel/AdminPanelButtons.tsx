@@ -9,7 +9,7 @@ export default function AdminPanelButtons() {
 
 
   const handleLogout = async () => {
-    let response = await fetch("/api/admin/logout", { method: "POST" });
+    const response = await fetch("/api/admin/logout", { method: "POST" });
     if(response.ok)
     router.push("/blog/admin/login");
   };

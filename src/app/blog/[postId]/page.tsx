@@ -1,7 +1,7 @@
 import { Post } from "@/models/posts.database";
 import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
-import { FiCalendar, FiUser, FiTag, FiArrowLeft, FiHome } from "react-icons/fi";
+import { FiCalendar, FiUser, FiTag, FiHome } from "react-icons/fi";
 import Image from "next/image";
 import ShareButtons from "./ShareButtons";
 import Link from "next/link";
@@ -20,7 +20,7 @@ async function getPost(slug: string): Promise<Post | null> {
 export default async function PostPage({
   params,
 }: {
-  params: { postId: string };
+  params: Promise<{ postId: string }>;
 }) {
   const { postId } = await params;
   const post = await getPost(postId);
@@ -36,7 +36,6 @@ export default async function PostPage({
             className="flex items-center gap-2 px-2 py-2 bg-Primary/80 hover:bg-Primary text-Text rounded-full shadow-lg transition-all duration-300 backdrop-blur-sm"
           >
             <FiHome className="h-4 w-4" />
-            
           </Link>
         </div>
 
