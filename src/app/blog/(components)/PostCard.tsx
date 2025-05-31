@@ -2,12 +2,13 @@ import React from "react";
 import Image from "next/image";
 import { Post } from "@/models/posts.database";
 import { FiFileText } from "react-icons/fi";
+import Link from "next/link";
 
 const PostCard: React.FC<Post> = ({
   title,
   content,
   thumbnail,
-
+  slug,
   updated_at,
   category,
 }) => {
@@ -16,6 +17,7 @@ const PostCard: React.FC<Post> = ({
   return (
     <div className="bg-Secondary/5 backdrop-blur-lg rounded-xl overflow-hidden border border-border hover:border-border/50 transition-all duration-300 hover:transform hover:scale-[1.02] cursor-pointer ">
       <div className="bg-Primary relative h-48 w-full">
+        <Link href={`/blog/${slug}`} className="absolute inset-0">
         {thumbnail ? (
           <Image
             src={thumbnail.toString()}
@@ -27,7 +29,7 @@ const PostCard: React.FC<Post> = ({
           <div className="h-full w-full bg-Secondary/10 flex items-center justify-center">
             <FiFileText className="h-16 w-16 text-Muted" />
           </div>
-        )}
+        )}</Link>
         <div className="absolute top-4 left-4">
           <span className="px-3 py-1 text-sm font-medium text-Text bg-Secondary/80 rounded-full">
             {category}
@@ -36,9 +38,10 @@ const PostCard: React.FC<Post> = ({
       </div>
 
       <div className="p-6">
+        <Link href={`/blog/${slug}`}>
         <h2 className="text-xl font-semibold text-Text mb-2 line-clamp-2">
           {title}
-        </h2>
+        </h2></Link>
         <p className="text-Muted mb-4 line-clamp-3" dangerouslySetInnerHTML={{ __html: content }}></p>
 
         <div className="flex items-center justify-between">
