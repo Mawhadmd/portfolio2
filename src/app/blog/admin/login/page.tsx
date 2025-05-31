@@ -29,6 +29,7 @@ export default function AdminLogin() {
         setError("Incorrect password. Try again.");
       }
     } catch (err) {
+      console.log(err)
       setError("An error occurred. Please try again.");
     }
   };

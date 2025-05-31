@@ -8,8 +8,7 @@ import {
   FiGithub,
   FiLinkedin,
   FiTwitter,
-  FiSettings,
-  FiLock,
+
 } from "react-icons/fi";
 import Link from "next/link";
 import { Post } from "@/models/posts.database";

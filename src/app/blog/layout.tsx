@@ -1,7 +1,7 @@
 "use client";
 
 import { FiSun, FiMoon } from "react-icons/fi";
-import { useState, useEffect } from "react";
+import { useState,  } from "react";
 import ThemeControl from "@/lib/ThemeControl";
 
 export default function BlogLayout({
