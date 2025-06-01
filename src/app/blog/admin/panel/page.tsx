@@ -1,4 +1,4 @@
-import { Post,  } from "@/models/posts.database";
+import { Post } from "@/models/posts.database";
 import { FiEdit2, FiTrash2, FiEye } from "react-icons/fi";
 import { headers } from "next/headers";
 import AdminPanelButtons from "./AdminPanelButtons";
@@ -9,7 +9,7 @@ export default async function AdminPanel() {
   const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
 
   const data: Post[] = await (
-    await fetch(`${protocol}://${host}/api/posts`)
+    await fetch(`${protocol}://${host}/api/posts?status=all`)
   ).json();
 
   return (
@@ -52,7 +52,7 @@ export default async function AdminPanel() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <form action={`/blog/${post.slug}`}>
+                    <form action={`/blog/admin/post/${post.slug}`}>
                       <button
                         type="submit"
                         className="p-2 cursor-pointer text-Muted hover:text-Text transition-colors"
@@ -61,7 +61,7 @@ export default async function AdminPanel() {
                         <FiEye className="h-4 w-4" />
                       </button>
                     </form>
-                    <form action={`/blog/admin/post/edit/${post.slug}`}>
+                    <form action={`/blog/admin/post/${post.slug}/edit`}>
                       <button
                         type="submit"
                         className="p-2 cursor-pointer text-Muted hover:text-Text transition-colors"

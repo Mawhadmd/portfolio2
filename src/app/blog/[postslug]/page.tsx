@@ -2,29 +2,38 @@ import { Post } from "@/models/posts.database";
 import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 import { FiCalendar, FiUser, FiTag, FiHome } from "react-icons/fi";
-import Image from "next/image";
 import ShareButtons from "./ShareButtons";
 import Link from "next/link";
 
 async function getPost(slug: string): Promise<Post | null> {
   const { data, error } = await supabase
     .from("posts")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+    .select().eq("status", "published").eq('slug',slug).single()
+    // 
+    // 
 
-  if (error || !data) return null;
+  if (error || !data) 
+    
+   {
+    console.log(data)
+    console.log(error)
+    return null;}
   return data as Post;
 }
 
 export default async function PostPage({
   params,
 }: {
-  params: Promise<{ postId: string }>;
+  params: Promise<{ postslug: string }>;
 }) {
-  const { postId } = await params;
-  const post = await getPost(postId);
-  if (!post) notFound();
+  const { postslug } = await params;
+  console.log(postslug)
+  const post = await getPost(postslug);
+  
+  if (!post) 
+    
+{    console.log('Couldn\'t find page', post)
+    notFound();}
 
   return (
     <div className="min-h-screen bg-Primary/5 bg-gradient-to-b from-Secondary/45">
@@ -41,11 +50,9 @@ export default async function PostPage({
 
         {/* Hero Section */}
         <div
-          className={`relative ${
-            post.thumbnail ? "h-[40vh]" : "h-[10vh]"
-          } w-full overflow-hidden px-4 md:px-8 flex items-end justify-center`}
+          className={`relative h-[20vh] w-full overflow-hidden px-4 md:px-8 flex items-end justify-center`}
         >
-          {post.thumbnail ? (
+          {/* {post.thumbnail ? (
             <Image
               src={post.thumbnail}
               alt={post.title}
@@ -55,12 +62,12 @@ export default async function PostPage({
             />
           ) : (
             <div className="text-black"></div>
-          )}
+          )} */}
         </div>
 
         {/* Content Container */}
-        <div className="flex-1 relative px-4 md:px-8">
-          <div className="max-w-4xl absolute inset-0  mx-auto bg-Primary/50 w-full border border-Secondary rounded-t-2xl shadow-lg p-8">
+        <div className="flex-1 flex relative px-4 md:px-8">
+          <div className="max-w-4xl flex-1 mx-auto bg-Primary/50 w-full border border-Secondary rounded-t-2xl shadow-lg p-8">
             {/* Header */}
             <div className="space-y-6">
               <div className="flex flex-wrap items-center gap-4 text-sm text-Muted">
@@ -86,7 +93,7 @@ export default async function PostPage({
             </div>
 
             {/* Content */}
-            <div className="mt-8 prose prose-invert max-w-none">
+            <div className="mt-8 prose max-w-none">
               <div
                 className="text-Text"
                 dangerouslySetInnerHTML={{ __html: post.content }}

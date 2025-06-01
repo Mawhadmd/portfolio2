@@ -2,11 +2,33 @@ import { Post } from "./../../../models/posts.database";
 import { supabase } from "@/lib/supabase";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
-  const { data, error, statusText } = await supabase
+export async function GET(req: NextRequest) {
+  const searchParams = req.nextUrl.searchParams;
+  const status = searchParams.get("status") || "published";
+
+  // Validate status parameter
+  if (!["published", "draft", "all"].includes(status)) {
+    return NextResponse.json(
+      {
+        error:
+          "Invalid status parameter. Must be 'published', 'draft', or 'all'",
+      },
+      { status: 400 }
+    );
+  }
+
+  let query = supabase
     .from("posts")
     .select("*")
     .order("created_at", { ascending: false });
+
+  // Only apply status filter if not requesting all posts
+  if (status !== "all") {
+    query = query.eq("status", status);
+  }
+
+  const { data, error, statusText } = await query;
+
   if (error) {
     console.error("Error fetching posts:", error);
     return NextResponse.json(
@@ -28,11 +50,8 @@ export async function POST(req: NextRequest) {
     const { title, content, category, thumbnail, status } = await req.json();
 
     // Validate required fields
-    if (!title || !content) {
-      return NextResponse.json(
-        { error: "Title and content are required" },
-        { status: 400 }
-      );
+    if (!title) {
+      return NextResponse.json({ error: "Title is required" }, { status: 400 });
     }
 
     // Generate slug from title
@@ -48,7 +67,7 @@ export async function POST(req: NextRequest) {
         {
           title,
           slug,
-          content,
+          content: content || "",
           category: category || "General",
           thumbnail: thumbnail || null,
           status: status || "draft",
@@ -86,7 +105,6 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
-   
     const body = await req.json();
     const { id } = body;
 
@@ -122,6 +140,52 @@ export async function DELETE(req: NextRequest) {
     console.error("Error deleting post:", error);
     return NextResponse.json(
       { error: "Failed to delete post" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PATCH(req: NextRequest) {
+  try {
+    const { id, status } = await req.json();
+
+    if (!id || !status || !["published", "draft"].includes(status)) {
+      return NextResponse.json(
+        { error: "Invalid request. ID and valid status are required" },
+        { status: 400 }
+      );
+    }
+
+    const { data, error, statusText } = await supabase
+      .from("posts")
+      .update({
+        status,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Error updating post:", error);
+      return NextResponse.json(
+        {
+          error: "Failed to update post",
+          reason: error.cause,
+          statusText: statusText,
+        },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      post: data,
+    });
+  } catch (error) {
+    console.error("Error updating post:", error);
+    return NextResponse.json(
+      { error: "Failed to update post" },
       { status: 500 }
     );
   }

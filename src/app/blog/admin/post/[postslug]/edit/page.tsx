@@ -13,14 +13,22 @@ import TaskItem from "@tiptap/extension-task-item";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import { createLowlight, all } from "lowlight";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiSave, FiX } from "react-icons/fi";
-import EditorToolbar from "../EditorToolbar";
-import Image from "next/image";
-export default function DraftEditor() {
+import EditorToolbar from "../../EditorToolbar";
+
+import { Post } from "@/models/posts.database";
+
+export default function PostEditor({
+  params,
+}: {
+  params: Promise<{ postslug: string }>;
+}) {
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("General");
+  const [category, setCategory] = useState<string | undefined>("General");
   const [thumbnail, setThumbnail] = useState("");
+  const [status, setStatus] = useState<"draft" | "published">("draft");
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   const editor = useEditor({
@@ -29,7 +37,7 @@ export default function DraftEditor() {
         heading: {
           levels: [1, 2, 3, 4, 5, 6],
         },
-        codeBlock: false, // Disable default code block to use lowlight
+        codeBlock: false,
       }),
       TextAlign.configure({
         types: ["heading", "paragraph"],
@@ -45,7 +53,7 @@ export default function DraftEditor() {
       Link.configure({
         openOnClick: false,
         HTMLAttributes: {
-          class: "text-Accent hover:text-Accent/80 underline",
+          class: "text-blue-500 hover:text-blue-400 underline",
         },
       }),
       Underline,
@@ -70,18 +78,48 @@ export default function DraftEditor() {
     editorProps: {
       attributes: {
         class:
-          "prose prose-invert max-w-none focus:outline-none min-h-[500px] prose-headings:text-Text prose-p:text-Text prose-strong:text-Text prose-em:text-Text prose-code:text-Accent prose-pre:bg-Secondary/10 prose-pre:text-Text prose-blockquote:text-Muted prose-ul:text-Text prose-ol:text-Text prose-li:text-Text prose-img:rounded-lg prose-img:max-w-full",
+          "prose prose-invert max-w-none focus:outline-none min-h-[500px] prose-headings:text-Text prose-p:text-Text prose-strong:text-Text prose-em:text-Text prose-code:text-Accent prose-pre:bg-Secondary/10 prose-pre:text-Text prose-blockquote:text-Muted prose-ul:text-Text prose-ol:text-Text prose-li:text-Text prose-img:rounded-lg prose-img:max-w-full prose-a:text-Accent hover:prose-a:text-Accent/80",
       },
     },
     onUpdate: ({ editor }) => {
-      // Extract first image from content
       const content = editor.getHTML();
+    
       const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
       if (imgMatch && !thumbnail) {
         setThumbnail(imgMatch[1]);
       }
     },
   });
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(
+          `/api/posts/slug/${(await params).postslug}`
+        );
+        if (!response.ok) throw new Error("Failed to fetch post");
+        const post: Post = await response.json();
+
+        setTitle(post.title);
+        setCategory(post.category);
+        setThumbnail(post.thumbnail);
+        setStatus(post.status as "draft" | "published");
+
+
+        // Set editor content after a short delay to ensure editor is ready
+
+        if (editor && post.content) {
+          editor.commands.setContent(post.content);
+        }
+      } catch (error) {
+        console.error("Error fetching post:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPost();
+  }, [params, editor]);
 
   const handleSave = async () => {
     if (!editor || !title) {
@@ -90,17 +128,18 @@ export default function DraftEditor() {
     }
 
     try {
-      const response = await fetch("/api/posts", {
-        method: "POST",
+      const response = await fetch("/api/posts/update", {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          slug: (await params).postslug,
           title,
           content: editor.getHTML(),
           category,
           thumbnail,
-          status: "draft",
+          status,
         }),
       });
 
@@ -108,15 +147,25 @@ export default function DraftEditor() {
         router.push("/blog/admin/panel");
       }
     } catch (error) {
-      console.error("Error saving draft:", error);
+      console.error("Error saving post:", error);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-Primary p-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-Text">Loading...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-Primary p-8">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-Text">New Draft</h1>
+          <h1 className="text-3xl font-bold text-Text">Edit Post</h1>
           <div className="flex gap-4">
             <button
               onClick={() => router.back()}
@@ -127,10 +176,10 @@ export default function DraftEditor() {
             </button>
             <button
               onClick={handleSave}
-              className="cursor-pointer px-4 py-2 text-sm font-medium text-Text bg-Secondary/20 rounded-lg hover:bg-Secondary/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border transition-all duration-300 flex items-center gap-2"
+              className=" cursor-pointer px-4 py-2 text-sm font-medium text-Text bg-Secondary/20 rounded-lg hover:bg-Secondary/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border transition-all duration-300 flex items-center gap-2"
             >
               <FiSave className="h-4 w-4" />
-              Save Draft
+              Save
             </button>
           </div>
         </div>
@@ -147,7 +196,7 @@ export default function DraftEditor() {
 
           {/* Category Input */}
           <select
-            value={category}
+            value={category as string}
             onChange={(e) => setCategory(e.target.value)}
             className="w-full px-4 py-3 rounded-lg bg-Secondary/10 border border-border text-Text focus:outline-none focus:ring-2 focus:ring-border"
           >
@@ -155,6 +204,16 @@ export default function DraftEditor() {
             <option value="Technology">Technology</option>
             <option value="Programming">Programming</option>
             <option value="Web Development">Web Development</option>
+          </select>
+
+          {/* Status Input */}
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value as "draft" | "published")}
+            className="w-full px-4 py-3 rounded-lg bg-Secondary/10 border border-border text-Text focus:outline-none focus:ring-2 focus:ring-border"
+          >
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
           </select>
 
           {/* Thumbnail Input */}
@@ -178,15 +237,6 @@ export default function DraftEditor() {
                 </button>
               )}
             </div>
-            {thumbnail && (
-              <div className="mt-2">
-                <Image
-                  src={thumbnail}
-                  alt="Thumbnail preview"
-                  className="h-20 w-20 object-cover rounded-lg"
-                />
-              </div>
-            )}
           </div>
 
           {/* Editor */}

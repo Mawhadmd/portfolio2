@@ -16,9 +16,9 @@ const PostCard: React.FC<Post> = ({
   const dateString = updated_at!.toLocaleDateString();
   const author = "Mohammed Awad"
   return (
-    <div className="bg-Secondary/5 backdrop-blur-lg rounded-xl overflow-hidden border border-border hover:border-border/50 transition-all duration-300 hover:transform hover:scale-[1.02] cursor-pointer ">
+    <div className="bg-Primary/50 backdrop-blur-lg rounded-xl overflow-hidden border border-border hover:border-border/50 transition-all duration-300 hover:transform hover:scale-[1.02] ">
       <div className="bg-Primary relative h-48 w-full">
-        <Link href={`/blog/${slug}`} className="absolute inset-0">
+        <Link href={`/blog/${slug}`} className="cursor-pointer  absolute inset-0">
         {thumbnail ? (
           <Image
             src={thumbnail.toString()}
@@ -39,7 +39,7 @@ const PostCard: React.FC<Post> = ({
       </div>
 
       <div className="p-6">
-        <Link href={`/blog/${slug}`}>
+        <Link href={`/blog/${slug}`} className="cursor-pointer hover:underline">
         <h2 className="text-xl font-semibold text-Text mb-2 line-clamp-2">
           {title}
         </h2></Link>

@@ -17,7 +17,7 @@ import { MdAdminPanelSettings } from "react-icons/md";
 
 async function blogDashboard() {
   const host = (await headers()).get("host");
-  const res = await fetch(`http://${host}/api/posts`, { cache: "no-store" });
+  const res = await fetch(`http://${host}/api/posts?status=published`, { cache: "no-store" });
   const posts = await res.json();
   return (
     <div className=" min-h-screen bg-Primary">
@@ -98,9 +98,9 @@ async function blogDashboard() {
 
         {/* Blog Posts Grid */}
         <div
-          className={`grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 shadow-sm border-Secondary border p-2  flex-1  rounded-2xl ${
+          className={`grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 shadow-md  border-Secondary/30 border p-2  flex-1  rounded-2xl ${
             posts.length > 0
-              ? "bg-Secondary"
+              ? "bg-Secondary/20"
               : "bg-Primary !flex items-center justify-center "
           }`}
         >
