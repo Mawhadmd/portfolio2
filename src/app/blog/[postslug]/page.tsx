@@ -4,20 +4,21 @@ import { notFound } from "next/navigation";
 import { FiCalendar, FiUser, FiTag, FiHome } from "react-icons/fi";
 import ShareButtons from "./ShareButtons";
 import Link from "next/link";
+import DisqusComments from "./disqus"; // <-- import the new component
 
 async function getPost(slug: string): Promise<Post | null> {
   const { data, error } = await supabase
     .from("posts")
-    .select().eq("status", "published").eq('slug',slug).single()
-    // 
-    // 
+    .select()
+    .eq("status", "published")
+    .eq("slug", slug)
+    .single();
 
-  if (error || !data) 
-    
-   {
-    console.log(data)
-    console.log(error)
-    return null;}
+  if (error || !data) {
+    console.log(data);
+    console.log(error);
+    return null;
+  }
   return data as Post;
 }
 
@@ -27,13 +28,21 @@ export default async function PostPage({
   params: Promise<{ postslug: string }>;
 }) {
   const { postslug } = await params;
-  console.log(postslug)
+  console.log(postslug);
   const post = await getPost(postslug);
-  
-  if (!post) 
-    
-{    console.log('Couldn\'t find page', post)
-    notFound();}
+
+  if (!post) {
+    console.log("Couldn't find page", post);
+    notFound();
+  }
+
+  // Disqus config
+  const disqusConfig = {
+    url: `https://moawad.dev/blog/${post.slug}`,
+    identifier: post.slug,
+    title: post.title,
+    language: "en",
+  };
 
   return (
     <div className="min-h-screen bg-Primary/5 bg-gradient-to-b from-Secondary/45">
@@ -93,7 +102,7 @@ export default async function PostPage({
             </div>
 
             {/* Content */}
-            <div className="mt-8 prose max-w-none">
+            <div className="mt-8 prose prose-strong:text-Text prose-headings:text-Text max-w-none">
               <div
                 className="text-Text"
                 dangerouslySetInnerHTML={{ __html: post.content }}
@@ -103,6 +112,11 @@ export default async function PostPage({
             {/* Share Section */}
             <div className="mt-12 pt-8 border-t border-border">
               <ShareButtons title={post.title} />
+            </div>
+            {/* Disqus Comments */}
+            <div className="mt-12">
+              
+              <DisqusComments shortname="moawad" config={disqusConfig} />
             </div>
           </div>
         </div>
