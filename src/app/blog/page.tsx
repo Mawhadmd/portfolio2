@@ -98,7 +98,7 @@ async function blogDashboard() {
 
         {/* Blog Posts Grid */}
         <div
-          className={`grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 shadow-md  border-Secondary/30 border p-2  flex-1  rounded-2xl ${
+          className={`grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 shadow-md  border-Secondary/30 border p-2  flex-1  rounded-2xl ${
             posts.length > 0
               ? "bg-Secondary/20"
               : "bg-Primary !flex items-center justify-center "
