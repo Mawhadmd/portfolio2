@@ -47,7 +47,7 @@ export default async function PostPage({
     <div className="min-h-screen bg-Primary/5 bg-gradient-to-b from-Secondary/45">
       <article className="min-h-screen w-full xl:w-2/3 mx-auto flex flex-col">
         {/* Navigation Button */}
-        <div className="absolute top-4 left-4 z-10">
+        <div className="fixed  top-4 left-4 z-10">
           <Link
             href="/blog"
             className="flex items-center gap-2 px-2 py-2 bg-Primary/80 hover:bg-Primary text-Text rounded-full shadow-lg transition-all duration-300 backdrop-blur-sm"
