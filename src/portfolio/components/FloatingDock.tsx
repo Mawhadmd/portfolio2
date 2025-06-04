@@ -67,7 +67,7 @@ export function FloatingDock({
   ];
   return (
     <>
-      <FloatingDockUI mobileClassName="hidden" items={DOCK_DATA} />
+      <FloatingDockUI mobileClassName="" items={DOCK_DATA} />
     </>
   );
 }
