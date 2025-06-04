@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack -p 5173",
@@ -22,6 +22,7 @@
     "@tiptap/extension-task-list": "^2.12.0",
     "@tiptap/extension-text-align": "^2.12.0",
     "@tiptap/extension-underline": "^2.12.0",
+    "@tiptap/extension-youtube": "^2.12.0",
     "@tiptap/pm": "^2.12.0",
     "@tiptap/react": "^2.12.0",
     "@tiptap/starter-kit": "^2.12.0",

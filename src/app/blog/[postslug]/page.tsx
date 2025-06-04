@@ -1,16 +1,16 @@
 import { Post } from "@/models/posts.database";
 import { supabase } from "@/lib/supabase";
-import { notFound } from "next/navigation";
+
 import { FiCalendar, FiUser, FiTag, FiHome } from "react-icons/fi";
 import ShareButtons from "./ShareButtons";
 import Link from "next/link";
 import DisqusComments from "./disqus"; // <-- import the new component
+import ErrorPage from "./ErrorPage";
 
 async function getPost(slug: string): Promise<Post | null> {
   const { data, error } = await supabase
     .from("posts")
     .select()
-    .eq("status", "published")
     .eq("slug", slug)
     .single();
 
@@ -33,7 +33,11 @@ export default async function PostPage({
 
   if (!post) {
     console.log("Couldn't find page", post);
-    notFound();
+    return <ErrorPage ErrorType={'NotFound'}/>;
+  }else if (post.status !== "published") {
+    return (
+      <ErrorPage ErrorType={'isDraft'}/>
+    );
   }
 
   // Disqus config
@@ -102,7 +106,8 @@ export default async function PostPage({
             </div>
 
             {/* Content */}
-            <div className="mt-8 prose prose-strong:text-Text prose-headings:text-Text max-w-none">
+                <div className="mt-8 prose prose-headings:text-Text prose-strong:text-Text max-w-none 
+  prose-img:mx-auto prose-img:block prose-iframe:mx-auto prose-iframe:block">
               <div
                 className="text-Text"
                 dangerouslySetInnerHTML={{ __html: post.content }}

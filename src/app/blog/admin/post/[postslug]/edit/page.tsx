@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { FiSave, FiX } from "react-icons/fi";
 import EditorToolbar from "../../EditorToolbar";
+import Youtube from '@tiptap/extension-youtube'
 
 import { Post } from "@/models/posts.database";
 
@@ -33,6 +34,7 @@ export default function PostEditor({
 
   const editor = useEditor({
     extensions: [
+      Youtube,
       StarterKit.configure({
         heading: {
           levels: [1, 2, 3, 4, 5, 6],
@@ -83,7 +85,7 @@ export default function PostEditor({
     },
     onUpdate: ({ editor }) => {
       const content = editor.getHTML();
-    
+
       const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
       if (imgMatch && !thumbnail) {
         setThumbnail(imgMatch[1]);
@@ -93,18 +95,18 @@ export default function PostEditor({
 
   useEffect(() => {
     const fetchPost = async () => {
+      console.log("Fetching post with slug:", (await params).postslug);
       try {
         const response = await fetch(
           `/api/posts/slug/${(await params).postslug}`
         );
         if (!response.ok) throw new Error("Failed to fetch post");
         const post: Post = await response.json();
-
+        console.log("Fetched post:", post);
         setTitle(post.title);
         setCategory(post.category);
-        setThumbnail(post.thumbnail);
+        setThumbnail(post.thumbnail ?? "");
         setStatus(post.status as "draft" | "published");
-
 
         // Set editor content after a short delay to ensure editor is ready
 
@@ -169,14 +171,14 @@ export default function PostEditor({
           <div className="flex gap-4">
             <button
               onClick={() => router.back()}
-              className="cursor-pointer px-4 py-2 text-sm font-medium text-Text bg-Secondary/20 rounded-lg hover:bg-Secondary/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border transition-all duration-300 flex items-center gap-2"
+              className="cursor-pointer px-4 py-2 text-sm font-medium text-Text bg-Secondary/50 rounded-lg hover:bg-Secondary/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border transition-all duration-300 flex items-center gap-2"
             >
               <FiX className="h-4 w-4" />
               Cancel
             </button>
             <button
               onClick={handleSave}
-              className=" cursor-pointer px-4 py-2 text-sm font-medium text-Text bg-Secondary/20 rounded-lg hover:bg-Secondary/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border transition-all duration-300 flex items-center gap-2"
+              className=" cursor-pointer px-4 py-2 text-sm font-medium text-Text bg-Secondary/50 rounded-lg hover:bg-Secondary/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border transition-all duration-300 flex items-center gap-2"
             >
               <FiSave className="h-4 w-4" />
               Save
@@ -195,16 +197,16 @@ export default function PostEditor({
           />
 
           {/* Category Input */}
-          <select
+            <select
             value={category as string}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg bg-Secondary/10 border border-border text-Text focus:outline-none focus:ring-2 focus:ring-border"
-          >
-            <option value="General">General</option>
-            <option value="Technology">Technology</option>
-            <option value="Programming">Programming</option>
-            <option value="Web Development">Web Development</option>
-          </select>
+            className="w-full px-4 py-3 rounded-lg bg-Secondary/10 border border-border text-Text focus:outline-none focus:ring-2 focus:ring-border "
+            >
+            <option className="bg-Secondary text-Text" value="General">General</option>
+            <option className="bg-Secondary text-Text" value="Technology">Technology</option>
+            <option className="bg-Secondary text-Text" value="Programming">Programming</option>
+            <option className="bg-Secondary text-Text" value="Web Development">Web Development</option>
+            </select>
 
           {/* Status Input */}
           <select
@@ -212,8 +214,8 @@ export default function PostEditor({
             onChange={(e) => setStatus(e.target.value as "draft" | "published")}
             className="w-full px-4 py-3 rounded-lg bg-Secondary/10 border border-border text-Text focus:outline-none focus:ring-2 focus:ring-border"
           >
-            <option value="draft">Draft</option>
-            <option value="published">Published</option>
+            <option value="draft" className="bg-Secondary text-Text" >Draft</option>
+            <option value="published" className="bg-Secondary text-Text" >Published</option>
           </select>
 
           {/* Thumbnail Input */}

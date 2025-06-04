@@ -18,6 +18,7 @@ import {
   FiMinus,
   FiMessageSquare,
   FiChevronDown,
+  FiYoutube,
 } from "react-icons/fi";
 import { useState } from "react";
 
@@ -47,7 +48,7 @@ export default function EditorToolbar({ editor }: EditorToolbarProps) {
   };
 
   return (
-    <div className="flex flex-wrap gap-2 mb-4 p-2 bg-Secondary/10 rounded-lg border border-border">
+    <div className="sticky top-2 z-50 bg-Primary flex flex-wrap gap-2 mb-4 p-2 rounded-lg border border-border">
       {/* Text Style */}
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
@@ -281,6 +282,22 @@ export default function EditorToolbar({ editor }: EditorToolbarProps) {
         title="Horizontal Rule"
       >
         <FiMinus className="h-4 w-4" />
+      </button>
+      <button
+        onClick={() => {
+          const url = window.prompt("Enter YouTube URL:");
+          if (url) {
+            editor?.commands.setYoutubeVideo({
+              src: url,
+              width: 640,
+              height: 480,
+            });
+          }
+        }}
+        className="p-2 text-Muted hover:text-Text transition-colors"
+        title="Insert YouTube video"
+      >
+        <FiYoutube className="w-4 h-4" />
       </button>
     </div>
   );

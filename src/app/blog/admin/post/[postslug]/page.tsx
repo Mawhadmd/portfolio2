@@ -6,6 +6,7 @@ import ShareButtons from "../../../[postslug]/ShareButtons";
 
 import Link from "next/link";
 
+
 async function getPost(slug: string): Promise<Post | null> {
   const { data, error } = await supabase
     .from("posts")
@@ -28,6 +29,8 @@ export default async function PostPage({
   if (!post) notFound();
 
   return (
+   <>
+ 
     <div className="min-h-screen bg-Primary/5 bg-gradient-to-b from-Secondary/45">
       <article className="min-h-screen w-full xl:w-2/3 mx-auto flex flex-col">
         {/* Navigation Button */}
@@ -90,7 +93,8 @@ export default async function PostPage({
             </div>
 
             {/* Content */}
-            <div className="mt-8 prose max-w-none">
+            <div className="mt-8 prose prose-headings:text-Text prose-strong:text-Text max-w-none 
+  prose-img:mx-auto prose-img:block prose-iframe:mx-auto prose-iframe:block">
               <div
                 className="text-Text"
                 dangerouslySetInnerHTML={{ __html: post.content }}
@@ -104,6 +108,6 @@ export default async function PostPage({
           </div>
         </div>
       </article>
-    </div>
+    </div></>
   );
 }
