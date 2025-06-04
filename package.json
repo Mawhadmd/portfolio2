@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack -p 5173",
@@ -29,6 +29,7 @@
     "clsx": "^2.1.1",
     "cookies-next": "^6.0.0",
     "disqus-react": "^1.1.6",
+    "fs": "^0.0.1-security",
     "jose": "^6.0.11",
     "lowlight": "^3.3.0",
     "lucide-react": "^0.475.0",
