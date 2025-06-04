@@ -1,23 +1,21 @@
-"use client";
+'use client'
 
-import dynamic from "next/dynamic";
+import { Post } from "@/models/posts.database";
+import {DiscussionEmbed} from "disqus-react"; // changed this line
 
-const DiscussionEmbed = dynamic(
-  () => import("disqus-react").then((mod) => mod.DiscussionEmbed),
-  { ssr: false }
-);
-interface DisqusCommentsProps {
-  shortname: string;
-  config: {
-    url: string;
-    identifier: string;
-    title: string;
-    language?: string;
+export default function DisqusComments({ post }: {post:Post}) {
+const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+  const disqusConfig = {
+    url: pageUrl,
+    identifier: post.slug,
+    title: post.title,
   };
-}
 
-export default function DisqusComments({ shortname, config }: DisqusCommentsProps) {
   return (
-    <DiscussionEmbed shortname={shortname} config={config} />
+       <div className="disqus-container">
+        <DiscussionEmbed shortname="moawad" config={disqusConfig} />
+       </div>
+
   );
 }

@@ -29,12 +29,14 @@ export default async function AdminPanel() {
             This is your secure admin area. You can manage your content here.
           </p>
 
-            {data.map((post: Post) => (
+            <div className="space-y-2"> 
+              {data.map((post: Post) => (
               <AdminPostCard 
                 key={post.id}
                 post={post}
               />
             ))}
+            </div>
             
           </div>
         </div>

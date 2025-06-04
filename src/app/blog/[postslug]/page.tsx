@@ -41,12 +41,7 @@ export default async function PostPage({
   }
 
   // Disqus config
-  const disqusConfig = {
-    url: `https://moawad.dev/blog/${post.slug}`,
-    identifier: post.slug,
-    title: post.title,
-    language: "en",
-  };
+
 
   return (
     <div className="min-h-screen bg-Primary/5 bg-gradient-to-b from-Secondary/45">
@@ -120,8 +115,8 @@ export default async function PostPage({
             </div>
             {/* Disqus Comments */}
             <div className="mt-12">
-              
-              <DisqusComments shortname="moawad" config={disqusConfig} />
+                
+              <DisqusComments post={post}  />
             </div>
           </div>
         </div>
