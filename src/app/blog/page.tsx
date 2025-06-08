@@ -10,6 +10,7 @@ import {
   FiCode,
   FiZap,
   FiHeart,
+  FiAlertOctagon
 } from "react-icons/fi";
 import Link from "next/link";
 import { Post } from "@/models/posts.database";
