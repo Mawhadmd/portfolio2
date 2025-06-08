@@ -23,7 +23,7 @@ const ContactSection = () => {
         </motion.a>
 
         {/* Blog Button */}
-        <Link href="/blog" passHref>
+        <Link href="/blog" passHref target="_blank">
           <motion.div
             className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-lg tracking-wide text-Text transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
             whileHover={{ scale: 1.05 }}

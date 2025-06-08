@@ -1,6 +1,5 @@
 import { JWTPayload, SignJWT, jwtVerify } from "jose";
 import { TokenExpireDays } from "./constants";
-import { supabase } from "./supabase";
 
 const secret = new TextEncoder().encode(
   process.env.JWT_SECRET
