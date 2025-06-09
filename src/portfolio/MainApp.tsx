@@ -10,6 +10,7 @@ import Blurfade from "./components/ui/Blurfade";
 import ContactSection from "./components/ContactSection";
 import Link from "next/link";
 import CoolBackgroundElements from "./components/ui/CoolBackgroundElements";
+import CurrentlyLearning from "./components/CurrentlyLearning";
 
 export type Themetype = "light" | "dark" | "";
 
@@ -65,48 +66,7 @@ const App = () => {
 
         {/* Currently Learning Section */}
         <Blurfade delay={0.25}>
-          <section className="w-full" aria-labelledby="learning-section">
-            <h2
-              id="learning-section"
-              className="text-accent text-xl font-bold mb-1 text-left"
-            >
-              Currently Learning
-            </h2>
-            <p className="text-Muted text-xs mb-2 text-left">
-              A mix of professional and personal interests I&apos;m exploring right
-              now
-            </p>
-            <div
-              className="flex p-2 flex-wrap gap-2 mt-2 items-center justify-center"
-              aria-label="Currently learning technologies"
-            >
-              {[
-                "Blender",
-                "Three.js",
-                "3d Graphics",
-                "Next JS Advanced",
-                "SEO for Next.js",
-                "Cooking ☕",
-              ].map((tech) => (
-                <span
-                  key={tech}
-                  className={`px-2 py-1 text-xs bg-accent/10 text-accent rounded-md border border-accent/20 ${
-                    tech === "Cooking ☕" ? "animate-pulse" : ""
-                  }`}
-                  aria-label={`Currently learning ${tech}`}
-                >
-                  {tech === "Cooking ☕" ? (
-                    <span className="inline-flex items-center gap-1">
-                      Cooking
-                      <span className="animate-bounce">☕</span>
-                    </span>
-                  ) : (
-                    tech
-                  )}
-                </span>
-              ))}
-            </div>
-          </section>
+         <CurrentlyLearning/>
         </Blurfade>
 
         {/* Projects Section */}

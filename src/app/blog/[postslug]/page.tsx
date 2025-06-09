@@ -20,12 +20,51 @@ async function getPost(slug: string): Promise<Post | null> {
   return data as Post;
 }
 
+import { Metadata } from 'next';
+
+
+export async function generateMetadata(
+  {params: paramsPromise}: { params: Promise<{ postslug: string }>}
+): Promise<Metadata> {
+  const params = await paramsPromise;
+  const post = await getPost(params?.postslug);
+
+  if (!post) {
+    return {
+      title: 'Not Found - Mohammed Awad',
+      description: 'This blog post could not be found.',
+      alternates: {
+        canonical: `https://moawad.dev/blog/${params?.postslug}`,
+      },
+    };
+  }
+
+  return {
+    title: post.title,
+    description: `${post.title} - Read this insightful blog post.`,
+    alternates: {
+      canonical: `https://moawad.dev/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.title,
+      type: 'article',
+      url: `https://moawad.dev/blog/${post.slug}`,
+    },
+  };
+}
+
+
+
 export default async function PostPage({
-  params,
+  params: paramsPromise,
 }: {
   params: Promise<{ postslug: string }>;
 }) {
-  const { postslug } = await params;
+
+
+  const params = await paramsPromise;
+  const postslug  =  params?.postslug;
   console.log(postslug);
   const post = await getPost(postslug);
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -9,12 +9,16 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
 });
-
-export const metadata: Metadata = {
+export const metadata = {
   title: "Mohammed Awad - Software Developer",
   description:
     "Enthusiastic Software Engineer committed to continuous learning and skill enhancement for a thriving future career in Technology.",
+  metadataBase: new URL("https://moawad.dev/"),
+  alternates: {
+    canonical: "/",
+  },
 };
+
 
 export default function RootLayout({
   children,
