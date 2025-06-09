@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Suspense } from "react";
 import NProgressProvider from "./components/NProgressProvider";
 
 const montserrat = Montserrat({
@@ -38,7 +39,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${montserrat.className} antialiased`}>
-        <NProgressProvider>{children}</NProgressProvider>
+        <Suspense>
+          <NProgressProvider>{children}</NProgressProvider>
+        </Suspense>
       </body>
       <GoogleAnalytics gaId="G-E7N2FMT2W0" />
     </html>

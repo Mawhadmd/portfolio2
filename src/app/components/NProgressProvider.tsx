@@ -9,7 +9,7 @@ import "nprogress/nprogress.css";
 NProgress.configure({
   minimum: 0.3,
   easing: "ease-in-out",
-  speed: 800, // Slower for testing
+  speed: 500,
   showSpinner: false,
 });
 
