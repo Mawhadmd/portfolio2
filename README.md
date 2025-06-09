@@ -1,4 +1,4 @@
-# This Portfolio Was Build Using: #
+# This Portfolio Was Built Using: #
 
 - Next.js
 - Node.js
