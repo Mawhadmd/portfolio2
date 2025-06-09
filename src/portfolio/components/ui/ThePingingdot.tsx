@@ -9,7 +9,7 @@ const Pulsingdot = ({
   CurrentlyPlaying: `Yes` | "No";
   ThemeColor: Themetype;
 }) => {
-  const colorIntensity = ThemeColor === "dark" ? 255 : 255;
+  const colorIntensity = ThemeColor === "dark" ? 255 : 230;
   return (
     <div
       className="relative size-2 rounded-full mx-auto"
@@ -31,6 +31,7 @@ const Pulsingdot = ({
               : CurrentlyPlaying === "Yes"
               ? `rgb(0, ${colorIntensity}, 0)`
               : `rgb(${colorIntensity}, ${colorIntensity - 80}, 0)`,
+          boxShadow: `0 0 0 2px rgba(${colorIntensity}, ${colorIntensity}, ${colorIntensity}, 0.1)`,
         }}
       ></div>
     </div>

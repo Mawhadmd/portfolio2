@@ -1,7 +1,7 @@
 // SpotifyWidget.tsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import SpotifyWidgetServer from "./SpotifyWidgetServer";
-import Pulsingdot from "./ui/Pulsingdot";
+import Pulsingdot from "./ui/ThePingingdot";
 import Image from "next/image";
 import { Themetype } from "@/portfolio/MainApp";
 import Spotifyimg from "@/spotify.png";
@@ -37,20 +37,23 @@ function GetTimeDifference(time: string) {
 const SpotifyWidget = ({ ThemeColor }: Props) => {
   const [data, setData] = useState<SongData>();
   // Handling client-side update
-  const GetData = async () => {
+  const GetData = useCallback(async () => {
     const data = await SpotifyWidgetServer();
     setData(data);
-  };
+  }, [])
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (data?.CurrentlyPlaying == "Yes")
       interval = setInterval(GetData, 1000 * 60);
     else interval = setInterval(GetData, 5000 * 60);
     return () => clearInterval(interval);
-  }, [data]);
+  }, [data, GetData]);
   useEffect(() => {
+    window.addEventListener("focus", GetData);
+    
     GetData();
-  }, []);
+    return () => window.removeEventListener("focus", GetData);
+  }, [GetData]);
 
   return (
     <div className="mt-6 pl-4 pr-1 sm:pr-0 flex bg-gray-400/20 box-border h-15 items-center gap-3 w-full py-5 rounded-md">
