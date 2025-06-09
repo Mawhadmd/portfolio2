@@ -13,7 +13,7 @@ const ProjectTile = ({project}: {project: ProjectType}) => {
         <MorphingDialogImage
           src={project.image}
           className="h-full   object-contain sm:object-cover sm:object-top rounded-sm"
-          alt=""
+          alt={`Project Exhibition: ${project.title}`}
         />
         </div>
         <div className="w-2/3">

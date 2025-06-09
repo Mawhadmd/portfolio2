@@ -11,7 +11,7 @@ const MainCard = () => {
         <Image
           src={pfp}
           priority
-          alt=""
+          alt="Profile Picture"
           className="size-20 border-border rounded-full object-top aspect-square"
         />
       </div>

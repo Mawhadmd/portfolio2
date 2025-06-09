@@ -91,7 +91,7 @@ const SpotifyWidget = ({ ThemeColor }: Props) => {
                 <Image
                   className="size-5 ml-1 inline"
                   src={Spotifyimg}
-                  alt="Spotify"
+                  alt="Spotify logo"
                 />
               </p>
             ) : (

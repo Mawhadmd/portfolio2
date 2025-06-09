@@ -27,8 +27,8 @@ const App = () => {
         className="absolute inset-0 bg-gradient-to-br from-transparent via-Secondary/5 to-Secondary/10 pointer-events-none"
         aria-hidden="true"
         role="presentation"
-      />
-
+      />  
+    <h1 className="hidden  ">Portfolio</h1>
       {/* Main Content */}
       <main
         className="relative text-Text space-y-16 flex flex-col pt-20 pb-32 px-4 max-w-lg mx-auto"
@@ -38,9 +38,9 @@ const App = () => {
         {/* Landing Card Section */}
         <Blurfade>
           <section aria-labelledby="landing-section">
-            <h1 id="landing-section" className="sr-only">
+            <h2 id="landing-section" className="sr-only">
               Introduction and Personal Information
-            </h1>
+            </h2>
             <MainCard />
             <Blurfade delay={0.6}>
               <div

@@ -28,7 +28,7 @@ const ProjectsCard = () => {
   return (
     <>
       <div className="mb-4">
-        <h1 className="!mb-0">My recent projects</h1>
+        <h2 className="!mb-0">My recent projects</h2>
         <small>
           Few of my favorites.{" "}
           <span className="underline font-bold">Click</span> on a{" "}
