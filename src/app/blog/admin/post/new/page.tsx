@@ -9,7 +9,7 @@ export default function NewPost() {
   const router = useRouter();
 
   const handleCreate = async () => {
-    if (!title.trim()) {
+    if (!title.trim()) { 
       alert("Please enter a title");
       return;
     }
@@ -39,6 +39,7 @@ export default function NewPost() {
         router.push(`/blog/admin/post/${slug}/edit`);
       }
     } catch (error) {
+      alert( "Failed to create post");
       console.error("Error creating post:", error);
     }
   };

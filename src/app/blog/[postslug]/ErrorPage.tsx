@@ -11,12 +11,22 @@ const ErrorPage = ({ ErrorType }: { ErrorType: 'NotFound' | 'isDraft' }) => {
             'This post is still a draft and not yet published.'
         }
             </div>
-          <button
-            onClick={() => window.history.back()}
-            className="mt-4 bg-Secondary px-4 py-2  text-Text rounded hover:bg-white/10 cursor-pointer transition"
-          >
-            Go Back
-          </button>
+            <button
+              onClick={() => {
+              if (
+                typeof window !== 'undefined' &&
+                document.referrer &&
+                document.referrer.startsWith(window.location.origin)
+              ) {
+                window.history.back();
+              } else {
+                window.location.href = '/blog';
+              }
+              }}
+              className="mt-4 bg-Secondary px-4 py-2  text-Text rounded hover:bg-white/10 cursor-pointer transition"
+            >
+              Go to Blog
+            </button>
       </div>
     );
   }
