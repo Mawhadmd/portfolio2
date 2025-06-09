@@ -3,7 +3,7 @@
  * Desktop navbar is better positioned at the bottom
  * Mobile navbar is better positioned at bottom right.
  **/
- 
+
 import { cn } from "@/lib/utils";
 import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
 import {
@@ -14,9 +14,14 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-
+import Link from "next/link";
 import { useRef, useState } from "react";
- type items = { title: string; icon: React.ReactNode; href: string, onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>)=>void }[]
+type items = {
+  title: string;
+  icon: React.ReactNode;
+  href: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}[];
 export const FloatingDock = ({
   items,
   desktopClassName,
@@ -33,12 +38,12 @@ export const FloatingDock = ({
     </>
   );
 };
- 
+
 const FloatingDockMobile = ({
   items,
   className,
 }: {
-  items: items; 
+  items: items;
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
@@ -67,14 +72,14 @@ const FloatingDockMobile = ({
                 }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
               >
-                <a
+                <Link
                   href={item.href}
                   key={item.title}
                   onClick={item.onClick}
                   className="h-10 w-10 rounded-full bg-gray-300 dark:bg-neutral-900 flex items-center justify-center"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
-                </a>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
@@ -89,12 +94,12 @@ const FloatingDockMobile = ({
     </div>
   );
 };
- 
+
 const FloatingDockDesktop = ({
   items,
   className,
 }: {
-  items:items;
+  items: items;
   className?: string;
 }) => {
   const mouseX = useMotionValue(Infinity);
@@ -108,43 +113,47 @@ const FloatingDockDesktop = ({
       )}
     >
       {items.map((item) => (
-        <IconContainer  mouseX={mouseX} key={item.href} {...item} />
+        <IconContainer mouseX={mouseX} key={item.href} {...item} />
       ))}
     </motion.div>
   );
 };
- 
+
 function IconContainer({
   mouseX,
   title,
   icon,
   href,
-  onClick
+  onClick,
 }: {
   mouseX: MotionValue;
   title: string;
   icon: React.ReactNode;
   href: string;
-  onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
- 
+
   const distance = useTransform(mouseX, (val) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
- 
+
     return val - bounds.x - bounds.width / 2;
   });
- 
+
   const widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
   const heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
- 
-  const widthTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
+
+  const widthTransformIcon = useTransform(
+    distance,
+    [-150, 0, 150],
+    [20, 40, 20]
+  );
   const heightTransformIcon = useTransform(
     distance,
     [-150, 0, 150],
     [20, 40, 20]
   );
- 
+
   const width = useSpring(widthTransform, {
     mass: 0.1,
     stiffness: 150,
@@ -155,7 +164,7 @@ function IconContainer({
     stiffness: 150,
     damping: 12,
   });
- 
+
   const widthIcon = useSpring(widthTransformIcon, {
     mass: 0.1,
     stiffness: 150,
@@ -166,11 +175,10 @@ function IconContainer({
     stiffness: 150,
     damping: 12,
   });
- 
   const [hovered, setHovered] = useState(false);
- 
+
   return (
-    <a aria-label={title} href={href} target={href.startsWith('http')? "_blank":'_self'} onClick={onClick}>
+    <Link aria-label={title} href={href} onClick={onClick}>
       <motion.div
         ref={ref}
         style={{ width, height }}
@@ -197,6 +205,6 @@ function IconContainer({
           {icon}
         </motion.div>
       </motion.div>
-    </a>
+    </Link>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import NProgressProvider from "./components/NProgressProvider";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -36,7 +37,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${montserrat.className} antialiased`}>{children} </body>
+      <body className={`${montserrat.className} antialiased`}>
+        <NProgressProvider>{children}</NProgressProvider>
+      </body>
       <GoogleAnalytics gaId="G-E7N2FMT2W0" />
     </html>
   );
