@@ -26,7 +26,7 @@ export async function GET() {
   }));
 
   const stream = new SitemapStream({
-    hostname: "https://moawadportfolio.netlify.app",
+    hostname: "https://moawad.dev",
   });
   const xml = await streamToPromise(Readable.from(links).pipe(stream)).then(
     (data) => data.toString()
