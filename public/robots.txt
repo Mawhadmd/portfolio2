@@ -1,5 +1,9 @@
 User-agent: *
 Disallow: /admin
+Disallow: /blog/admin
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
 
 User-agent: *
 Allow: /

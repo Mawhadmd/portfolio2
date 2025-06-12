@@ -15,7 +15,7 @@ export const metadata = {
     "Enthusiastic Software Engineer committed to continuous learning and skill enhancement for a thriving future career in Technology.",
   metadataBase: new URL("https://moawad.dev/"),
   alternates: {
-    canonical: "/",
+    canonical: "https://moawad.dev",
   },
 };
 
