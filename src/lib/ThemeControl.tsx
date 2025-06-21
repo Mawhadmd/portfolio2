@@ -8,6 +8,7 @@ export function getPreferredTheme(): Theme {
 
 function setTheme(theme: Theme): void {
   document.documentElement.setAttribute("data-theme", theme);
+  document.documentElement.classList.toggle("dark", theme === "dark");
   window.localStorage.setItem("theme", theme);
 }
 

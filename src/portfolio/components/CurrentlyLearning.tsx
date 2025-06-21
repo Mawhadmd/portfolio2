@@ -18,12 +18,13 @@ const CurrentlyLearning = () => {
               aria-label="Currently learning technologies"
             >
               {[
-                "Blender",
-                "Three.js",
-                "3d Graphics",
+          
+                "AWS",
+                "Kubernetes",
                 "Next JS Advanced",
                 "SEO for Next.js",
-                "Cooking ☕",
+                "Building new projects",
+                
               ].map((tech) => (
                 <span
                   key={tech}

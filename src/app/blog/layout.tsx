@@ -19,7 +19,7 @@ export default function BlogLayout({
   };
 
   return (
-    <div className="min-h-screen bg-Primary relative">
+    <div className="min-h-screen bg-Primary ">
       {children}
 
       {/* Theme Toggle Button */}

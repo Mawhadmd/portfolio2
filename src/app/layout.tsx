@@ -3,7 +3,7 @@ import "./globals.css";
 import { Montserrat } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Suspense } from "react";
-import NProgressProvider from "./components/NProgressProvider";
+import NProgressProvider from "../components/NProgressProvider";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -42,7 +42,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${montserrat.className} antialiased`}>
+      <body className={`${montserrat.className} antialiased h-fit overflow-y-scroll relative `}>
         <Suspense>
           <NProgressProvider>{children}</NProgressProvider>
         </Suspense>

@@ -1,24 +1,12 @@
 "use client";
+// TODO Fix this BS
 
-import { useEditor, EditorContent } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import TextAlign from "@tiptap/extension-text-align";
-import TiptapImage from "@tiptap/extension-image";
-import Link from "@tiptap/extension-link";
-import Underline from "@tiptap/extension-underline";
-import TextColor from "@tiptap/extension-color";
-import Highlight from "@tiptap/extension-highlight";
-import TaskList from "@tiptap/extension-task-list";
-import TaskItem from "@tiptap/extension-task-item";
-import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
-import { createLowlight, all } from "lowlight";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { FiSave, FiX } from "react-icons/fi";
-import EditorToolbar from "../../EditorToolbar";
-import Youtube from '@tiptap/extension-youtube'
 
 import { Post } from "@/models/posts.database";
+import { SimpleEditor } from "@/components/tiptap-templates/simple/simple-editor";
 
 export default function PostEditor({
   params,
@@ -30,70 +18,65 @@ export default function PostEditor({
   const [thumbnail, setThumbnail] = useState("");
   const [status, setStatus] = useState<"draft" | "published">("draft");
   const [loading, setLoading] = useState(true);
+  const [content, setcontent] = useState("");
   const router = useRouter();
 
-  const editor = useEditor({
-    extensions: [
-      Youtube,
-      StarterKit.configure({
-        heading: {
-          levels: [1, 2, 3, 4, 5, 6],
-        },
-        codeBlock: false,
-      }),
-      TextAlign.configure({
-        types: ["heading", "paragraph"],
-        alignments: ["left", "center", "right", "justify"],
-        defaultAlignment: "left",
-      }),
-      TiptapImage.configure({
-        HTMLAttributes: {
-          class: "rounded-lg max-w-full",
-        },
-        allowBase64: true,
-      }),
-      Link.configure({
-        openOnClick: false,
-        HTMLAttributes: {
-          class: "text-blue-500 hover:text-blue-400 underline",
-        },
-      }),
-      Underline,
-      TextColor.configure({
-        types: ["textStyle"],
-      }),
-      Highlight.configure({
-        multicolor: true,
-      }),
-      TaskList,
-      TaskItem.configure({
-        nested: true,
-      }),
-      CodeBlockLowlight.configure({
-        lowlight: createLowlight(all),
-        HTMLAttributes: {
-          class: "rounded-lg bg-Secondary/10 p-4 font-mono text-sm",
-        },
-      }),
-    ],
-    content: "",
-    editorProps: {
-      attributes: {
-        class:
-          "prose prose-invert max-w-none focus:outline-none min-h-[500px] prose-headings:text-Text prose-p:text-Text prose-strong:text-Text prose-em:text-Text prose-code:text-Accent prose-pre:bg-Secondary/10 prose-pre:text-Text prose-blockquote:text-Muted prose-ul:text-Text prose-ol:text-Text prose-li:text-Text prose-img:rounded-lg prose-img:max-w-full prose-a:text-Accent hover:prose-a:text-Accent/80",
-      },
-    },
-    onUpdate: ({ editor }) => {
-      const content = editor.getHTML();
+  // const editor = useEditor({
+  //   extensions: [
+  //     Youtube,
+  //     StarterKit.configure({
+  //       heading: {
+  //         levels: [1, 2, 3, 4, 5, 6],
+  //       },
+  //       codeBlock: false,
+  //     }),
+  //     TextAlign.configure({
+  //       types: ["heading", "paragraph"],
+  //       alignments: ["left", "center", "right", "justify"],
+  //       defaultAlignment: "left",
+  //     }),
+  //     TiptapImage.configure({
+  //       HTMLAttributes: {
+  //         class: "rounded-lg max-w-full",
+  //       },
+  //       allowBase64: true,
+  //     }),
+  //     Link.configure({
+  //       openOnClick: false,
+  //       HTMLAttributes: {
+  //         class: "text-blue-500 hover:text-blue-400 underline",
+  //       },
+  //     }),
+  //     Underline,
+  //     TextColor.configure({
+  //       types: ["textStyle"],
+  //     }),
+  //     Highlight.configure({
+  //       multicolor: true,
+  //     }),
+  //     TaskList,
+  //     TaskItem.configure({
+  //       nested: true,
+  //     }),
+  //     CodeBlockLowlight.configure({
+  //       lowlight: createLowlight(all),
+  //       HTMLAttributes: {
+  //         class: "rounded-lg bg-Secondary/10 p-4 font-mono text-sm",
+  //       },
+  //     }),
+  //   ],
+  //   content: "",
+  //   editorProps: {
+  //     attributes: {
+  //       class:
+  //         "prose prose-invert max-w-none focus:outline-none min-h-[500px] prose-headings:text-Text prose-p:text-Text prose-strong:text-Text prose-em:text-Text prose-code:text-Accent prose-pre:bg-Secondary/10 prose-pre:text-Text prose-blockquote:text-Muted prose-ul:text-Text prose-ol:text-Text prose-li:text-Text prose-img:rounded-lg prose-img:max-w-full prose-a:text-Accent hover:prose-a:text-Accent/80",
+  //     },
+  //   },
 
-      const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-      if (imgMatch && !thumbnail) {
-        setThumbnail(imgMatch[1]);
-      }
-    },
-  });
+  // });
 
   useEffect(() => {
+    //fetches the post data
     const fetchPost = async () => {
       console.log("Fetching post with slug:", (await params).postslug);
       try {
@@ -110,8 +93,8 @@ export default function PostEditor({
 
         // Set editor content after a short delay to ensure editor is ready
 
-        if (editor && post.content) {
-          editor.commands.setContent(post.content);
+        if (post.content) {
+          setcontent(post.content);
         }
       } catch (error) {
         console.error("Error fetching post:", error);
@@ -121,13 +104,32 @@ export default function PostEditor({
     };
 
     fetchPost();
-  }, [params, editor]);
+  }, [params]);
 
   const handleSave = async () => {
-    if (!editor || !title) {
+    //saves the posts edits
+    if (!content || !title) {
       alert("Title and content required");
       return;
     }
+
+    // Find first image src in content
+    const  newThumbnailfetch = await fetch("/api/posts/PreProcessing", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ content }),
+    });
+    const data = await newThumbnailfetch.json();
+    // Use the response status from the fetch, not from the data object
+    if (!newThumbnailfetch.ok) {
+      alert("Error processing content: " + (data.error || "Unknown error"));
+      return;
+    }
+    // Use the processed thumbnail and html
+    const processedThumbnail = data.thumbnail;
+    const processedHtml = data.html;
 
     try {
       const response = await fetch("/api/posts/update", {
@@ -138,9 +140,9 @@ export default function PostEditor({
         body: JSON.stringify({
           slug: (await params).postslug,
           title,
-          content: editor.getHTML(),
+          content: processedHtml,
           category,
-          thumbnail,
+          thumbnail: processedThumbnail,
           status,
         }),
       });
@@ -164,9 +166,9 @@ export default function PostEditor({
   }
 
   return (
-    <div className="min-h-screen bg-Primary p-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
+    <div className="min-h-screen bg-Primary p-8 ">
+      <div className="max-w-4xl mx-auto ">
+        <div className="flex justify-between items-center mb-8 ">
           <h1 className="text-3xl font-bold text-Text">Edit Post</h1>
           <div className="flex gap-4">
             <button
@@ -197,16 +199,24 @@ export default function PostEditor({
           />
 
           {/* Category Input */}
-            <select
+          <select
             value={category as string}
             onChange={(e) => setCategory(e.target.value)}
             className="w-full px-4 py-3 rounded-lg bg-Secondary/10 border border-border text-Text focus:outline-none focus:ring-2 focus:ring-border "
-            >
-            <option className="bg-Secondary text-Text" value="General">General</option>
-            <option className="bg-Secondary text-Text" value="Technology">Technology</option>
-            <option className="bg-Secondary text-Text" value="Programming">Programming</option>
-            <option className="bg-Secondary text-Text" value="Web Development">Web Development</option>
-            </select>
+          >
+            <option className="bg-Secondary text-Text" value="General">
+              General
+            </option>
+            <option className="bg-Secondary text-Text" value="Technology">
+              Technology
+            </option>
+            <option className="bg-Secondary text-Text" value="Programming">
+              Programming
+            </option>
+            <option className="bg-Secondary text-Text" value="Web Development">
+              Web Development
+            </option>
+          </select>
 
           {/* Status Input */}
           <select
@@ -214,8 +224,12 @@ export default function PostEditor({
             onChange={(e) => setStatus(e.target.value as "draft" | "published")}
             className="w-full px-4 py-3 rounded-lg bg-Secondary/10 border border-border text-Text focus:outline-none focus:ring-2 focus:ring-border"
           >
-            <option value="draft" className="bg-Secondary text-Text" >Draft</option>
-            <option value="published" className="bg-Secondary text-Text" >Published</option>
+            <option value="draft" className="bg-Secondary text-Text">
+              Draft
+            </option>
+            <option value="published" className="bg-Secondary text-Text">
+              Published
+            </option>
           </select>
 
           {/* Thumbnail Input */}
@@ -242,9 +256,8 @@ export default function PostEditor({
           </div>
 
           {/* Editor */}
-          <div className="bg-Secondary/5 backdrop-blur-lg rounded-xl border text-Text border-border p-6">
-            <EditorToolbar editor={editor} />
-            <EditorContent editor={editor} />
+          <div className=" bg-Secondary/5 rounded-xl border text-Text border-border/50  ">
+            {<SimpleEditor content={content} setcontent={setcontent} />}
           </div>
         </div>
       </div>
