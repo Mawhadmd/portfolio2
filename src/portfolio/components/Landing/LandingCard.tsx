@@ -2,17 +2,17 @@ import Blurfade from "../ui/Blurfade";
 import AboutMe from "./AboutMe";
 import Title from "./Title";
 import TopButtons from "./TopButtons";
-import pfp from "@/githubpfp.jpg";
+import pfp from "@/20241230_072930.jpg";
 import Image from "next/image";
 const MainCard = () => {
   return (
     <>
-      <div className="aspect-square size-20 ">
+      <div className="aspect-square size-20 flex items-center justify-center overflow-hidden  rounded-full">
         <Image
           src={pfp}
           priority
           alt="Profile Picture"
-          className="size-20 border-border rounded-full object-top aspect-square"
+          className="size-30  border-border rounded-full object-contain  "
         />
       </div>
       <div className="mt-6 space-y-4">

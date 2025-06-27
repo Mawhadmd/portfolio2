@@ -56,7 +56,7 @@ const SpotifyWidget = ({ ThemeColor }: Props) => {
   }, [GetData]);
 
   return (
-    <div className="mt-6 pl-4 pr-1 sm:pr-0 flex bg-gray-400/20 box-border h-15 items-center gap-3 w-full py-5 rounded-md">
+    <div className=" sm:pr-1 p-4 flex bg-gray-400/20 h-16 box-border items-center gap-3 w-full rounded-md">
       {data ? (
         <>
           <div className=" content-center">

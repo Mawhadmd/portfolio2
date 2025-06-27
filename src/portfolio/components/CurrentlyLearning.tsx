@@ -19,10 +19,11 @@ const CurrentlyLearning = () => {
             >
               {[
           
-                "AWS",
+             
                 "Kubernetes",
                 "Next JS Advanced",
-                "SEO for Next.js",
+                "Expo - React Native",
+                "Laravel ",
                 "Building new projects",
                 
               ].map((tech) => (

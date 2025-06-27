@@ -30,17 +30,14 @@ export const SKILLS = [
   "HTML",
   "TypeScript",
   "Git",
-  "Java",
+  "React Native",
+  "Expo",
   "PHP",
   "Python",
   "API Integration",
-  "NLP",
-  "SQL",
-  "NoSQL",
   "MongoDB",
   "PostgreSQL",
-  "Microservices",
-  "REST",
+  "REST API",
 ];
 
 
