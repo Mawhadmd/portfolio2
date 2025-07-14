@@ -1,5 +1,4 @@
-
-import "./globals.css";
+import "@/styles/globals.css"
 import { Montserrat } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Suspense } from "react";

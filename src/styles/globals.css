@@ -1,0 +1,225 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@theme {
+  --color-Primary: hsl(var(--Primary));
+  --color-Secondary: hsl(var(--Secondary));
+  --color-Text: hsl(var(--Text));
+  --color-Muted: hsl(var(--Muted));
+  --color-border: hsl(var(--border));
+  --color-accent: hsl(var(--accent));
+}
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+[data-youtube-video] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#player {
+  margin: 0 auto;
+  width: fit-content;
+}
+:root {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+  background-color: hsl(var(--Primary));
+  box-sizing: border-box;
+  --Primary: 0 0% 95%;
+  --Secondary: 0 0% 100%;
+  --Text: 0 0% 0%;
+  --Muted: 0 0% 0% / 0.6;
+  --border: 220 10% 75%;
+  --accent: 217 91% 60%;
+}
+[data-theme="dark"] {
+  --Primary: 0 0% 0%;
+  --Secondary: 0 0% 20%;
+  --Text: 0 0% 100%;
+  --Muted: 0 0% 100% / 0.6;
+  --border: 220 10% 25%;
+  --accent: 217 91% 70%;
+}
+/* #disqus_thread { */
+  /* force light mode */
+  /* color-scheme: light !important;
+  filter: none;
+  background-color: white;
+} */
+
+/* If you switch your site to dark mode, keep forcing “light” inside the iframe */
+/* [data-theme="dark"] #disqus_thread {
+  color-scheme: light !important;
+  color: white !important;
+  background-color: black !important;
+} */
+
+* ::-webkit-scrollbar {
+  width: 8px;
+}
+
+* ::-webkit-scrollbar-thumb {
+  background-color: #aaaaaa;
+  border-radius: 4px;
+}
+
+/* For Firefox */
+* {
+  transition: all  ;
+  scrollbar-color: #aaa transparent;
+  scrollbar-width: thin;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background-color: #4a4a4a;
+  border-radius: 4px;
+}
+
+/* For Firefox */
+[data-theme="dark"] {
+  scrollbar-color: #4a4a4a transparent;
+  scrollbar-width: thin;
+}
+
+/* #Github_Button {
+  background-color: #22222270;
+  color: white;
+  &:hover {
+    background-color: #222222;
+    color: white;
+  }
+}
+
+#Website_Button {
+  color: black;
+  background-color: white;
+  &:hover {
+    background-color: gray;
+    color: white;
+  }
+} */
+h2{
+  @apply text-Text text-xl font-bold mb-1 text-left 
+}
+
+/* Blog post animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating animations for background elements */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(-2deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+}
+
+/* Gradient animation for text */
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+/* Subtle glow animation */
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Drift animation for larger elements */
+@keyframes drift {
+  0% {
+    transform: translateX(-10px) translateY(-5px);
+  }
+  33% {
+    transform: translateX(10px) translateY(-10px);
+  }
+  66% {
+    transform: translateX(-5px) translateY(5px);
+  }
+  100% {
+    transform: translateX(-10px) translateY(-5px);
+  }
+}
+
+/* Custom utility classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 4s ease infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 4s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift 12s ease-in-out infinite;
+}
+
+.grid > div {
+  animation: fadeIn 0.6s ease-out forwards;
+}

@@ -1,7 +1,7 @@
-import {  Globe, Github } from "lucide-react";
+import { Globe, Github } from "lucide-react";
 import ChattyImage from "../../public/Chatty.png";
 import TalkSpaceImage from "../../public/TalkSpace.png";
-import WebScrapingImage from "../../public/Webscraping.png";
+import projectmanagement from "../../public/projectManagementFlutter.png";
 import { IconBrandGithub, IconBrandX, IconFile } from "@tabler/icons-react";
 import { Linkedin } from "lucide-react";
 import PortfolioImage from "../../public/Portfolio.png";
@@ -21,28 +21,32 @@ export const ICONMAPS = [
   },
   { src: IconBrandX, alt: "Twitter", link: "https://x.com/Mawhadmd" },
 ];
+export const CURRENTLYLEARNING = [
+  "Docker",
+  "Next JS Advanced",
+  "Expo | React Native",
+  "JOSE (JSON Web Tokens)",
+  "Building new projects",
+];
 export const SKILLS = [
-  "JavaScript",
   "React",
   "Next.js",
+  "TypeScript",
+  "JavaScript",
   "Node.js",
   "CSS",
   "HTML",
-  "TypeScript",
   "Git",
+  "API Integration",
+  "REST API",
+  "PostgreSQL",
+  "MongoDB",
+  "Python",
   "React Native",
   "Expo",
+  "Docker",
   "PHP",
-  "Python",
-  "API Integration",
-  "MongoDB",
-  "PostgreSQL",
-  "REST API",
 ];
-
-
-
-
 
 export const PROJECTS = [
   {
@@ -51,20 +55,26 @@ export const PROJECTS = [
     dates: "Aug 2024 - Present",
     active: true,
     description: `
-A real-time chat application built with React and Node.js, featuring authentication, secure messaging, and a responsive UI.
+This is a modern chat app that has many features, including authorization, authentication, real-time, image/audio sharing, and more.
 
-### Key Features
-• **WebSockets Integration**: Achieves seamless real-time communication using **Socket.io**.
-• **User Authentication**: Secure login and registration system with JWT-based authentication.
-• **Modern UI**: Built with **Tailwind CSS**, ensuring a clean and intuitive experience.
+I loved the idea of having my own chat app, use it to talk with friends while knowing exactly how each message is reaching the other side. I built a simple chat app back in my junior years using PHP and Ajax, but it wasn't real-time; instead, it was polling every couple of seconds. I consider this an upgrade of that and my most comprehensive project as of July 1, 2025, and I would love to create more projects and applications like this.
+
     `,
-    technologies: ["React.js", "Node.js", "Next.js", "Express.js", "PostgreSQL", "Socket.io", "Tailwind CSS", "Supabase"],
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "Socket.io",
+      "Tailwind CSS",
+      "Supabase",
+    ],
     links: [
       {
         type: "Source",
         href: "https://github.com/Mawhadmd/Chat-App-React",
         icon: <Github />,
-      },  {
+      },
+      {
         type: "Website",
         href: "https://chatty001a.netlify.app/#",
         icon: <Globe />,
@@ -75,17 +85,23 @@ A real-time chat application built with React and Node.js, featuring authenticat
   {
     title: "TalkSpace",
     href: "#",
-    dates: "Jan 2025 - Present",
+    dates: "Jan 2025 - Jan 2025",
     active: true,
     description: `
 A video conferencing app inspired by Zoom, enabling real-time audio, video, and chat functionality.
 
-### Key Features
-• **WebRTC Integration**: Supports high-quality video and audio calls.
-• **Screen Sharing**: Allows users to share their screens during meetings.
-• **Chat & Messaging**: Built-in real-time messaging for enhanced communication.
+
+I was inspired to undertake this project by my previous chat application, Chatty. Surprisingly, this project didn’t take much time (But it took much brain power), and I found it quite enjoyable since it was based on the earlier one. I utilized React for the front end, along with TypeScript, Tailwind CSS, Peer.js, and Express.js (Socket.io) for the back end.
     `,
-    technologies: ["React.js", "Node.js", "Express.js", "WebRTC", "Socket.io", "Tailwind CSS"],
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "WebRTC",
+      "Peer.js",
+      "Socket.io",
+      "Tailwind CSS",
+    ],
     links: [
       {
         type: "Source",
@@ -95,37 +111,40 @@ A video conferencing app inspired by Zoom, enabling real-time audio, video, and 
     ],
     image: TalkSpaceImage,
   },
-  {
-    title: "Amazon Search Web Scraper",
-    href: "#",
-    dates: "2023",
-    active: true,
-    description:
-      "An automation bot built with Python that scrapes data from various websites, processes information, and stores it in a database for analysis.",
-    technologies: ["Python", "Selenium", "BeautifulSoup", "Requests"],
-    links: [
-      {
-        type: "Source",
-        href: "https://github.com/Mawhadmd/Amazon-Scrapper-Selenium",
-        icon: <Github />,
-      },
-    ],
-    image: WebScrapingImage,
-  },
+  // {
+  //   title: "Amazon Search Web Scraper",
+  //   href: "#",
+  //   dates: "2023",
+  //   active: true,
+  //   description:
+  //     "An automation bot built with Python that scrapes data from various websites, processes information, and stores it in a database for analysis.",
+  //   technologies: ["Python", "Selenium", "BeautifulSoup", "Requests"],
+  //   links: [
+  //     {
+  //       type: "Source",
+  //       href: "https://github.com/Mawhadmd/Amazon-Scrapper-Selenium",
+  //       icon: <Github />,
+  //     },
+  //   ],
+  //   image: WebScrapingImage,
+  // },
   {
     title: "Portfolio Website",
     href: "#",
     dates: "Jan 2025 - Present",
     active: true,
     description: `
-A personal portfolio website to showcase my projects, skills, and experience.
-
-### Key Features
-• **Dark & Light Mode**: Fully responsive design with theme toggling.
-• **Smooth Animations**: Utilized **Framer Motion** for seamless user experience.
-• **Custom Design**: Designed with **Aceternity UI** and **Motion Premitives** for a unique look.
+A personal portfolio and a blog to showcase my projects, skills, and experience.
     `,
-    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Aceternity UI", "Motion Premitives" ],
+    technologies: [
+      "Next.js",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Aceternity UI",
+      "Motion Premitives",
+      "Supabase",
+      "Tiptab",
+    ],
     links: [
       {
         type: "Website",
@@ -139,5 +158,30 @@ A personal portfolio website to showcase my projects, skills, and experience.
       },
     ],
     image: PortfolioImage,
+  },
+  {
+    title: "Project Management App (Flutter)",
+    href: "#",
+    dates: "May 2025 - June 2025",
+    active: true,
+    description: `
+This was the final mobile project for my mobile course at university. I used flutter, supabase to create it and it is simple. 
+
+## Main Features
+
+  -Send a Friend request and add friends
+  -Add/remove/edit projects
+  -Add/remove/edit subtasks for the project
+  -Assign friends to each subtask (Was planned)
+    `,
+    technologies: ["Flutter", "Dart", "Supabase", "REST API"],
+    links: [
+      {
+        type: "Source",
+        href: "https://github.com/Mawhadmd/Project-Management-App-Flutter",
+        icon: <Github />,
+      },
+    ],
+    image: projectmanagement,
   },
 ];

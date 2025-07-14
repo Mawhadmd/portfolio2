@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { FiSave, FiX } from "react-icons/fi";
 
 import { Post } from "@/models/posts.database";
-import { SimpleEditor } from "@/components/tiptap-templates/simple/simple-editor";
+import { SimpleEditor } from "@/components/tiptap/tiptap-templates/simple/simple-editor";
 
 export default function PostEditor({
   params,
@@ -114,7 +114,7 @@ export default function PostEditor({
     }
 
     // Find first image src in content
-    const  newThumbnailfetch = await fetch("/api/posts/PreProcessing", {
+    const newThumbnailfetch = await fetch("/api/posts/PreProcessing", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

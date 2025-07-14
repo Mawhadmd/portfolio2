@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "version": "3.3.0",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack -p 5173",
@@ -60,6 +60,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "encoding": "^0.1.13",
     "eslint": "^9.17.0",
     "eslint-config-next": "15.2.1",
     "eslint-plugin-react-hooks": "^5.0.0",
