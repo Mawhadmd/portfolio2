@@ -8,6 +8,7 @@ import ProjectTile from "./ProjectTile";
 import ProjectContainer from "./ProjectContainer";
 import Blurfade from "../ui/Blurfade";
 import { StaticImageData } from "next/image";
+import Link from "next/link";
 
 export type ProjectType = {
   title: string;
@@ -57,6 +58,9 @@ const ProjectsCard = () => {
             </MorphingDialogContainer>
           </MorphingDialog>
         ))}
+      </div>
+      <div className="p-4 bg-Secondary/10 rounded-lg border border-border mt-6">
+        <h2>Upcoming: <Link target="_blank" href="https://github.com/Mawhadmd/personal-finance-app">Personal Finance App</Link></h2>
       </div>
     </>
   );
