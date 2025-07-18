@@ -54,7 +54,7 @@ export function FloatingDock({
       href: "https://docs.google.com/document/d/1P97pfa8Cv2oR2PBpD1QVbEBvM-B2_DTPOjAHs96Fryg/edit?usp=sharing",
     },
     {
-      title: ThemeColor == "dark" ? "Light Mode" : "Dark Mode",
+      title: ThemeColor == "dark" ? "Night" : "Day",
       icon:
         ThemeColor == "dark" ? (
           <IconMoon className="h-full w-full text-neutral-600 dark:text-neutral-300" />

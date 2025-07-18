@@ -48,12 +48,12 @@ const FloatingDockMobile = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={cn("absolute block sm:hidden right-1 bottom-1", className)}>
+    <div className={cn("absolute block w-20  sm:hidden flex flex-col items-center right-1 bottom-1", className)}>
       <AnimatePresence>
         {open && (
           <motion.div
             layoutId="nav"
-            className="absolute bottom-full mb-2 inset-x-0 flex flex-col gap-2"
+            className=" bottom-full mb-2 inset-x-0 flex flex-col gap-2"
           >
             {items.map((item, idx) => (
               <motion.div
@@ -76,9 +76,10 @@ const FloatingDockMobile = ({
                   href={item.href}
                   key={item.title}
                   onClick={item.onClick}
-                  className="h-10 w-10 rounded-full bg-Secondary  flex items-center justify-center"
+                  className="h-10 w-20 flex gap-1 justify-center rounded-full bg-Secondary  flex items-center"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
+                  <div className="text-xs text-Text">{item.title}</div>
                 </Link>
               </motion.div>
             ))}
