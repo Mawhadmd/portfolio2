@@ -21,60 +21,7 @@ export default function PostEditor({
   const [content, setcontent] = useState("");
   const router = useRouter();
 
-  // const editor = useEditor({
-  //   extensions: [
-  //     Youtube,
-  //     StarterKit.configure({
-  //       heading: {
-  //         levels: [1, 2, 3, 4, 5, 6],
-  //       },
-  //       codeBlock: false,
-  //     }),
-  //     TextAlign.configure({
-  //       types: ["heading", "paragraph"],
-  //       alignments: ["left", "center", "right", "justify"],
-  //       defaultAlignment: "left",
-  //     }),
-  //     TiptapImage.configure({
-  //       HTMLAttributes: {
-  //         class: "rounded-lg max-w-full",
-  //       },
-  //       allowBase64: true,
-  //     }),
-  //     Link.configure({
-  //       openOnClick: false,
-  //       HTMLAttributes: {
-  //         class: "text-blue-500 hover:text-blue-400 underline",
-  //       },
-  //     }),
-  //     Underline,
-  //     TextColor.configure({
-  //       types: ["textStyle"],
-  //     }),
-  //     Highlight.configure({
-  //       multicolor: true,
-  //     }),
-  //     TaskList,
-  //     TaskItem.configure({
-  //       nested: true,
-  //     }),
-  //     CodeBlockLowlight.configure({
-  //       lowlight: createLowlight(all),
-  //       HTMLAttributes: {
-  //         class: "rounded-lg bg-Secondary/10 p-4 font-mono text-sm",
-  //       },
-  //     }),
-  //   ],
-  //   content: "",
-  //   editorProps: {
-  //     attributes: {
-  //       class:
-  //         "prose prose-invert max-w-none focus:outline-none min-h-[500px] prose-headings:text-Text prose-p:text-Text prose-strong:text-Text prose-em:text-Text prose-code:text-Accent prose-pre:bg-Secondary/10 prose-pre:text-Text prose-blockquote:text-Muted prose-ul:text-Text prose-ol:text-Text prose-li:text-Text prose-img:rounded-lg prose-img:max-w-full prose-a:text-Accent hover:prose-a:text-Accent/80",
-  //     },
-  //   },
-
-  // });
-
+ 
   useEffect(() => {
     //fetches the post data
     const fetchPost = async () => {

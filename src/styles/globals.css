@@ -39,6 +39,29 @@
   --border: 220 10% 25%;
   --accent: 217 91% 70%;
 }
+
+a{
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+
+
+  &:hover {
+     text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  &:visited {
+    color: purple;
+  }
+ 
+
+}
+
+
 /* #disqus_thread { */
   /* force light mode */
   /* color-scheme: light !important;
@@ -64,7 +87,6 @@
 
 /* For Firefox */
 * {
-  transition: all  ;
   scrollbar-color: #aaa transparent;
   scrollbar-width: thin;
 }

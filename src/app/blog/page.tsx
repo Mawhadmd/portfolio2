@@ -20,7 +20,7 @@ export const metadata = {
   title: "Mohammed Awad - Developer Blog",
   description:
     "Explore the latest articles on web development, programming insights, and technical tutorials.",
-  viewport: "width=device-width, initial-scale=1",
+  
   alternates: {
     canonical: "https://moawad.dev/blog",
   },
@@ -79,7 +79,7 @@ async function blogDashboard() {
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              className="group flex items-center gap-2 px-4 py-2 rounded-xl bg-Secondary/20 hover:bg-Secondary/30 text-Text transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-border/20"
+              className="group flex items-center gap-2 px-4 py-2 rounded-xl bg-Secondary/50 hover:bg-Secondary/30 text-Text transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-border/50 "
               aria-label="Return to portfolio homepage"
             >
               <FiArrowLeft
@@ -142,7 +142,7 @@ async function blogDashboard() {
         {/* Hero Section */}
         <header className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
           <div className="text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-Secondary/20 text-Muted backdrop-blur-sm border border-border/20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-Secondary/50 text-Muted backdrop-blur-sm border border-border/20">
               <FiBookOpen className="w-4 h-4" aria-hidden="true" />
               <span className="text-sm font-medium">Developer Blog</span>
             </div>
