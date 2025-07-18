@@ -23,14 +23,18 @@ export async function POST(req: Request) {
               const fileName = `thumbnails/${Date.now()}-${Math.random()
                 .toString(36)
                 .slice(2)}.png`;
+
               const { data, error } = await supabase.storage
                 .from("postthumbnails")
                 .upload(fileName, file, { upsert: true });
+
               if (error) throw error;
               if (data) {
+                
                 const { data: publicUrlData } = supabase.storage
                   .from("postthumbnails")
                   .getPublicUrl(fileName);
+
                 if (publicUrlData?.publicUrl) {
                   if (!firstUploadedUrl)
                     firstUploadedUrl = publicUrlData.publicUrl;

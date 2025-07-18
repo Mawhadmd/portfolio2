@@ -61,7 +61,7 @@ export default function PostEditor({
     }
 
     // Find first image src in content
-    const newThumbnailfetch = await fetch("/api/posts/PreProcessing", {
+    const newThumbnailfetch = await fetch("/api/posts/PreProcessing", { //This will take the content and process (upload images, replace URLS, and return the link for the thumbnail)
       method: "POST",
       headers: {
         "Content-Type": "application/json",
