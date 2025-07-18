@@ -80,7 +80,7 @@ export default async function PostPage({
   return (
    
       <div
-        className="min-h-screen w-full xl:w-2/3 mx-auto flex flex-col"
+        className=" min-h-screen w-full xl:w-2/3 mx-auto flex flex-col"
         role="main"
       >
         {/* Navigation Button */}

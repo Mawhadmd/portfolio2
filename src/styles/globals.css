@@ -33,14 +33,14 @@
 }
 [data-theme="dark"] {
   --Primary: 0 0% 0%;
-  --Secondary: 0 0% 20%;
+  --Secondary: 0 0% 10%;
   --Text: 0 0% 100%;
   --Muted: 0 0% 100% / 0.6;
   --border: 220 10% 25%;
   --accent: 217 91% 70%;
 }
 
-a{
+.StyledLinks a{
   color: var(--color-accent);
   text-decoration: none;
   transition: color 0.3s ease-in-out;

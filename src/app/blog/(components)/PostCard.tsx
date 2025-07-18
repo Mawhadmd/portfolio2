@@ -43,7 +43,7 @@ const PostCard: React.FC<Post> = ({
         <h2 className="text-xl font-semibold text-Text mb-2 line-clamp-2">
           {title}
         </h2></Link>
-        <HtmlRenderer classname={"text-Muted mb-4 line-clamp-3"} html={content}/>
+        <HtmlRenderer classname={"text-Muted mb-4 line-clamp-3"} html={content} noimage={true}/>
 
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">

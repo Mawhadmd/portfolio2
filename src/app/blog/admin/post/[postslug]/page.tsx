@@ -36,7 +36,7 @@ export default async function PostPage({
   return (
     <>
  
-        <div className="min-h-screen w-full xl:w-2/3 mx-auto flex flex-col">
+        <div className=" min-h-screen w-full xl:w-2/3 mx-auto flex flex-col">
           {/* Navigation Button */}
           <BlogNavigation
             href="/blog/admin/panel"
