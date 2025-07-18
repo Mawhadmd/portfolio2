@@ -96,6 +96,7 @@ export default async function PostPage({
             title={post.title}
             createdAt={post.created_at.toString()}
             category={post.category}
+            HTMLcontent={post.content}
           />
 
           {/* Article Content */}
