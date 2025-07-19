@@ -26,9 +26,6 @@ async function getPost(slug: string): Promise<Post | null> {
 }
 
 import { Metadata } from "next";
-
-
-
 import Link from "next/link";
 import DisqusComments from "./disqus";
 
@@ -107,7 +104,7 @@ export async function generateMetadata({
       },
     },
   };
-  console.log("Generated metadata:", metadata);
+
   return metadata;
 }
 

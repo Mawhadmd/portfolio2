@@ -7,6 +7,8 @@
   --color-Muted: hsl(var(--Muted));
   --color-border: hsl(var(--border));
   --color-accent: hsl(var(--accent));
+   --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Roboto', sans-serif;
 }
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 [data-youtube-video] {
@@ -30,6 +32,7 @@
   --Muted: 0 0% 0% / 0.6;
   --border: 220 10% 75%;
   --accent: 217 91% 60%;
+ 
 }
 [data-theme="dark"] {
   --Primary: 0 0% 0%;
