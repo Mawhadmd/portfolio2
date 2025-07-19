@@ -40,14 +40,13 @@
   --accent: 217 91% 70%;
 }
 
-.StyledLinks a{
+.StyledLinks a {
   color: var(--color-accent);
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 
-
   &:hover {
-     text-decoration: underline;
+    text-decoration: underline;
   }
 
   &:focus {
@@ -57,27 +56,6 @@
   &:visited {
     color: purple;
   }
- 
-
-}
-
-
-/* #disqus_thread { */
-  /* force light mode */
-  /* color-scheme: light !important;
-  filter: none;
-  background-color: white;
-} */
-
-/* If you switch your site to dark mode, keep forcing “light” inside the iframe */
-/* [data-theme="dark"] #disqus_thread {
-  color-scheme: light !important;
-  color: white !important;
-  background-color: black !important;
-} */
-
-* ::-webkit-scrollbar {
-  width: 8px;
 }
 
 * ::-webkit-scrollbar-thumb {
@@ -123,8 +101,8 @@
     color: white;
   }
 } */
-h2{
-  @apply text-Text text-xl font-bold mb-1 text-left 
+h2 {
+  @apply text-Text text-xl font-bold mb-1 text-left;
 }
 
 /* Blog post animations */

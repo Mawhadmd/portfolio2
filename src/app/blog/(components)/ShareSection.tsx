@@ -7,7 +7,7 @@ interface ShareSectionProps {
 
 export default function ShareSection({
   title,
-  className = "mt-12 pt-8 border-t border-border",
+  className,
 }: ShareSectionProps) {
   return (
     <> 

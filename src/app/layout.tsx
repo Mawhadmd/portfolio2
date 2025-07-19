@@ -41,7 +41,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${montserrat.className} antialiased h-fit overflow-y-scroll relative `}>
+      <body className={`${montserrat.className} antialiased h-fit overflow-y-scroll relative text-Text bg-Primary `}>
         <Suspense>
           <NProgressProvider>{children}</NProgressProvider>
         </Suspense>

@@ -1,21 +1,34 @@
-'use client'
+"use client";
+import React from "react";
 
 import { Post } from "@/models/posts.database";
-import {DiscussionEmbed} from "disqus-react"; // changed this line
+import { DiscussionEmbed } from "disqus-react";
+import { themeContext } from "@/context/themeContext";
+export default function DisqusComments({ post }: { post: Post }) {
 
-export default function DisqusComments({ post }: {post:Post}) {
-const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const {theme} = React.useContext(themeContext);
+
+
+  const baseUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://moawad.dev";
 
   const disqusConfig = {
-    url: pageUrl,
+    url: `${baseUrl}/blog/${post.slug}`,
     identifier: post.slug,
     title: post.title,
   };
-
+  console.log(theme, disqusConfig);
   return (
-       <div className="disqus-container">
-        <DiscussionEmbed shortname="moawad" config={disqusConfig} />
-       </div>
-
+    <>
+      
+        <DiscussionEmbed
+          key={theme}
+          shortname="moawad"
+          config={disqusConfig}
+        />
+      
+    </>
   );
 }

@@ -84,7 +84,7 @@ export default function ArticleHeader({
           aria-label="Author information"
         >
           <FiUser className="h-4 w-4" aria-hidden="true" />
-          <span>{author}</span>
+          <span>By {author}</span>
         </div>
       
         {category && (

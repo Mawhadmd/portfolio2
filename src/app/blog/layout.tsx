@@ -3,13 +3,16 @@
 import { FiSun, FiMoon } from "react-icons/fi";
 import { useEffect, useState,  } from "react";
 import ThemeControl from "@/lib/ThemeControl";
+import React from "react";
+import { themeContext } from "@/context/themeContext";
+
 
 export default function BlogLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState<"light" | "dark">();
+  const [theme, setTheme] = useState<"light" | "dark">('dark');
   useEffect(() => {
     setTheme(ThemeControl())
   }, []);
@@ -20,7 +23,9 @@ export default function BlogLayout({
 
   return (
     <div className="min-h-screen bg-Primary ">
+      <themeContext.Provider value={{ theme, toggleTheme }}>
       {children}
+      </themeContext.Provider>
 
       {/* Theme Toggle Button */}
       <button

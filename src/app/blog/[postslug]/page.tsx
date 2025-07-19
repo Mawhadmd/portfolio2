@@ -27,6 +27,11 @@ async function getPost(slug: string): Promise<Post | null> {
 
 import { Metadata } from "next";
 
+
+
+import Link from "next/link";
+import DisqusComments from "./disqus";
+
 export async function generateMetadata({
   params: paramsPromise,
 }: {
@@ -84,9 +89,7 @@ export async function generateMetadata({
       publishedTime,
       authors: ["Mohammed Awad"],
       section: post.category,
-      tags: post.category
-        ? [post.category]
-        : undefined,
+      tags: post.category ? [post.category] : undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -103,7 +106,7 @@ export async function generateMetadata({
         follow: post.status === "published",
       },
     },
-  }
+  };
   console.log("Generated metadata:", metadata);
   return metadata;
 }
@@ -148,23 +151,26 @@ export default async function PostPage({
 
         {/* Article Content */}
         <ArticleContent content={post.content} />
-
+<hr className="text-Text"/>
         {/* Share Section */}
-        <ShareSection title={post.title} />
-
+        <div className="text-Muted  my-12 flex flex-col items-center w-full ">
+          <ShareSection title={post.title} />
+          <div>OR</div>
+          <div >
+            <Link href="/blog">Back to the Home Page</Link>
+          </div>
+        </div>
+        <hr className="text-Text" />
         {/* Comments Section */}
-        {/* <section
-            className="mt-12"
-            role="region"
-            aria-label="Article comments and discussion"
-          >
-            <h2 className="text-2xl font-bold text-Text mb-6">
-              Comments & Discussion
-            </h2>
-            <div role="group" aria-label="Disqus comments widget">
-              <DisqusComments post={post} />
-            </div>
-          </section> */}
+        <section
+          className="mt-12"
+          role="region"
+          aria-label="Article comments and discussion"
+        >
+       
+           {  <DisqusComments post={post} />}
+          
+        </section>
       </ArticleContainer>
     </div>
   );
