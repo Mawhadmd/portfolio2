@@ -1,11 +1,11 @@
 import "@/styles/globals.css"
-import {  Roboto } from "next/font/google";
+import {  Montserrat } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Suspense } from "react";
 import NProgressProvider from "../components/NProgressProvider";
 
 
-const roboto = Roboto({
+const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
 });
@@ -42,7 +42,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${roboto.className} antialiased h-fit overflow-y-scroll relative text-Text bg-Primary `}>
+      <body className={`${montserrat.className} antialiased h-fit overflow-y-scroll relative text-Text bg-Primary `}>
         <Suspense>
           <NProgressProvider>{children}</NProgressProvider>
         </Suspense>
