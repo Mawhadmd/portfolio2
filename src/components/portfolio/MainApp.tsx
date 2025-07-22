@@ -13,6 +13,9 @@ import CoolBackgroundElements from "./components/ui/CoolBackgroundElements";
 import CurrentlyLearning from "./components/CurrentlyLearning";
 import PortfolioFooter from "./components/PortfolioFooter";
 import { DistortedGlass } from "./components/ui/Distorted_Glass";
+import { ShootingStars } from "@/portfolio/components/ui/shooting-stars";
+import { StarsBackground } from "@/portfolio/components/ui/stars-background";
+
 
 export type Themetype = "light" | "dark" | "";
 
@@ -22,13 +25,14 @@ const App = () => {
   return (
     <>
       
-  
+    
         <DistortedGlass />
  
       <div className="min-h-screen bg-Primary relative overflow-hidden sm:mt-20">
         {/* Animated Background Elements */}
         <CoolBackgroundElements />
-
+        <ShootingStars />
+        <StarsBackground />
         {/* Subtle gradient overlay */}
         <div
           className="absolute inset-0 bg-gradient-to-br from-transparent via-Secondary/5 to-Secondary/10 pointer-events-none"
@@ -57,6 +61,7 @@ const App = () => {
                   aria-label="Currently playing music"
                 >
                   <SpotifyWidget ThemeColor={ThemeColor} />
+             
                 </div>
               </Blurfade>
             </section>
