@@ -28,17 +28,7 @@ const AdminPostCard: React.FC<AdminPostCardProps> = ({ post }) => {
         </div>
         <div className="flex items-center gap-2">
           <button
-            onClick={async () => {
-              const response = await fetch(`/api/posts/slug/${post.slug}`, {
-                method: "GET",
-              });
-              if (response.ok) {
-                const data = await response.json();
-                window.open(`/blog/admin/post/${data.slug}`, "_blank");
-              } else {
-                console.error("Failed to fetch post");
-              }
-            }}
+            onClick={async () => window.open(`/blog/admin/post/${post.slug}`, "_blank")}
             type="submit"
             className="p-2 cursor-pointer text-Muted hover:text-Text transition-colors"
             title="View Post"

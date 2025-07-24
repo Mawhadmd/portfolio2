@@ -1,7 +1,9 @@
 import { supabase } from "@/lib/supabase";
 
 // This should be an async function, and content should be provided (e.g. from req body or query)
-export async function POST(req: Request) {
+export async function POST(req: Request) { 
+  // This endpoint processes HTML content, uploads images to Supabase, and returns the modified content
+  // It also generates a thumbnail URL from the first uploaded image and returns it as the thumbnail
   try {
     const { content } = await req.json();
     let modifiedContent = content;

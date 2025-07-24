@@ -1,6 +1,6 @@
 import PostCard from "./(components)/PostCard";
 import {
-  FiSearch,
+
   FiArrowLeft,
   FiMail,
   FiGithub,
@@ -9,7 +9,7 @@ import {
   FiBookOpen,
   FiCode,
   FiZap,
-  FiHeart,
+
 } from "react-icons/fi";
 import Link from "next/link";
 import { Post } from "@/models/posts.database";
@@ -72,7 +72,7 @@ async function blogDashboard() {
 
         {/* Navigation Bar */}
         <nav
-          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8"
+          className="relative z-10 max-w-7xl mb-10 mx-auto px-4 sm:px-6 lg:px-8 pt-8"
           role="navigation"
           aria-label="Main navigation"
         >
@@ -139,8 +139,8 @@ async function blogDashboard() {
           </div>
         </nav>
 
-        {/* Hero Section */}
-        <header className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+  
+        {/* <header className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
           <div className="text-center space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-Secondary/50 text-Muted backdrop-blur-sm border border-border/20">
               <FiBookOpen className="w-4 h-4" aria-hidden="true" />
@@ -164,7 +164,7 @@ async function blogDashboard() {
               technical deep dives
             </p>
 
-            {/* Stats */}
+      
             <div
               className="flex items-center justify-center pt-8"
               role="region"
@@ -183,7 +183,7 @@ async function blogDashboard() {
           </div>
         </header>
 
-        {/* Search Section */}
+     
         <div
           className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12"
           role="search"
@@ -223,7 +223,7 @@ async function blogDashboard() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Blog Posts Section */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
@@ -232,7 +232,7 @@ async function blogDashboard() {
               Latest Articles
             </h2>
             <p className="text-Muted">
-              Stay updated with the latest trends and insights
+              Stay updated with my latest insights and blogs
             </p>
           </div>
 
@@ -302,9 +302,9 @@ async function blogDashboard() {
             <div className="absolute top-0 right-1/3 w-24 h-24 bg-Secondary/10 rounded-full blur-xl"></div>
           </div>
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="space-y-4">
+          <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className=" flex gap-8 justify-center" >
+              <div className="space-y-4 flex-1">
                 <h3 className="text-lg font-semibold text-Text">
                   About This Blog
                 </h3>
@@ -326,7 +326,7 @@ async function blogDashboard() {
                   </span>
                 </div>
               </div>
-
+{/* 
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-Text">Categories</h3>
                 <div
@@ -355,7 +355,7 @@ async function blogDashboard() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-Text">Connect</h3>

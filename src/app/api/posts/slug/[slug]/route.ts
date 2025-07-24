@@ -1,5 +1,6 @@
-import { Post } from "./../../../../../models/posts.database";
+
 import { supabase } from "@/lib/supabase";
+import { Post } from "@/models/posts.database";
 import { NextResponse } from "next/server";
 
 export async function GET(
