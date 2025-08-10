@@ -1,26 +1,26 @@
-import PostCard from "./(components)/PostCard";
-import {
 
+import { Suspense } from 'react';
+
+import {
   FiArrowLeft,
   FiMail,
   FiGithub,
   FiLinkedin,
   FiTwitter,
-  FiBookOpen,
+
   FiCode,
   FiZap,
-
 } from "react-icons/fi";
-import Link from "next/link";
-import { Post } from "@/models/posts.database";
-import { headers } from "next/headers";
 import { MdAdminPanelSettings } from "react-icons/md";
+import Link from "next/link";
+import BlogPostsList from "./blogPostsList";
+import Loading from "./loading";
 
 export const metadata = {
   title: "Mohammed Awad - Developer Blog",
   description:
     "Explore the latest articles on web development, programming insights, and technical tutorials.",
-  
+
   alternates: {
     canonical: "https://moawad.dev/blog",
   },
@@ -34,11 +34,6 @@ export const metadata = {
 };
 
 async function blogDashboard() {
-  const host = (await headers()).get("host");
-  const res = await fetch(`http://${host}/api/posts?status=published`, {
-    cache: "no-store",
-  });
-  const posts = await res.json();
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-Primary via-Primary to-Secondary/10 relative overflow-hidden">
@@ -139,7 +134,6 @@ async function blogDashboard() {
           </div>
         </nav>
 
-  
         {/* <header className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
           <div className="text-center space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-Secondary/50 text-Muted backdrop-blur-sm border border-border/20">
@@ -235,57 +229,10 @@ async function blogDashboard() {
               Stay updated with my latest insights and blogs
             </p>
           </div>
-
-          <div
-            className={`${
-              posts.length > 0
-                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                : "flex items-center justify-center min-h-[400px]"
-            }`}
-            role="region"
-            aria-label="Blog posts"
-          >
-            {posts.length > 0 ? (
-              posts.map((post: Post, index: number) => (
-                <article
-                  key={post.id}
-                  className="group animate-fadeIn"
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                  }}
-                >
-                  <PostCard
-                    title={post.title}
-                    content={post.content}
-                    id={post.id}
-                    created_at={post.created_at}
-                    thumbnail={post.thumbnail}
-                    status={post.status}
-                    updated_at={new Date(post.created_at.toString())}
-                    category={post.category || "General"}
-                    slug={post.slug}
-                  />
-                </article>
-              ))
-            ) : (
-              <div
-                className="text-center space-y-4"
-                role="status"
-                aria-live="polite"
-              >
-                <div className="w-20 h-20 mx-auto bg-Secondary/20 rounded-full flex items-center justify-center">
-                  <FiBookOpen className="w-8 h-8 text-Muted" />
-                </div>
-                <h3 className="text-2xl font-semibold text-Text">
-                  No articles yet
-                </h3>
-                <p className="text-Muted max-w-md">
-                  We&apos;re working on some amazing content. Check back soon
-                  for insightful articles and tutorials!
-                </p>
-              </div>
-            )}
-          </div>
+        
+          <Suspense fallback={<Loading/>}>
+          <BlogPostsList/>
+          </Suspense>
         </main>
 
         {/* Footer */}
@@ -303,7 +250,7 @@ async function blogDashboard() {
           </div>
 
           <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className=" flex gap-8 justify-center" >
+            <div className=" flex gap-8 justify-center">
               <div className="space-y-4 flex-1">
                 <h3 className="text-lg font-semibold text-Text">
                   About This Blog
@@ -326,7 +273,7 @@ async function blogDashboard() {
                   </span>
                 </div>
               </div>
-{/* 
+              {/* 
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-Text">Categories</h3>
                 <div
