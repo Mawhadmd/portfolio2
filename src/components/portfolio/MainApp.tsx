@@ -15,7 +15,7 @@ import PortfolioFooter from "./components/PortfolioFooter";
 import { DistortedGlass } from "./components/ui/Distorted_Glass";
 import { ShootingStars } from "@/portfolio/components/ui/shooting-stars";
 import { StarsBackground } from "@/portfolio/components/ui/stars-background";
-
+import ContactForm from "./components/contactForm/ContactForm";
 
 export type Themetype = "light" | "dark" | "";
 
@@ -24,10 +24,8 @@ const App = () => {
 
   return (
     <>
-      
-    
-        <DistortedGlass />
- 
+      <DistortedGlass />
+
       <div className="min-h-screen bg-Primary relative overflow-hidden sm:mt-20">
         {/* Animated Background Elements */}
         <CoolBackgroundElements />
@@ -61,7 +59,6 @@ const App = () => {
                   aria-label="Currently playing music"
                 >
                   <SpotifyWidget ThemeColor={ThemeColor} />
-             
                 </div>
               </Blurfade>
             </section>
@@ -69,7 +66,11 @@ const App = () => {
 
           {/* Skills Section */}
           <Blurfade delay={0.2}>
-            <section className="w-full" id="projects" aria-labelledby="skills-section">
+            <section
+              className="w-full"
+              id="projects"
+              aria-labelledby="skills-section"
+            >
               <h2 id="skills-section" className="sr-only">
                 Technical Skills and Expertise
               </h2>
@@ -102,8 +103,10 @@ const App = () => {
               {/* TODO maybe add an interactive button */}
             </section>
           </Blurfade>
+          <Blurfade delay={0.4}>
+            <ContactForm />
+          </Blurfade>
         </main>
-
         {/* Portfolio Footer */}
         <PortfolioFooter></PortfolioFooter>
         {/* Floating Navigation Dock */}

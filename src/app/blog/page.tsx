@@ -1,5 +1,4 @@
-
-import { Suspense } from 'react';
+import { Suspense } from "react";
 
 import {
   FiArrowLeft,
@@ -7,14 +6,13 @@ import {
   FiGithub,
   FiLinkedin,
   FiTwitter,
-
   FiCode,
   FiZap,
 } from "react-icons/fi";
 import { MdAdminPanelSettings } from "react-icons/md";
 import Link from "next/link";
-import BlogPostsList from "./blogPostsList";
-import Loading from "./loading";
+import BlogPostsList from "./(blogPostsLists)/blogPostsList";
+import Loading from "./(blogPostsLists)/loading";
 
 export const metadata = {
   title: "Mohammed Awad - Developer Blog",
@@ -229,9 +227,9 @@ async function blogDashboard() {
               Stay updated with my latest insights and blogs
             </p>
           </div>
-        
-          <Suspense fallback={<Loading/>}>
-          <BlogPostsList/>
+
+          <Suspense fallback={<Loading />}>
+            <BlogPostsList />
           </Suspense>
         </main>
 
