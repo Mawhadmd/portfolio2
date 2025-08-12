@@ -7,7 +7,7 @@ export async function GET() {
   const slugs = (
     await supabase.from("posts").select("slug").eq("status", 'published')
   );
-  console.log(slugs)
+
   if (!slugs.data) {
     return new Response(
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>',

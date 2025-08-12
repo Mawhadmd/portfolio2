@@ -1,33 +1,9 @@
-import { Post } from "@/models/posts.database";
-import { supabase } from "@/lib/supabase";
-import ErrorPage from "./ErrorPage";
-import {
-  BlogNavigation,
-  HeroSection,
-  ArticleContainer,
-  ArticleHeader,
-  ArticleContent,
-  ShareSection,
-} from "../(components)";
-
-async function getPost(slug: string): Promise<Post | null> {
-  const { data, error } = await supabase
-    .from("posts")
-    .select()
-    .eq("slug", slug)
-    .single();
-
-  if (error || !data) {
-    console.log(data);
-    console.log(error);
-    return null;
-  }
-  return data as Post;
-}
-
+import { BlogNavigation, HeroSection, ArticleContainer } from "../(components)";
 import { Metadata } from "next";
-import Link from "next/link";
-import DisqusComments from "./disqus";
+import Article from "./(Article)/Article";
+import { getPost } from "./getPost";
+import { Suspense } from "react";
+import Loading from "./(Article)/loading";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -113,18 +89,6 @@ export default async function PostPage({
 }: {
   params: Promise<{ postslug: string }>;
 }) {
-  const params = await paramsPromise;
-  const postslug = params?.postslug;
-  console.log(postslug);
-  const post = await getPost(postslug);
-
-  if (!post) {
-    console.log("Couldn't find page", post);
-    return <ErrorPage ErrorType={"NotFound"} />;
-  } else if (post.status !== "published") {
-    return <ErrorPage ErrorType={"isDraft"} />;
-  }
-
   return (
     <div
       className=" min-h-screen w-full xl:w-2/3 mx-auto flex flex-col"
@@ -138,36 +102,9 @@ export default async function PostPage({
 
       {/* Content Container */}
       <ArticleContainer>
-        {/* Article Header */}
-        <ArticleHeader
-          title={post.title}
-          createdAt={post.created_at.toString()}
-          category={post.category}
-          HTMLcontent={post.content}
-        />
-
-        {/* Article Content */}
-        <ArticleContent content={post.content} />
-<hr className="text-Text"/>
-        {/* Share Section */}
-        <div className="text-Muted  my-12 flex flex-col items-center w-full ">
-          <ShareSection title={post.title} />
-          <div>OR</div>
-          <div >
-            <Link href="/blog">Back to the Home Page</Link>
-          </div>
-        </div>
-        <hr className="text-Text" />
-        {/* Comments Section */}
-        <section
-          className="mt-12"
-          role="region"
-          aria-label="Article comments and discussion"
-        >
-       
-           {  <DisqusComments post={post} />}
-          
-        </section>
+        <Suspense fallback={<Loading />}>
+         <Article params={paramsPromise}/>
+        </Suspense>
       </ArticleContainer>
     </div>
   );

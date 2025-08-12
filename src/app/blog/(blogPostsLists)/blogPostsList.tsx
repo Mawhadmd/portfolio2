@@ -6,9 +6,7 @@ import { PostCard } from "../(components)";
 const BlogPostsList = async () => {
   const res = await fetch(
     `http://${process.env.NEXT_PUBLIC_BASE_URL}/api/posts?status=published`,
-    {
-      cache: "no-store",
-    }
+
   );
 
   const posts = await res.json();

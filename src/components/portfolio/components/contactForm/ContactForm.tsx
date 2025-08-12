@@ -72,20 +72,20 @@ const ContactForm = () => {
         </div>
           <div className="flex gap-2">
              {state?.success && (
-        <div className="flex justify-center items-center p-3 w-full bg-green-500/20 border border-green-500/50 rounded-lg text-green-400">
+        <div className="flex justify-center items-center p-3 w-full bg-green-500/20 border border-green-500/50 rounded-lg ">
           Message sent successfully!
         </div>
       )}
 
       {state?.error && (
-        <div className="flex justify-center items-center p-3 w-full bg-red-500/20 border border-red-500/50 rounded-lg text-red-400">
+        <div className="flex justify-center items-center p-3 w-full bg-red-500/20 border border-red-500/50 rounded-lg ">
           {state.error}
         </div>
       )}
             <button
             type="submit"
             disabled={loading}
-            className="w-1/2 overflow-hidden ml-auto block rounded-xl text-Text ansition-all group cursor-pointer relative disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-1/2 overflow-hidden ml-auto block h-12 p-2.5 rounded-xl text-Text ansition-all group cursor-pointer relative disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <motion.div className="absolute -z-10 bg-accent inset-0 bottom-[80%] blur transition-all group-hover:bottom-0 group-hover:blur-xs "></motion.div>
             {loading ? "Sending..." : "Send Message"}
