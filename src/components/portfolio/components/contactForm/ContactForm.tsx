@@ -2,7 +2,6 @@
 import React from "react";
 import handleSubmit from "./handleSubmit";
 import { useActionState } from "react";
-import { motion } from "motion/react";
 
 const ContactForm = () => {
   const [state, action, loading] = useActionState(handleSubmit, {
