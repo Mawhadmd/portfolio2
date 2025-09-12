@@ -7,7 +7,10 @@ import { Linkedin } from "lucide-react";
 import PortfolioImage from "@/public/Portfolio.png";
 
 export const title = "Next.js Developer | Full-Stack Developer";
-export const description = `- idiot with access to computers`;
+export const description = `
+- idiot with access to computers<br/>
+- TypeScript
+`;
 
 
 export const TokenExpireDays = 30;
