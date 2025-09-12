@@ -1,4 +1,4 @@
-import { PROJECTS } from "../../../../lib/constants";
+import { PROJECTS } from "../../../../constants";
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -59,10 +59,19 @@ const ProjectsCard = () => {
           </MorphingDialog>
         ))}
       </div>
-       <Blurfade>
-      <div className="StyledLinks p-4 bg-Secondary/10 rounded-lg border border-border mt-6">
-        <h2>Upcoming: <Link target="_blank" href="https://github.com/Mawhadmd/personal-finance-app">Personal Finance App</Link></h2>
-      </div> </Blurfade>
+      <Blurfade>
+        <div className="StyledLinks p-4 bg-Secondary/10 rounded-lg border border-border mt-6">
+          <h2>
+            Upcoming:{" "}
+            <Link
+              target="_blank"
+              href="https://github.com/Mawhadmd/personal-finance-app"
+            >
+              Personal Finance App
+            </Link>
+          </h2>
+        </div>{" "}
+      </Blurfade>
     </>
   );
 };

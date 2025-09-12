@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FiLock } from "react-icons/fi";
-import { TokenExpireDays } from "@/lib/constants";
+import { TokenExpireDays } from "@/constants";
 
 export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 

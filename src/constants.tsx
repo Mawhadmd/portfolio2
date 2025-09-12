@@ -1,10 +1,14 @@
 import { Globe, Github } from "lucide-react";
-import ChattyImage from "../../public/Chatty.png";
-import TalkSpaceImage from "../../public/TalkSpace.png";
-import projectmanagement from "../../public/projectManagementFlutter.png";
+import ChattyImage from "@/public/Chatty.png";
+import TalkSpaceImage from "@/public/TalkSpace.png";
+import projectmanagement from "@/public/projectManagementFlutter.png";
 import { IconBrandGithub, IconBrandX, IconFile } from "@tabler/icons-react";
 import { Linkedin } from "lucide-react";
-import PortfolioImage from "../../public/Portfolio.png";
+import PortfolioImage from "@/public/Portfolio.png";
+
+export const title = "Next.js Developer | Full-Stack Developer";
+export const description = `- idiot with access to computers`;
+
 
 export const TokenExpireDays = 30;
 export const ICONMAPS = [
@@ -21,13 +25,11 @@ export const ICONMAPS = [
   },
   { src: IconBrandX, alt: "Twitter", link: "https://x.com/Mawhadmd" },
 ];
+
 export const CURRENTLYLEARNING = [
-  "Docker",
-  "Next JS Advanced",
-  "Expo | React Native",
-  "JOSE (JSON Web Tokens)",
-  "Building new projects",
+  "Life"
 ];
+
 export const SKILLS = [
   "React",
   "Next.js",

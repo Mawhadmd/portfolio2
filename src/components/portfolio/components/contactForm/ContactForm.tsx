@@ -85,9 +85,9 @@ const ContactForm = () => {
             <button
             type="submit"
             disabled={loading}
-            className="w-1/2 overflow-hidden ml-auto block h-12 p-2.5 rounded-xl text-Text ansition-all group cursor-pointer relative disabled:opacity-50 disabled:cursor-not-allowed"
+            className="metallic-button font-medium ml-auto"
           >
-            <motion.div className="absolute -z-10 bg-accent inset-0 bottom-[80%] blur transition-all group-hover:bottom-0 group-hover:blur-xs "></motion.div>
+            {/* <motion.div className="absolute -z-10 bg-accent inset-0 bottom-[80%] blur transition-all group-hover:bottom-0 group-hover:blur-xs "></motion.div> */}
             {loading ? "Sending..." : "Send Message"}
           </button>
           </div>
