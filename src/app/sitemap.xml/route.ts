@@ -3,6 +3,10 @@ import { supabase } from "@/lib/supabase";
 import { SitemapStream, streamToPromise } from "sitemap";
 import { Readable } from "stream";
 
+// Generated at request time — it queries Supabase, so it must not be
+// statically prerendered during the build.
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const slugs = (
     await supabase.from("posts").select("slug").eq("status", 'published')

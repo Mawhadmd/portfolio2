@@ -20,7 +20,6 @@ const Article = async ({
   const post = await getPost(postslug);
 
   if (!post) {
-    console.log("Couldn't find page", post);
     return <ErrorPage ErrorType={"NotFound"} />;
   } else if (post.status !== "published") {
     return <ErrorPage ErrorType={"isDraft"} />;

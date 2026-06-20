@@ -2,13 +2,10 @@ import { Post } from "@/models/posts.database";
 import React from "react";
 import { FiBookOpen } from "react-icons/fi";
 import { PostCard } from "../(components)";
+import { getPosts } from "@/lib/posts";
 
 const BlogPostsList = async () => {
-  const res = await fetch(
-    `http://${process.env.NEXT_PUBLIC_BASE_URL}/api/posts?status=published`,
-  );
-
-  const posts = await res.json();
+  const posts = await getPosts("published");
 
   return (
     <div

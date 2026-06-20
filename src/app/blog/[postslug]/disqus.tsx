@@ -19,7 +19,6 @@ export default function DisqusComments({ post }: { post: Post }) {
     identifier: post.slug,
     title: post.title,
   };
-  console.log(theme, disqusConfig);
   return (
     <>
       

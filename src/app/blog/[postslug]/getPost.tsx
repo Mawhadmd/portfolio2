@@ -9,8 +9,6 @@ export async function getPost(slug: string): Promise<Post | null> {
     .single();
 
   if (error || !data) {
-    console.log(data);
-    console.log(error);
     return null;
   }
   return data as Post;

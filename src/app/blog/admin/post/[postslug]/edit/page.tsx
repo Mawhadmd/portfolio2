@@ -25,14 +25,12 @@ export default function PostEditor({
   useEffect(() => {
     //fetches the post data
     const fetchPost = async () => {
-      console.log("Fetching post with slug:", (await params).postslug);
       try {
         const response = await fetch(
           `/api/posts/slug/${(await params).postslug}`
         );
         if (!response.ok) throw new Error("Failed to fetch post");
         const post: Post = await response.json();
-        console.log("Fetched post:", post);
         setTitle(post.title);
         setCategory(post.category);
         setThumbnail(post.thumbnail ?? "");

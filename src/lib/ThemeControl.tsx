@@ -25,7 +25,6 @@ function toggleTheme(currentTheme: Theme): Theme {
 
 export default function ThemeControl(ToggleTheme?: boolean): Theme {
   let theme = getStoredTheme();
-  console.log("Current theme:", theme);
   if (!theme) {
     theme = getPreferredTheme();
     setTheme(theme);

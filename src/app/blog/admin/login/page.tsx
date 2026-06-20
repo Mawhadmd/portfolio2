@@ -32,7 +32,7 @@ export default function AdminLogin() {
         setError("Incorrect password. Try again.");
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       setError("An error occurred. Please try again.");
     }
   };

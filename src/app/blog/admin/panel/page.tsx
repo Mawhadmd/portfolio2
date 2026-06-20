@@ -1,17 +1,14 @@
 import { Post } from "@/models/posts.database";
 
-import { headers } from "next/headers";
 import AdminPanelButtons from "./AdminPanelButtons";
 import AdminPostCard from "./AdminPostCard";
+import { getPosts } from "@/lib/posts";
+
+// Auth-gated dashboard backed by live Supabase data — never prerender it.
+export const dynamic = "force-dynamic";
 
 export default async function AdminPanel() {
-  const headersList = await headers();
-  const host = headersList.get("host");
-  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-
-  const data: Post[] = await (
-    await fetch(`${protocol}://${host}/api/posts?status=all`)
-  ).json();
+  const data: Post[] = await getPosts("all");
 
   return (
     <div className="min-h-screen bg-Primary p-8">

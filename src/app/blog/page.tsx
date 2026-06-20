@@ -14,6 +14,10 @@ import Link from "next/link";
 import BlogPostsList from "./(blogPostsLists)/blogPostsList";
 import Loading from "./(blogPostsLists)/loading";
 
+// Renders per-request: the post list comes from Supabase, so this page should
+// not be statically prerendered at build time.
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Mohammed Awad - Developer Blog",
   description:

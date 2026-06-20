@@ -11,7 +11,7 @@ const handleSubmit = async (
 
   try
   {
-  schema.safeParse({email, name, message});
+  schema.parse({email, name, message});
 
 const transporter = createTransport({
   service: "gmail",
@@ -37,10 +37,10 @@ const transporter = createTransport({
     });
 
     console.log("Email sent: " + info.response);
-    
+
     return { success: true, error: null};
   } catch (error) {
-    console.log("Email error:", error);
+    console.error("Email error:", error);
     return { error: "Failed to send verification email.", success: false};
   }
 
