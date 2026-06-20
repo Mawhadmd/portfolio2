@@ -1,0 +1,24 @@
+name: CI
+
+# Lint + build check only. Deployment is handled by Netlify's native Git
+# integration (which runs its own production build on push to main), so this
+# workflow does not deploy — it just catches breakage before/at merge.
+#
+# The build needs no secrets: all data fetching happens at request time.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
