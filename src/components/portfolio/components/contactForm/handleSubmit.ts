@@ -30,9 +30,9 @@ const transporter = createTransport({
 
   try {
     const info = await transporter.sendMail({
-      from: '"PFinance Team" <mohammedbus13@gmail.com>',
-      to: "mohammedbus13@gmail.com",
-      subject: `Portfolia Contact From ${name}`,
+      from: `"Portfolio Contact" <${process.env.GOOGLE_EMAIL}>`,
+      to: process.env.GOOGLE_EMAIL,
+      subject: `Portfolio contact from ${name}`,
       html: htmlTemplate,
     });
 

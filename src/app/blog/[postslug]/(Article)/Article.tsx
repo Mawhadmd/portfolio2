@@ -7,7 +7,7 @@ import {
 } from "../../(components)";
 import DisqusComments from "../disqus";
 import ErrorPage from "../ErrorPage";
-import { getPost } from "../getPost";
+import { getPost } from "@/lib/posts";
 
 const Article = async ({
   params,

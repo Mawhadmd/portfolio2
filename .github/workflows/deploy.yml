@@ -1,6 +1,10 @@
 name: CI -> CD Pipeline
 
-on: [push]
+# Only deploy to production when main changes. Pushes to other branches
+# still run nothing here (open a PR to get CI on a feature branch if needed).
+on:
+  push:
+    branches: [main]
 
 jobs:
   build-and-deploy:
@@ -13,12 +17,15 @@ jobs:
       SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
-      NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
-      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_EMAIL: ${{ secrets.GOOGLE_EMAIL }}
+      GOOGLE_APP_PASSWORD: ${{ secrets.GOOGLE_APP_PASSWORD }}
     steps:
-      - uses: actions/checkout@v3
-      - run: npm install
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
       - run: npm run lint
       - run: npm run build
       - name: Install Netlify CLI

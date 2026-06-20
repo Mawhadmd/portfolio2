@@ -1,5 +1,4 @@
-import { Post } from "@/models/posts.database";
-import { supabase } from "@/lib/supabase";
+import { getPost } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import { FiHome } from "react-icons/fi";
 import {
@@ -10,18 +9,6 @@ import {
   ArticleContent,
   ShareSection,
 } from "../../../(components)";
-
-
-async function getPost(slug: string): Promise<Post | null> {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("slug", slug)
-    .single();
-
-  if (error || !data) return null;
-  return data as Post;
-}
 
 export default async function PostPage({
   params,

@@ -31,3 +31,21 @@ export async function getPosts(
 
   return (data as Post[]) ?? [];
 }
+
+/**
+ * Fetches a single post by slug directly from Supabase. Returns null when the
+ * post does not exist (or on error).
+ */
+export async function getPost(slug: string): Promise<Post | null> {
+  const { data, error } = await supabase
+    .from("posts")
+    .select("*")
+    .eq("slug", slug)
+    .single();
+
+  if (error || !data) {
+    return null;
+  }
+
+  return data as Post;
+}

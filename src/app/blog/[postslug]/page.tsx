@@ -1,7 +1,7 @@
 import { BlogNavigation, HeroSection, ArticleContainer } from "../(components)";
 import { Metadata } from "next";
 import Article from "./(Article)/Article";
-import { getPost } from "./getPost";
+import { getPost } from "@/lib/posts";
 import { Suspense } from "react";
 import Loading from "./(Article)/loading";
 
