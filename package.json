@@ -38,7 +38,7 @@
     "lucide-react": "^0.475.0",
     "motion": "^12.4.10",
     "next": "^15.3.3",
-    "nodemailer": "^7.0.5",
+    "nodemailer": "^9.0.1",
     "nprogress": "^0.2.0",
     "postcss": "^8.5.4",
     "react": "^19.0.0",
