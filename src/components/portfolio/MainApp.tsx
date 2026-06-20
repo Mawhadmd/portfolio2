@@ -16,6 +16,7 @@ import { DistortedGlass } from "./components/ui/Distorted_Glass";
 import { ShootingStars } from "@/portfolio/components/ui/shooting-stars";
 import { StarsBackground } from "@/portfolio/components/ui/stars-background";
 import ContactForm from "./components/contactForm/ContactForm";
+import ScrollProgress from "./components/ui/ScrollProgress";
 
 export type Themetype = "light" | "dark" | "";
 
@@ -24,6 +25,7 @@ const App = () => {
 
   return (
     <>
+      <ScrollProgress />
       <DistortedGlass />
 
       <div className="min-h-screen bg-Primary relative overflow-hidden sm:mt-20">

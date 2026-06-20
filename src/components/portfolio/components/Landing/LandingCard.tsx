@@ -4,17 +4,18 @@ import Title from "./Title";
 import TopButtons from "./TopButtons";
 import pfp from "@/20241230_072930.jpg";
 import Image from "next/image";
+import AvatarGlow from "../ui/AvatarGlow";
 const MainCard = () => {
   return (
     <>
-      <div className="aspect-square size-20 flex items-center justify-center overflow-hidden  rounded-full">
+      <AvatarGlow>
         <Image
           src={pfp}
           priority
           alt="Profile Picture"
           className="size-30  border-border rounded-full object-contain  "
         />
-      </div>
+      </AvatarGlow>
       <div className="mt-6 space-y-4">
         <div>
           <Blurfade onlyBlur={true} delay={0.1}>
